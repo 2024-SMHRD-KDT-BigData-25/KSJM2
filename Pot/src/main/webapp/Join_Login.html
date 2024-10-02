@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POTPOT</title>
+
+    <script type="text/javascript" src="member.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+    
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span {
+	font-size: 12px;
+}
+
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+
+button {
+	border-radius: 20px;
+	border: 1px solid #01D281;
+	background-color: #01D281;
+	color: black;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;   
+}
+
+.button-container {
+    display: flex; /* Flexbox를 사용하여 정렬 */
+    justify-content: center; /* 버튼을 중앙 정렬 */
+    gap: 10px; /* 버튼 사이에 간격 추가 */
+    margin-top: 20px; /* 버튼 위에 여백 추가 (선택 사항) */
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: black;
+}
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 800px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: #01D281;
+	background: -webkit-linear-gradient(to right, #6ff5c2, #01D281);
+	background: linear-gradient(to right, #6ff5c2, #01D281);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: black;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
+
+    </style>
+
+</head>
+
+<!-- HTML -->
+<body>
+    
+    <!-- 회원가입 / 로그인 : 한페이지에 같이 있음 -->
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="JoinController" method="post" name="frm">
+               
+                <!-- 회원가입 -->
+                <h1>Join Us</h1>
+                
+                    <!-- 아이디 -->
+                    <div class="button-container"><input type="text" name="user_id" placeholder="아이디" style="width:200px">
+					<input type="button" style="width: 67px;" value="중복체크" onclick="idCheck()">
+					<input type="hidden" name="reid"></div>
+
+					<!-- 비밀번호 -->
+					<input type="password" name="user_pw" placeholder="비밀번호" style="width:267px">
+
+					<!-- 이름 -->
+					<input type="text" name="user_name" placeholder="이름" style="width:267px">
+
+					<!-- 닉네임 -->
+					<input type="text" name="user_nick" placeholder="닉네임" style="width:267px">
+					
+					<!-- 연락처 -->
+					<input type="text" name="user_phone" placeholder="연락처" style="width:267px">
+
+					<!-- 우편번호 -->
+					<div class="button-container"><input type="text" name="user_post" placeholder="우편번호" style="width:200px">
+					<input type="button" style="width: 67px;" onclick="find_Postcode()" value="우편번호 찾기"></div>
+
+					<!-- 주소 -->
+					<input type="text" name="user_addr1" placeholder="주소" style="width:267px">
+
+					<!-- 상세주소 -->
+					<input type="text" name="user_addr2" placeholder="상세주소" style="width:267px">
+					<br>
+
+					<div class="button-container">
+                        <button type="submit" value="가입" onclick="return joinCheck()">가입</button>
+					    <button type="button" value="취소" onclick="window.close()">취소</button>
+                    </div>
+            </form>
+        </div>
+
+        <!-- 로그인 -->
+        <div class="form-container sign-in-container">
+            <form action="LoginController" method="post">
+                <h1>Log In</h1>
+
+                <!-- 아이디,비번 입력 -->
+                <input type="text" placeholder="아이디" name="user_id"><br>
+				<input type="password" placeholder="비밀번호" name="user_pw"><br>
+				
+
+				<div class="button-container">
+                    <a href="#">아이디 찾기</a>
+                    <a href="#">비밀번호 찾기</a>
+                </div>
+                <button type="submit" value="로그인 하기">로그인 하기</button>
+            </form>
+        </div>
+
+        <!-- 스위치 되는 부분 -->
+        <div class="overlay-container">
+            <div class="overlay">
+
+                <div class="overlay-panel overlay-left">
+                    <h1>Hi, 식집사!</h1>
+                    <p>POTPOT과 함께하는 즐거운 식집사 라이프!</p>
+                    <button class="ghost" id="signIn">로그인 하기</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Join us!</h1>
+                    <p>회원가입을 하시면 POTPOT과 함께 더 많은 반려식물 라이프를 공유할 수 있어요!</p>
+                    <button class="ghost" id="signUp">회원가입 하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- JS -->
+<script>
+
+// 우편번호 함수
+function find_Postcode() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var addr = ''; // 주소 변수
+	            var extraAddr = ''; // 참고항목 변수
+
+	            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                addr = data.roadAddress;
+	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                addr = data.jibunAddress;
+	            }
+
+	           
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+
+	            document.frm.user_post.value = data.zonecode;
+	            document.frm.user_addr1.value = addr;
+	            // 커서를 상세주소 필드로 이동한다.
+	            document.frm.user_addr2.focus();
+	        }
+	    }).open();
+	}
+
+
+
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+
+</script>
+</body>
+</html>
