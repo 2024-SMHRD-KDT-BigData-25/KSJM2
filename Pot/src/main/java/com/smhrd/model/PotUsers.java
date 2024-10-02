@@ -31,6 +31,13 @@ public class PotUsers {
     // 상세주소 
     private String user_addr2;
 
+    
+	public PotUsers(String user_id, String user_pw) {
+		super();
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+	}
+
 	
 	
 		
