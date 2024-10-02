@@ -4,13 +4,13 @@
 <mapper namespace="PotMapper">
 
 	<insert id="insert">
-		insert into users(user_id, user_pw, user_name, user_nick, user_phone, user_post, user_addr1, user_addr2)
+		insert into tb_user(user_id, user_pw, user_name, user_nick, user_phone, user_post, user_addr1, user_addr2)
 		values(#{user_id}, #{user_pw}, #{user_name}, #{user_nick}, #{user_phone}, #{user_post}, #{user_addr1}, #{user_addr2})
 	</insert>
 	
 	
 	<select id="idcheck" resultType="int">
-		select count(id) from users where id=#{id}
+		select count(user_id) from tb_user where user_id=#{user_id}
 	</select>
 	
 </mapper>

@@ -17,7 +17,7 @@
 
 <form action="idCheckCon" method="get" name="frm">
 
-<input type="text" name="user_id" value="${id}">
+<input type="text" name="user_id" value="${user_id}">
 <input type="submit" value="중복 체크">
 
 <br>
