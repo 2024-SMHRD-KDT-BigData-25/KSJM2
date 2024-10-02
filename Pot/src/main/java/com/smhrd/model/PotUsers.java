@@ -2,11 +2,14 @@ package com.smhrd.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 public class PotUsers {
 	
+
 	// 아이디 
     private String user_id;
 
@@ -31,12 +34,14 @@ public class PotUsers {
     // 상세주소 
     private String user_addr2;
 
-    
 	public PotUsers(String user_id, String user_pw) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 	}
+
+    
+
 
 	
 	

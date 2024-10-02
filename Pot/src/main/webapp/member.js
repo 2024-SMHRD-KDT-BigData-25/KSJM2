@@ -66,6 +66,3 @@ function joinCheck() {
 	}
 	return true;
 }
-
-
-

@@ -25,7 +25,7 @@ public class MemberDAO {
 		return res;
 	}
 	
-	// 로그인(select) 기능(메서드)
+	// 로그인(select) 기능(메서드),
 	public PotUsers login(PotUsers m) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -49,6 +49,17 @@ public class MemberDAO {
 		return res;
 				
 		
+	}
+	
+	// 아이디 찾기 (메서드)
+	public PotUsers findid(PotUsers m) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		PotUsers res = sqlSession.selectOne("PotMapper.findid", m);
+		sqlSession.close();
+		
+		return res;
 	}
 
 }
