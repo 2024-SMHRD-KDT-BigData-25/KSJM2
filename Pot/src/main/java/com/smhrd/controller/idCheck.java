@@ -20,19 +20,19 @@ public class idCheck extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("id");
+		String user_id = request.getParameter("user_id");
 		
 		
 		MemberDAO dao = new MemberDAO();
 		
-		int res = dao.confirmID(id);
+		int res = dao.confirmID(user_id);
 		
 		
 		
 		System.out.println(res);
 		
 		
-		request.setAttribute("id", id);
+		request.setAttribute("user_id", user_id);
 		request.setAttribute("res", res);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("idCheck.jsp");

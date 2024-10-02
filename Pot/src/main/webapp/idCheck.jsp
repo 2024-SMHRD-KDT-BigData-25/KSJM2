@@ -17,20 +17,20 @@
 
 <form action="idCheckCon" method="get" name="frm">
 
-<input type="text" name="id" value="${id}">
+<input type="text" name="user_id" value="${id}">
 <input type="submit" value="중복 체크">
 
 <br>
 
 <c:if test="${res==1}">
 <script type="text/javascript">
-opener.document.frm.id.value="";
+opener.document.frm.user_id.value="";
 </script>
-${id}는 이미 사용 중인 아이디 입니다.
+${user_id}는 이미 사용 중인 아이디 입니다.
 
 </c:if>
 <c:if test="${res==0}">
-${id}는 사용 가능한 아이디 입니다.
+${user_id}는 사용 가능한 아이디 입니다.
 
 <input type="button" value="사용" class="cancel" onclick="idok()">
 

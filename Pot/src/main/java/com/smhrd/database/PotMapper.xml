@@ -4,8 +4,8 @@
 <mapper namespace="PotMapper">
 
 	<insert id="insert">
-		insert into users(id, pw, name, nick, phone, postcode, address, addressdetails)
-		values(#{id}, #{pw}, #{name}, #{nick}, #{phone}, #{postcode}, #{address}, #{addressdetails})
+		insert into users(user_id, user_pw, user_name, user_nick, user_phone, user_post, user_addr1, user_addr2)
+		values(#{user_id}, #{user_pw}, #{user_name}, #{user_nick}, #{user_phone}, #{user_post}, #{user_addr1}, #{user_addr2})
 	</insert>
 	
 	

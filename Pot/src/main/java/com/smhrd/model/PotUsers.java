@@ -7,14 +7,30 @@ import lombok.Getter;
 @Getter
 public class PotUsers {
 	
-	private String id;
-	private String pw;
-	private String name;
-	private String nick;
-	private String phone;
-	private String postcode;
-	private String address;
-	private String addressdetails;
+	// 아이디 
+    private String user_id;
+
+    // 비밀번호 
+    private String user_pw;
+
+    // 이름 
+    private String user_name;
+
+    // 닉네임 
+    private String user_nick;
+
+    // 연락처 
+    private String user_phone;
+
+    // 우편번호 
+    private String user_post;
+
+    // 주소 
+    private String user_addr1;
+
+    // 상세주소 
+    private String user_addr2;
+
 	
 	
 		

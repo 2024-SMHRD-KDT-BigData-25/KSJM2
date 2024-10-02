@@ -20,17 +20,17 @@ public class JoinController extends HttpServlet {
 		// 요청 파라미터 받기 (아이디, 비밀번호, 닉네임 -> 한글(인코딩))
 		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-		String nick = request.getParameter("nick");
-		String phone = request.getParameter("phone");
-		String postcode = request.getParameter("postcode");
-		String address = request.getParameter("address");
-		String addressdetails = request.getParameter("addressdetails");
+		String user_id = request.getParameter("user_id");
+		String user_pw = request.getParameter("user_pw");
+		String user_name = request.getParameter("user_name");
+		String user_nick = request.getParameter("user_nick");
+		String user_phone = request.getParameter("user_phone");
+		String user_post = request.getParameter("user_post");
+		String user_addr1 = request.getParameter("user_addr1");
+		String user_addr2 = request.getParameter("user_addr2");
 		
 		// MyBatis에는 하나로 묶어서 전달해야 함
-		PotUsers joinMember = new PotUsers(id, pw, name, nick, phone, postcode, address, addressdetails);
+		PotUsers joinMember = new PotUsers(user_id, user_pw, user_name, user_nick, user_phone, user_post, user_addr1, user_addr2);
 		
 		
 		// MyBatis DB연동 프레임워크 사용해서 데이블에 값 저장

@@ -38,11 +38,11 @@ public class MemberDAO {
 	}
 	
 	// 아이디 중복 체크 기능(메서드)
-	public int confirmID(String id) {
+	public int confirmID(String user_id) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		int res = sqlSession.selectOne("PotMapper.idcheck", id);
+		int res = sqlSession.selectOne("PotMapper.idcheck", user_id);
 		
 		sqlSession.close();
 		
