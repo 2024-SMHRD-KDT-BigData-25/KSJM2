@@ -21,6 +21,10 @@
 		select user_id from tb_user where user_name=#{user_name} and user_phone=#{user_phone}
 	</select>
 	
+	<select id="findpw" parameterType="com.smhrd.model.PotUsers" resultType="com.smhrd.model.PotUsers">
+		select user_pw from tb_user where user_id=#{user_id} and user_name=#{user_name} and user_phone=#{user_phone}
+	</select>
+	
 </mapper>
 
 

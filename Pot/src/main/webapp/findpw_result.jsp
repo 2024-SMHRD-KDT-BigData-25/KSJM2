@@ -9,12 +9,9 @@
 
 <script type="text/javascript" src="member.js"></script>
 
-
 </head>
 <body>
 
-
-	
 		<% 
 			PotUsers member = (PotUsers)session.getAttribute("member");
 		%>
@@ -23,11 +20,11 @@
 			일치하는 정보가 없습니다.
 			<input type="button" value="돌아가기" onclick="window.history.back()">
 		<% }else { %>
-			ID는 <%= member.getUser_id() %> 입니다.
+			비밀번호는 <%= member.getUser_pw() %> 입니다.
 	<form action="sessiondel" method="post">
 			<input type="submit" value="로그인 하러 가기">
 		<% } %>
 	</form>
-
+	
 </body>
 </html>

@@ -61,5 +61,15 @@ public class MemberDAO {
 		
 		return res;
 	}
+	
+	public PotUsers findpw(PotUsers m) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		PotUsers res = sqlSession.selectOne("PotMapper.findpw", m);
+		sqlSession.close();
+		
+		return res;
+	}
 
 }
