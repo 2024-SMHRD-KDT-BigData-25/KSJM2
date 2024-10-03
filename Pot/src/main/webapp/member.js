@@ -66,3 +66,46 @@ function joinCheck() {
 	}
 	return true;
 }
+
+function confirm() {
+    const popup = window.open('confirm.html', 'confirmPopup', 'width=400,height=200');
+}
+
+// 물품등록 확인
+function salecheck(){
+	
+	if(document.frm.sale_category.value.length == 0){
+		alert("카테고리를 선택해 주세요")
+		frm.sale_category.focus();
+		return false;
+	}
+	
+	if(document.frm.sale_title.value.length == 0){
+		alert("상품명을 입력해 주세요")
+		frm.sale_title.focus();
+		return false;
+	}
+	
+	if(document.frm.sale_price.value.length == 0){
+		alert("가격을 입력해 주세요")
+		frm.sale_price.focus();
+		return false;
+	}
+	
+	var fileInput = document.getElementById("img");
+
+	// 파일이 선택되었는지 확인
+    if (fileInput.files.length === 0) {
+    	alert("파일을 선택해 주세요!");
+    	document.getElementById('img').focus();
+    	return false;
+    }
+	 
+	if(document.frm.sale_content.value.length == 0){
+    	alert("내용을 입력해 주세요")
+    	frm.sale_content.focus();
+    	return false;
+    }
+	
+	return true;
+}

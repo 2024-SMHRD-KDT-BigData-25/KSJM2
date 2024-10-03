@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>취소 확인</title>
+
+    <script>
+        function yes() {
+            // 부모 창 URL 변경
+            window.opener.history.back();
+            window.close(); // 팝업창 닫기
+        }
+
+        function no() {
+            window.close(); // 팝업창만 닫기
+        }
+    </script>
+    
+</head>
+<body>
+
+    <h3>정말로 취소하시겠습니까?</h3>
+    <button onclick="yes()">예</button>
+    <button onclick="no()">아니오</button>
+    
+</body>
+</html>

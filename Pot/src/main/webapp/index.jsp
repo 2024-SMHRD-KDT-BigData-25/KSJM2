@@ -17,8 +17,10 @@
 
 				<% if(member == null) { %>
 					<h2>로그인 실패</h2>
+					<a href="sale_write.jsp">작성</a>
 				<% }else { %>
 					<h2>로그인 성공</h2>
+					<a href="sale_write.jsp">작성</a>
 					<%= member.getUser_id() %> 환영합니다.
 				<% } %>
 				
