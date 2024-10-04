@@ -68,7 +68,7 @@ function joinCheck() {
 }
 
 function confirm() {
-    const popup = window.open('confirm.html', 'confirmPopup', 'width=400,height=200');
+    const popup = window.open('../html/confirm.html', 'confirmPopup', 'width=400,height=200');
 }
 
 // 물품등록 확인

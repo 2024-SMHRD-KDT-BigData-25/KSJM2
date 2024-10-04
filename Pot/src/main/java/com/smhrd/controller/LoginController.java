@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
 					System.out.println("성공");
 					HttpSession session = request.getSession();
 					session.setAttribute("member", res);
-					response.sendRedirect("main.html");
+					response.sendRedirect("../jsp/main.jsp");
 				}
 
 	}

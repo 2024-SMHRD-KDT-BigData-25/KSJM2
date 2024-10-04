@@ -1,27 +1,33 @@
+<%@page import="com.smhrd.model.PotUsers"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
     <title>POTPOT</title>
 	<link rel="stylesheet" href="../CSS/main.css">
-
 </head>
 <body>
 
+	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
+	
 <header>
 
 
-    <a class="logo" href="../html/main.html">
+    <a class="logo" href="../jsp/main.jsp">
         <img src="../img/potpot3.png" height="36px">
       </a>
       <nav>
         <ul class="nav-items">
-          <li><a href="../jsp/salelist.jsp">식물마켓</a></li>
+          <li><a href="salelist.jsp">식물마켓</a></li>
           <li><a href="#식물찾기">식물찾기</a></li>
           <li><a href="#커뮤티니">커뮤니티</a></li>
-          <li ><a href="Join_Login.html"><img class="img" src="../img/join1.png" height="10px"></a></li>
-          
+          <% if(member == null) { %>
+          <li ><a href="../html/Join_Login.html"><img class="img" src="../img/join1.png" height="10px"></a></li>
+          <% }else { %>
+          <li ><a href="mypage.jsp"><img class="img" src="../img/join.png" height="10px"></a></li>
+          <% } %>
         </ul>
         
           
@@ -53,6 +59,8 @@
 <footer>
     &copy; 2024 나의 웹사이트. 모든 권리 보유.
 </footer>
+
+
 
 </body>
 </html>

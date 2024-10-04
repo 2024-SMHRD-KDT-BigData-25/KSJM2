@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.PotUsers"%>
 <%@page import="com.smhrd.model.PotSale"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.SaleDAO"%>
@@ -39,23 +40,36 @@
             display: flex; /* Flexbox 사용 */
             flex-wrap: wrap; /* 아이템이 넘칠 경우 다음 줄로 이동 */
             gap: 20px; /* 카드 간 간격 */
-            margin: 0 20px; /* 양쪽 여백 추가 */
-            padding: 0 150px; /* 안쪽 여백을 150px로 설정 */
+            justify-content: center; /* 카드들을 가운데 정렬 */
+            padding: 0 100px; /* 좌우 패딩을 100px로 설정하여 여백 증가 */
             margin-top: 50px; /* 상단 여백을 50px로 설정 */
         }
         
         .card {
             padding: 10px; /* 카드 안쪽 여백 */
-            width: calc(16.66% - 20px); /* 한 줄에 6개 출력, 여백을 고려한 너비 */
+            width: calc(25% - 20px); /* 한 줄에 4개 출력, 여백을 고려한 너비 */
             text-align: center; /* 텍스트 중앙 정렬 */
             box-sizing: border-box; /* 패딩과 경계를 포함한 전체 너비 계산 */
             margin-bottom: 20px; /* 카드 간의 아래쪽 여백을 줄임 */
+            min-height: 400px; /* 게시물 최소 높이 설정 */
+            background-color: transparent; /* 배경색 제거 */
+            border: none; /* 테두리 제거 */
         }
 
         .card img {
             width: 100%; /* 이미지 너비를 카드에 맞춤 */
-            height: 150px; /* 고정 높이 설정 */
+            height: 300px; /* 이미지 고정 높이 설정 */
             object-fit: cover; /* 이미지 비율 유지하며 공간에 맞춤 */
+        }
+
+        .card h4 {
+            padding: 10px 0; /* 위아래 여백을 10px로 설정하여 타이틀 높이 감소 */
+            margin: 0; /* 기본 여백 제거 */
+        }
+
+        .id-price {
+            border-top: 1px solid black; /* 제목과 가격 사이에 구분선 추가 */
+            padding: 5px 0; /* 여백 추가 */
         }
 
         .pagination {
@@ -68,23 +82,67 @@
             margin: 0 5px; /* 버튼 간 간격 */
             padding: 5px 10px; /* 버튼 안쪽 여백 */
         }
+
+        .button-container {
+            display: flex; 
+            justify-content: flex-end; /* 오른쪽 정렬 */
+            gap: 10px; /* 버튼 간격 */
+            margin: 20px 0px; /* 상단 여백 및 좌우 여백 설정 */
+            position: fixed; /* 고정 위치 */
+            right: 30px; /* 오른쪽 여백 */
+            bottom: 30px; /* 아래쪽 여백 */
+            z-index: 1000; /* 다른 요소보다 위에 표시 */
+        }
+
+        .btn {
+            padding: 10px 15px; /* 버튼 안쪽 여백 */
+            border-radius: 5px; /* 모서리 둥글게 */
+            border: none; /* 테두리 제거 */
+            color: white; /* 글자 색상 */
+            cursor: pointer; /* 포인터 커서 */
+        }
+
+        .btn-success {
+            background-color: #28a745; /* 글 작성 버튼 색상 */
+        }
+
+        .btn-warning {
+            background-color: #ffc107; /* 채팅하기 버튼 색상 */
+        }
+
+        .btn-success:hover {
+            background-color: #218838; /* 글 작성 버튼 호버 색상 */
+        }
+
+        .btn-warning:hover {
+            background-color: #d39e00; /* 채팅하기 버튼 호버 색상 */
+        }
+
     </style>
 
     <title>POP: 식물마켓</title>
 </head>
 <body>
+
+	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
+	
+	
 <div id="wrap">
     <header>
-        <a class="logo" href="../html/main.html">
-            <img src="../img/potpot3.png" height="36px">
-        </a>
-        <nav>
-            <ul class="nav-items">
-                <li><a href="../jsp/salelist.jsp">식물마켓</a></li>
-                <li><a href="#식물찾기">식물찾기</a></li>
-                <li><a href="#커뮤티니">커뮤니티</a></li>
-                <li ><a href="Join_Login.html"><img class="img" src="../img/join1.png" height="10px"></a></li>
-            </ul>
+            <a class="logo" href="../jsp/main.jsp">
+        <img src="../img/potpot3.png" height="36px">
+      </a>
+      <nav>
+        <ul class="nav-items">
+          <li><a href="salelist.jsp">식물마켓</a></li>
+          <li><a href="#식물찾기">식물찾기</a></li>
+          <li><a href="#커뮤티니">커뮤니티</a></li>
+          <% if(member == null) { %>
+          <li ><a href="../html/Join_Login.html"><img class="img" src="../img/join1.png" height="10px"></a></li>
+          <% }else { %>
+          <li ><a href="mypage.jsp"><img class="img" src="../img/join.png" height="10px"></a></li>
+          <% } %>
+        </ul>
         </nav>
     </header>
 </div>
@@ -96,7 +154,7 @@
     System.out.println(list.size());
 
     // 페이지당 게시물 수
-    int pageSize = 36; // 게시물 수를 36으로 변경
+    int pageSize = 24; // 게시물 수를 24로 변경
     // 현재 페이지 번호
     int currentPage = 1; // 기본적으로 첫 페이지
     if (request.getParameter("page") != null) {
@@ -141,12 +199,13 @@
     <% } %>
 </div>
 
-<div>
-    <button class="btn btn-sm btn-success" onclick="location.href='sale_write.jsp'">글작성</button>
-    <button class="btn btn-sm btn-warning" onclick="window.open('', '채팅방', 'width=500, height=700, top=50, left=500')">채팅하기</button>
+<!-- 버튼 컨테이너 추가 -->
+<% if(member == null) { %>
+<% }else { %>
+<div class="button-container">
+    <button class="btn btn-success" onclick="location.href='sale_write.jsp'">글 작성</button>
 </div>
-
-
+<% } %>
 
 </body>
 </html>
