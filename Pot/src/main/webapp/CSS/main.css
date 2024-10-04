@@ -92,7 +92,7 @@
   	color: rgba(0, 0, 0, 0.8);
 	}
 	
-	.img >img {
+	.img {
 	display: inline-block;
 	line-height: 60px;
  	 padding: 0 20px;
