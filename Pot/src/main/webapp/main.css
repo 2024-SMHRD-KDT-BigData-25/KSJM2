@@ -44,10 +44,11 @@
   	color: rgba(0, 0, 0, 0.8);
 	}
 	
-	.nav-items > img {
+	.nav-items > li > img {
 	display: inline-block;
 	line-height: 60px;
  	 padding: 0 30px;
+ 	 margin-right: 50px;
 	}
 	
 	
