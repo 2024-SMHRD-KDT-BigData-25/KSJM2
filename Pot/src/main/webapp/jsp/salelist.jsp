@@ -146,5 +146,7 @@
     <button class="btn btn-sm btn-warning" onclick="window.open('', '채팅방', 'width=500, height=700, top=50, left=500')">채팅하기</button>
 </div>
 
+
+
 </body>
 </html>

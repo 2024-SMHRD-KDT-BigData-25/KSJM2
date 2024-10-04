@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>POTPOT: 아이디 중복 확인</title>
 
-<script type="text/javascript" src="member.js"></script>	
+<script type="text/javascript" src="../member.js"></script>	
 <link rel="stylesheet" href="../CSS/idCheck.css"/>
 </head>
 
