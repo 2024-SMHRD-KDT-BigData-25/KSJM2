@@ -42,7 +42,7 @@ public class JoinController extends HttpServlet {
 		
 		// 회원가입 성공(res>0) => index.jsp / 실패 => join.html
 		if(res>0) {
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("main.html");
 		}else {
 			response.sendRedirect("join.html");
 		}

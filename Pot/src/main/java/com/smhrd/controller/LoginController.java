@@ -31,12 +31,22 @@ public class LoginController extends HttpServlet {
 				
 				if(res == null) {
 					System.out.println("실패");
-					response.sendRedirect("index.jsp");
+					//response.sendRedirect("index.jsp");
+		            response.setContentType("text/html;charset=UTF-8");
+		            response.getWriter().println("<html>");
+		            response.getWriter().println("<head><title>로그인 실패</title></head>");
+		            response.getWriter().println("<body>");
+		            response.getWriter().println("<script type='text/javascript'>");
+		            response.getWriter().println("alert('아이디 또는 비밀번호가 틀렸습니다.');");
+		            response.getWriter().println("window.history.back();"); // 이전 페이지로 돌아가기
+		            response.getWriter().println("</script>");
+		            response.getWriter().println("</body>");
+		            response.getWriter().println("</html>");
 				}else {
 					System.out.println("성공");
 					HttpSession session = request.getSession();
 					session.setAttribute("member", res);
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("main.html");
 				}
 
 	}
