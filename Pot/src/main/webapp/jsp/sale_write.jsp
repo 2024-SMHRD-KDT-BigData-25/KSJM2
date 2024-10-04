@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>물품 등록중</title>
 
-	<script type="text/javascript" src="member.js"></script>
+	<script type="text/javascript" src="../member.js"></script>
 
 
 </head>

@@ -60,7 +60,7 @@
     				for(String img : imgFiles) {
     				    if(img != null && !img.trim().isEmpty()) { 
     				%>
-    				    <img src="upload/<%=img.trim()%>" style="max-width:200px; margin-right:10px;">
+    				    <img src="../upload/<%=img.trim()%>" style="max-width:200px; margin-right:10px;">
     				<% 
     				    } 
     				}
