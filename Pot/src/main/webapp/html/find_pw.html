@@ -3,20 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+
+    body{
+        font-family: 'Pretendard';
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    .contentPw{
+        text-align: center;
+    }
+
+    #idbox, #namebox, #phonebox{
+        box-sizing: border-box;
+        width: 300px;
+        height: 50px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 3px solid #01D281;
+    }
+
+    #find, #cancle{
+        box-sizing: border-box;
+        width: 300px;
+        height: 30px;
+        background-color: white;
+        border-radius: 5px;
+        color: black;
+        font-size:15px;
+        
+    }
+
+    #find:hover{
+        background-color: #01D281;
+        color: white;
+    }
+
+    #cancle:hover{
+        background-color: #01D281;
+        color: white;
+    }
+
+</style>
+
 </head>
+
 <body>
 
+    <h1>비밀번호 찾기</h1>
 	<form action="FindPw" method="post" name="frm">
 	
-		<input type="text" name="user_id" placeholder="아이디">
-		<input type="text" name="user_name" placeholder="이름">
-		<input type="text" name="user_phone" placeholder="연락처">
-		<input type="submit" value="찾기">
-		<input type="button" value="취소" onclick="history.back()">
-		
-	
-	
-	
-	</form>
+        <div class="contentPw">
+            <input id="idbox" type="text" name="user_id" placeholder="아이디"><br>
+            <input id="namebox" type="text" name="user_name" placeholder="이름"><br>
+            <input id="phonebox" type="text" name="user_phone" placeholder="연락처"><br><br><br>
+            <input id="find" type="submit" value="찾기"><br>
+            <p><input id="cancle" type="button" value="취소" onclick="history.back()"></p>
+	    </div>
+    </form>
+
 </body>
 </html>

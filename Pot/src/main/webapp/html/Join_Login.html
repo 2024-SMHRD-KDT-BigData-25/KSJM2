@@ -246,7 +246,13 @@ input {
 	transform: translateX(20%);
 }
 
+#checkid:hover{
+	color: #01D281;
+}
 
+#findpost:hover{
+	color: #01D281;
+}
 
 footer {
     background-color: #222;
@@ -290,7 +296,7 @@ footer a {
                 
                     <!-- 아이디 -->
                     <div class="button-container"><input type="text" name="user_id" placeholder="아이디" style="width:184px">
-					<input type="button" style="width: 75px;" value="중복체크" onclick="idCheck()">
+					<input id="checkid" type="button" style="width: 75px;" value="중복체크" onclick="idCheck()">
 					<input type="hidden" name="reid"></div>
 
 					<!-- 비밀번호 -->
@@ -307,7 +313,7 @@ footer a {
 
 					<!-- 우편번호 -->
 					<div class="button-container"><input type="text" name="user_post" placeholder="우편번호" style="width:155px">
-					<input type="button" style="width: 100px;" onclick="find_Postcode()" value="우편번호 찾기"></div>
+					<input id="findpost" type="button" style="width: 100px;" onclick="find_Postcode()" value="우편번호 찾기"></div>
 
 					<!-- 주소 -->
 					<input type="text" name="user_addr1" placeholder="주소" style="width:267px">
