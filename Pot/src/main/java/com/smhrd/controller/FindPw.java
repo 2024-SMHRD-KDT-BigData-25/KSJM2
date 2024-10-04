@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.smhrd.model.MemberDAO;
 import com.smhrd.model.PotUsers;
 
-@WebServlet("/FindPw")
+@WebServlet("/html/FindPw")
 public class FindPw extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,11 +34,11 @@ public class FindPw extends HttpServlet {
 		PotUsers res = dao.findpw(findwd);
 		
 		if(res == null) {
-			response.sendRedirect("findpw_result.jsp");
+			response.sendRedirect("../jsp/findpw_result.jsp");
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", res);
-			response.sendRedirect("findpw_result.jsp");
+			response.sendRedirect("../jsp/findpw_result.jsp");
 		}
 		
 		

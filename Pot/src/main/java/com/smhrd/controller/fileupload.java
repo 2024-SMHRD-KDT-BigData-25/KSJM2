@@ -23,7 +23,7 @@ import com.smhrd.model.SaleDAO;
 /**
  * Servlet implementation class fileupload
  */
-@WebServlet("/fileupload")
+@WebServlet("/html/fileupload")
 public class fileupload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -131,13 +131,13 @@ public class fileupload extends HttpServlet {
             if (res > 0) {
                 response.sendRedirect("index.jsp");
             } else {
-                response.sendRedirect("sale_write.jsp");
+                response.sendRedirect("../jsp/sale_write.jsp");
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
             request.setAttribute("message", "There was an error: " + ex.getMessage());
-            response.sendRedirect("sale_write.jsp");
+            response.sendRedirect("../jsp/sale_write.jsp");
         }
 	}
 

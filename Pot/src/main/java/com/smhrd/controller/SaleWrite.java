@@ -20,7 +20,7 @@ import org.apache.commons.io.FilenameUtils;
 import com.smhrd.model.PotSale;
 import com.smhrd.model.SaleDAO;
 
-@WebServlet("/SaleWrite")
+@WebServlet("/jsp/SaleWrite")
 public class SaleWrite extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -126,7 +126,7 @@ public class SaleWrite extends HttpServlet {
 
             // 결과에 따라 리다이렉트 처리
             if (res > 0) {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("salelist.jsp");
             } else {
                 response.sendRedirect("sale_write.jsp");
             }

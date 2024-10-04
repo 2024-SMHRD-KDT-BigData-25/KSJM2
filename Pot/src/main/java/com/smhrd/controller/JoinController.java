@@ -12,7 +12,7 @@ import com.smhrd.model.MemberDAO;
 import com.smhrd.model.PotUsers;
 
 
-@WebServlet("/JoinController")
+@WebServlet("/html/JoinController")
 public class JoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

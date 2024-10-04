@@ -14,7 +14,7 @@ import com.smhrd.model.MemberDAO;
 import com.smhrd.model.PotUsers;
 
 
-@WebServlet("/FindId")
+@WebServlet("/html/FindId")
 public class FindId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,11 +33,11 @@ public class FindId extends HttpServlet {
 		PotUsers res = dao.findid(findid);
 		
 		if(res == null) {
-			response.sendRedirect("findid_result.jsp");
+			response.sendRedirect("../jsp/findid_result.jsp");
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", res);
-			response.sendRedirect("findid_result.jsp");
+			response.sendRedirect("../jsp/findid_result.jsp");
 	}
 
 	}

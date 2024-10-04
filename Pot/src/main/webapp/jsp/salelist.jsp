@@ -34,14 +34,14 @@
 		    	<% for(PotSale m:list) {%>
 		      		<tr>
 		        		<td><%=m.getSale_idx() %></td>
-		        		<td><a href="../jsp/salecontent.jsp?sale_idx=<%= m.getSale_idx() %>"><%=m.getSale_title() %></a></td>
+		        		<td><a href="salecontent.jsp?sale_idx=<%= m.getSale_idx() %>"><%=m.getSale_title() %></a></td>
 		        		<td><%=m.getUser_id() %></td>
 		        		<td><%=m.getCreated_at() %></td>
 		      		</tr>
 		      	<% } %>
 		      <tr>
 		      	<td colspan="4">
-		      		<button class="btn btn-sm btn-success" onclick="location.href='../jsp/sale_write.jsp'">글작성</button>
+		      		<button class="btn btn-sm btn-success" onclick="location.href='sale_write.jsp'">글작성</button>
 		      		<button class="btn btn-sm btn-warning" onclick="window.open('', '채팅방', 'width=500, height=700, top=50, left=500')">채팅하기</button>
 		      	</td>
 		      </tr>
