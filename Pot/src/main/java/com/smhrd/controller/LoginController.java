@@ -23,11 +23,15 @@ public class LoginController extends HttpServlet {
 				String user_id = request.getParameter("user_id");
 				String user_pw = request.getParameter("user_pw");
 				
+				String previousUrl = request.getParameter("previousUrl");
+			    
 				PotUsers loginMember = new PotUsers(user_id, user_pw);
 				
 				MemberDAO dao = new MemberDAO();
 				
 				PotUsers res = dao.login(loginMember);
+				
+				System.out.println("이전 URL: " + previousUrl);
 				
 				if(res == null) {
 					System.out.println("실패");
@@ -46,7 +50,7 @@ public class LoginController extends HttpServlet {
 					System.out.println("성공");
 					HttpSession session = request.getSession();
 					session.setAttribute("member", res);
-					response.sendRedirect("../jsp/main.jsp");
+					response.sendRedirect(previousUrl);
 				}
 
 	}

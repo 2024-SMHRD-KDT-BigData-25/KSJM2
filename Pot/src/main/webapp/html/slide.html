@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 슬라이더</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex; /* Flexbox 사용 */
+            justify-content: space-between; /* 중앙 정렬 */
+            align-items: flex-start; /* 상단 정렬 */
+            height: 100vh; /* 화면 전체 높이 사용 */
+        }
+        .carousel {
+            position: relative;
+            width: 30%; /* 슬라이더 너비를 30%로 설정 */
+            overflow: hidden; /* 넘치는 부분 숨기기 */
+            border: 2px solid #ccc; /* 테두리 설정 */
+            padding-bottom: 30%; /* 높이를 너비의 60%로 설정 */
+            height: 0; /* 높이를 0으로 설정 */
+            margin-left: 15%; /* 왼쪽 여백 추가 */
+            margin-top: 5%; /* 위쪽 여백 추가 */
+        }
+
+        .carousel-images {
+            display: flex; /* 이미지들을 수평으로 나열 */
+            transition: transform 0.5s ease; /* 슬라이딩 효과 */
+            position: absolute; /* 위치를 절대값으로 설정 */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .carousel-images img {
+            width: 100%; /* 이미지가 슬라이더의 너비에 맞게 조정 */
+            height: 100%; /* 이미지의 높이를 슬라이더의 높이에 맞게 조정 */
+            object-fit: cover; /* 이미지를 잘라내서 비율 유지 */
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent; /* 완전한 투명 */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px; /* 둥근 버튼 */
+        }
+
+        .prev {
+            left: 10px; /* 왼쪽 버튼 위치 */
+        }
+
+        .next {
+            right: 10px; /* 오른쪽 버튼 위치 */
+        }
+
+        .right-space {
+            position: relative;
+            margin-right: 15%;
+            margin-top:5%;
+            width: 30%; /* 오른쪽 공간의 너비 설정 */
+            padding: 20px; /* 여백 추가 */
+            border: 2px dashed #000; /* 대시 테두리 추가 */
+            box-sizing: border-box; /* 패딩 포함하여 크기 계산 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="carousel">
+    <div class="carousel-images">
+        <img src="https://via.placeholder.com/800x400?text=Image+1" alt="Image 1">
+        <img src="https://via.placeholder.com/800x400?text=Image+2" alt="Image 2">
+        <img src="https://via.placeholder.com/800x400?text=Image+3" alt="Image 3">
+    </div>
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
+</div>
+
+<div class="right-space">
+    <h2>오른쪽 공간</h2>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+    <p>여기에 원하는 내용을 추가하세요.</p>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    document.querySelector('.next').addEventListener('click', () => {
+        currentIndex++;
+        updateCarousel();
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        currentIndex--;
+        updateCarousel();
+    });
+
+    function updateCarousel() {
+        const images = document.querySelector('.carousel-images');
+        const totalImages = images.children.length;
+        
+        if (currentIndex >= totalImages) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = totalImages - 1;
+
+        images.style.transform = `translateX(${-currentIndex * 100}%)`;
+    }
+</script>
+
+</body>
+</html>

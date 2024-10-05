@@ -7,6 +7,16 @@
 
     <script type="text/javascript" src="../member.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
+        <script>
+        // 페이지가 로드될 때 이전 URL을 저장합니다.
+        function savePreviousUrl() {
+            var previousUrl = document.referrer; // 이전 페이지의 URL
+            document.getElementById("previousUrl").value = previousUrl;
+        }
+    </script>
+    
+    
 
     <style>
 
@@ -284,7 +294,7 @@ footer a {
 </head>
 
 <!-- HTML -->
-<body>
+<body onload="savePreviousUrl()">
     
     <!-- 회원가입 / 로그인 : 한페이지에 같이 있음 -->
     <div class="container" id="container">
@@ -337,6 +347,7 @@ footer a {
                 <!-- 아이디,비번 입력 -->
                 <input type="text" placeholder="아이디" name="user_id">
 				<input type="password" placeholder="비밀번호" name="user_pw">
+				<input type="hidden" id="previousUrl" name="previousUrl">
 				
 
 				<div class="button-container">
