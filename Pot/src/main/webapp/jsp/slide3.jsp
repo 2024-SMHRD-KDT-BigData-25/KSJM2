@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.PotSale"%>
+<%@page import="com.smhrd.model.SaleDAO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +51,7 @@
         /* 현재 보여지고 있는 슬라이드 */
         .active {
             display: block;
-            animation: fadeEffect 1.5s ease-in-out;
+            
         }
 
         /* 슬라이드 전환 시 페이드 효과 */
@@ -95,20 +97,42 @@
 </head>
 <body>
 
+ 	<%
+ 	int sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
+ 	SaleDAO dao = new SaleDAO();
+ 	PotSale board = dao.getBoard(sale_idx);
+ 	
+    // sale_img가 null인 경우를 체크
+    String[] imgFiles = null;
+    if (board.getSale_img() != null && !board.getSale_img().isEmpty()) {
+        imgFiles = board.getSale_img().split(",");
+    } else {
+        imgFiles = new String[0]; // 빈 배열로 초기화
+    }
+ 	%>
+
     <!-- 이미지 슬라이더 -->
     <div class="slider-container">
-        <!-- 첫 번째 슬라이드 (초기 상태에서 활성화) -->
-        <div class="slide active">
-            <img src="https://via.placeholder.com/800x400?text=Image+1" alt="Image 1">
-        </div>
-        <!-- 두 번째 슬라이드 -->
-        <div class="slide">
-            <img src="https://via.placeholder.com/800x400?text=Image+2" alt="Image 2">
-        </div>
-        <!-- 세 번째 슬라이드 -->
-        <div class="slide">
-            <img src="https://via.placeholder.com/800x400?text=Image+3" alt="Image 3">
-        </div>
+     				<% 
+    				// 여러 개의 이미지 파일을 반복해서 출력
+    				for(int i = 0; i < imgFiles.length; i++) {
+    				    if(i == 0) { 
+    				%>
+        				<div class="slide active">
+            					<img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
+        				</div>
+
+					
+    				<% 
+    				    } else { %>
+
+    				    <div class="slide">
+        			      <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
+        				</div>
+<%
+ }
+    				}
+    				%>
         <!-- '이전' 버튼 -->
         <a class="prev" onclick="changeSlide(-1)">❮</a>
         <!-- '다음' 버튼 -->

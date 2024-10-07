@@ -109,3 +109,13 @@ function salecheck(){
 	
 	return true;
 }
+
+function myinfoCheck() {
+	
+	if(document.frm.user_pw.value.length == 0){
+		alert("비밀번호를 입력해 주세요")
+		frm.user_pw.focus();
+		return false;
+	}
+	return true;
+}
