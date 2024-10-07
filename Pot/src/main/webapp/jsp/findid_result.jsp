@@ -8,7 +8,7 @@
 <title>POT: 아이디 찾기</title>
 
 <script type="text/javascript" src="../member.js"></script>
-
+<link rel="stylesheet" href="../CSS/findid_result.css"/>
 
 </head>
 <body>
@@ -20,12 +20,13 @@
 		%>
 		
 		<% if(member == null) { %>
-			일치하는 정보가 없습니다.
-			<input type="button" value="돌아가기" onclick="window.history.back()">
+			<h3>일치하는 정보가 없습니다.</h3>
+			<div class="center"><input id="backbtn" type="button" value="돌아가기" onclick="window.history.back()"></div>
 		<% }else { %>
-			ID는 <%= member.getUser_id() %> 입니다.
+			<h3>ID는
+			<span><%= member.getUser_id() %></span> 입니다.</h3>
 	<form action="sessiondel" method="post">
-			<input type="submit" value="로그인 하러 가기">
+        <div class="center"><input id="go2loginbtn" type="submit" value="로그인 하러 가기"></div>
 		<% } %>
 	</form>
 
