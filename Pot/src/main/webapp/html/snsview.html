@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 상세페이지</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #f6f5f7, #01D281);
+            color: #333;
+            text-align: left;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #80deea;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2em;
+            color: black;
+        }
+
+        .post-meta {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .post-content {
+            margin-top: 20px;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .like-section {
+            margin-bottom: 10px;
+        }
+
+        .like-button {
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 1.2em;
+            padding: 5px; /* 항상 보이기 위한 padding */
+        }
+
+        .liked {
+            color: #e91e63; /* 하트 색상 */
+        }
+
+        .comment-section {
+            margin-top: 30px;
+            border-top: 2px solid #01D281;
+            padding-top: 20px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-meta {
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        .comment-author {
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .reply-button, .submit-reply {
+            background-color: #004d40;
+            font-size: 0.8em;
+            padding: 5px 10px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .reply-form {
+            display: none;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        textarea {
+            border: 2px solid #01D281;
+            border-radius: 5px;
+            padding: 5px;
+            width: calc(100% - 12px);
+            resize: none;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        button {
+            background-color: #01D281;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>게시글 제목</h1>
+        <div class="post-meta">
+            <span>작성자: 홍길동</span> | 
+            <span>작성일: 2024-10-07</span> | 
+            <span>조회수: 123</span>
+        </div>
+        <div class="post-content">
+            <p>여기에 게시글 내용이 들어갑니다. HTML 태그를 사용하여 내용을 서식화할 수 있습니다.</p>
+            <p>여기에 게시글 내용이 들어갑니다. HTML 태그를 사용하여 내용을 서식화할 수 있습니다.</p>
+            <p>여기에 게시글 내용이 들어갑니다. HTML 태그를 사용하여 내용을 서식화할 수 있습니다.</p>
+            <p>여기에 게시글 내용이 들어갑니다. HTML 태그를 사용하여 내용을 서식화할 수 있습니다.</p>
+            <p>여기에 게시글 내용이 들어갑니다. HTML 태그를 사용하여 내용을 서식화할 수 있습니다.</p>
+            <p>예를 들어, <strong>굵은 글씨</strong>, <em>기울임 글씨</em>, <a href="#" style="color: #00796b;">링크</a> 등을 사용할 수 있습니다.</p>
+        </div>
+        
+        <div class="like-section">
+            <button id="likeButton" class="like-button"><i class="fa-solid fa-seedling"></i></i> <span id="likeCount">0</span></button>
+        </div>
+
+        <div class="comment-section">
+            <h2>댓글 (총 2개)</h2>
+            <div class="comment">
+                <span class="comment-author">댓글 작성자 1</span>
+                <p class="comment-meta">2024-10-07 10:00</p>
+                <p>이 게시글 정말 유익하네요!</p>
+                <button class="reply-button">대댓글</button>
+                <div class="reply-form">
+                    <textarea placeholder="대댓글을 입력하세요..." rows="2"></textarea>
+                    <button class="submit-reply">대댓글 작성</button>
+                </div>
+            </div>
+            <div class="comment">
+                <span class="comment-author">댓글 작성자 2</span>
+                <p class="comment-meta">2024-10-07 10:30</p>
+                <p>좋은 정보 감사합니다!</p>
+                <button class="reply-button">대댓글</button>
+                <div class="reply-form">
+                    <textarea placeholder="대댓글을 입력하세요..." rows="2"></textarea>
+                    <button class="submit-reply">대댓글 작성</button>
+                </div>
+            </div>
+            <form>
+                <textarea placeholder="댓글을 입력하세요..." rows="3"></textarea>
+                <button type="submit">댓글 작성</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 공감 버튼 클릭 시 공감 수 증가/감소
+        let likeCount = 0;
+        let liked = false; // 공감 상태를 저장할 변수
+        document.getElementById('likeButton').addEventListener('click', function() {
+            if (!liked) {
+                likeCount++;
+                this.classList.add('liked'); // 하트 색상 변경
+            } else {
+                likeCount--;
+                this.classList.remove('liked'); // 하트 색상 제거
+            }
+            liked = !liked; // 공감 상태 토글
+            document.getElementById('likeCount').textContent = likeCount;
+        });
+
+        // 대댓글 버튼 클릭 시 대댓글 입력 필드 보이기
+        const replyButtons = document.querySelectorAll('.reply-button');
+        replyButtons.forEach((button) => {
+            button.addEventListener('click', function() {
+                const replyForm = this.nextElementSibling;
+                replyForm.style.display = replyForm.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // 대댓글 작성 버튼 클릭 시 대댓글을 추가하는 기능
+        const submitReplyButtons = document.querySelectorAll('.submit-reply');
+        submitReplyButtons.forEach((button) => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // 기본 폼 제출 방지
+                const replyText = this.previousElementSibling.value;
+                if (replyText) {
+                    const newReply = document.createElement('div');
+                    newReply.classList.add('comment');
+                    newReply.innerHTML = `
+                        <span class="comment-author">대댓글 작성자</span>
+                        <p class="comment-meta">${new Date().toLocaleString()}</p>
+                        <p>${replyText}</p>
+                    `;
+                    this.parentElement.parentElement.appendChild(newReply);
+                    this.previousElementSibling.value = ''; // 입력란 비우기
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
