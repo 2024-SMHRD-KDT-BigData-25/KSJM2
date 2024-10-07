@@ -122,7 +122,7 @@ public class SaleWrite extends HttpServlet {
             // PotSale 객체 생성 및 데이터베이스 저장
             PotSale uploadBoard = new PotSale(sale_category, sale_title, user_id, sale_price, sale_img, sale_content);
             SaleDAO dao = new SaleDAO();
-            int res = dao.wirteSale(uploadBoard);
+            int res = dao.writeSale(uploadBoard);
 
             // 결과에 따라 리다이렉트 처리
             if (res > 0) {

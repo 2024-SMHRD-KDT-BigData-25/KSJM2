@@ -119,3 +119,20 @@ function myinfoCheck() {
 	}
 	return true;
 }
+
+function snscheck(){
+	
+	if(document.frm.sns_title.value.length == 0){
+		alert("제목을 입력해 주세요")
+		frm.sns_title.focus();
+		return false;
+	}
+	
+	if(document.frm.sns_content.value.length == 0){
+		alert("내용을 입력해 주세요")
+		frm.sns_conatent.focus();
+		return false;
+	}
+	
+	return true;
+}

@@ -13,7 +13,7 @@ public class SaleDAO {
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
 	
 	// 게시물 작성
-	public int wirteSale(PotSale m) {
+	public int writeSale(PotSale m) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int res = sqlSession.insert("SaleMapper.write", m);
 		sqlSession.close();

@@ -15,4 +15,5 @@
 	<select id="getBoard" parameterType="int" resultType="com.smhrd.model.PotSale">
 		select * from tb_sale where sale_idx=#{sale_idx}
 	</select>
+	
 </mapper>
