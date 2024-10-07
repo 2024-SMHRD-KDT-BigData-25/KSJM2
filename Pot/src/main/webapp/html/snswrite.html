@@ -75,38 +75,32 @@
     <tr><td><textarea placeholder="내용을 입력하세요" name="detail"></textarea></td></tr> <!-- 내용 입력 텍스트 영역 -->
     <tr><td>
         <label for="fileUpload" class="file-upload-label"> <!-- 파일 업로드를 위한 라벨 -->
-            파일 선택   
-            <input type="file" id="fileUpload" name="fileUpload" accept="image/*" style="display: none;" multiple onchange="updateFileInfo()"> <!-- 숨겨진 파일 입력 필드 -->
+            사진   
+            <input type="file" id="fileUpload" name="img" multiple="multiple"> <!-- 숨겨진 파일 입력 필드 -->
         </label>
         <div id="fileInfo"></div> <!-- 파일 정보 표시 영역 -->
     </td></tr>
     <tr><td>
         <input type="submit" value="등록" onclick="alert('작성 완료!')"> <!-- 등록 버튼 -->
-        <button type="button" class="close-button" onclick="window.history.back();">닫기</button> <!-- 닫기 버튼 -->
+        <button type="button" class="close-button" onclick="comfirm()">닫기</button> <!-- 닫기 버튼 -->
     </td></tr>
 </table>
 </form>
 
-<script>
-    // 파일 정보 업데이트 함수
-    function updateFileInfo() {
-        const fileInput = document.getElementById('fileUpload'); // 파일 입력 필드 가져오기
-        const fileInfo = document.getElementById('fileInfo'); // 파일 정보 표시 영역 가져오기
-        if (fileInput.files.length > 0) { // 파일이 선택되었는지 확인
-            // 선택된 파일 수 확인
-            if (fileInput.files.length > 5) { // 5개 이상의 파일이 선택되었는지 확인
-                alert("최대 5개의 파일을 선택할 수 있습니다."); // 경고 메시지 표시
-                fileInput.value = ''; // 파일 입력 초기화
-                fileInfo.textContent = ''; // 파일 정보 초기화
-            } else {
-                // 선택된 파일의 이름을 표시
-                const fileNames = Array.from(fileInput.files).map(file => file.name).join(', '); // 파일 이름 배열을 문자열로 변환
-                fileInfo.textContent = `선택한 파일: ${fileNames}`; // 파일 정보 업데이트
-            }
-        } else {
-            fileInfo.textContent = ''; // 선택된 파일이 없을 경우 파일 정보 초기화
-        }
-    }
-</script>
+	<script>
+	    const maxFiles = 5; // 최대 파일 개수 제한
+	
+	    document.getElementById('img').addEventListener('change', function() {
+	        const fileCount = this.files.length;
+	        if (fileCount > maxFiles) {
+	            alert('최대 ' + maxFiles + '개의 파일만 업로드할 수 있습니다.');
+	            this.value = ''; // 입력값 초기화
+	        }
+	    });
+    
+
+	</script>
+	
+	
 </body>
 </html>

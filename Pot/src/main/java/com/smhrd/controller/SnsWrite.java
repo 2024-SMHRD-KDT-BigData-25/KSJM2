@@ -18,26 +18,26 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
 import com.smhrd.model.PotSale;
+import com.smhrd.model.PotSns;
 import com.smhrd.model.SaleDAO;
+import com.smhrd.model.SnsDAO;
 
-/**
- * Servlet implementation class fileupload
- */
-@WebServlet("/html/fileupload")
-public class fileupload extends HttpServlet {
+
+@WebServlet("/jsp/SnsWrite")
+public class SnsWrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    // 업로드 설정: 메모리 상에서 저장할 파일 사이즈와 임시 저장 위치
+	 // 업로드 설정: 메모리 상에서 저장할 파일 사이즈와 임시 저장 위치
     private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
     private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
     private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  // 파일이 첨부된 multipart 요청인지 확인
+		 // 파일이 첨부된 multipart 요청인지 확인
         if (!ServletFileUpload.isMultipartContent(request)) {
             // 폼이 multipart/form-data가 아니면 오류 처리
             request.setAttribute("message", "Error: Form must have enctype=multipart/form-data.");
-            response.sendRedirect("sale_write.jsp");
+            response.sendRedirect("sns_write.jsp");
             return;
         }
 
@@ -70,11 +70,9 @@ public class fileupload extends HttpServlet {
             List<FileItem> formItems = upload.parseRequest(request);
             
             // 텍스트 필드 처리 변수들
-            String sale_category = null;
-            String sale_title = null;
             String user_id = null;
-            String sale_price = null;
-            String sale_content = null;
+            String sns_title = null;
+            String sns_content = null;
 
             // 요청에서 받은 데이터 처리
             for (FileItem item : formItems) {
@@ -85,20 +83,14 @@ public class fileupload extends HttpServlet {
                     System.out.println("Field Name: " + fieldName + ", Field Value: " + fieldValue);
                     
                     switch (fieldName) {
-                        case "sale_category":
-                            sale_category = fieldValue;
+                    	case "user_id":
+                    		user_id = fieldValue;
+                    		break;
+                        case "sns_title":
+                            sns_title = fieldValue;
                             break;
-                        case "sale_title":
-                            sale_title = fieldValue;
-                            break;
-                        case "user_id":
-                            user_id = fieldValue;
-                            break;
-                        case "sale_price":
-                            sale_price = fieldValue;
-                            break;
-                        case "sale_content":
-                            sale_content = fieldValue;
+                        case "sns_content":
+                            sns_content = fieldValue;
                             break;
                     }
                 } else {
@@ -119,25 +111,26 @@ public class fileupload extends HttpServlet {
             }
 
             // 업로드된 이미지들을 쉼표로 연결
-            String sale_img = String.join(",", imgList);
-            System.out.println("Uploaded Images: " + sale_img);
+            String sns_img = String.join(",", imgList);
+            System.out.println("Uploaded Images: " + sns_img);
 
             // PotSale 객체 생성 및 데이터베이스 저장
-            PotSale uploadBoard = new PotSale(sale_category, sale_title, user_id, sale_price, sale_img, sale_content);
-            SaleDAO dao = new SaleDAO();
-            int res = dao.writeSale(uploadBoard);
-
+            PotSns snswrite = new PotSns(user_id, sns_title, sns_img, sns_content);
+            
+            SnsDAO dao = new SnsDAO();
+    		int res = dao.writeSns(snswrite);
+            
             // 결과에 따라 리다이렉트 처리
             if (res > 0) {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("snslist.jsp");
             } else {
-                response.sendRedirect("../jsp/sale_write.jsp");
+                response.sendRedirect("sns_write.jsp");
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
             request.setAttribute("message", "There was an error: " + ex.getMessage());
-            response.sendRedirect("../jsp/sale_write.jsp");
+            response.sendRedirect("sns_write.jsp");
         }
 	}
 
