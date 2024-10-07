@@ -33,9 +33,9 @@
 				<div>
 					<select id="category" name="sale_category">
 						<option value="">카테고리
-						<option value="1">1
-						<option value="2">2
-						<option value="3">3					
+						<option value="식물">식물
+						<option value="용품">용품
+						<option value="기타">기타				
 					</select>
 				</div>
 			</div>
