@@ -1,0 +1,37 @@
+body{
+    font-family: 'Pretendard';
+	
+}
+
+h3{
+	font-weight: 500;
+	text-align: center;
+}
+
+span{
+	color : #01D281;
+	font-weight: 700;
+}
+
+#backbtn, #go2loginbtn{
+	box-sizing: border-box;
+    width: 300px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    font-size:15px;
+    margin: 0 auto; 
+    display: block;  
+    text-align: center;
+}
+
+#backbtn:hover, #go2loginbtn:hover{
+	background-color: #01D281;
+    color: white;
+}
+
+.center {
+    text-align: center; 
+    margin-top: 20px;
+}
