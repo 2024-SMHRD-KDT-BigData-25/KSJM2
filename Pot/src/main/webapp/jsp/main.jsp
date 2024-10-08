@@ -47,18 +47,34 @@
 		<h1 align="center" class="text1">어쩌구저쩌</h1></h1></div>
 </div>
 	
-<div class="container">
-    <div class="box">박스 1</div>
-    <div class="box">박스 2</div>
-    <div class="box">박스 3</div>
+<<div class="container">
+    <a href="#" id="img3" class="box">뭔 식물인지 모름 ㅎㅎ</a>
+    <a href="#" id="img4" class="box">뭔 식물인지 모름 2</a>
+    <a href="#" id="img5" class="box">뭔 식물인지 모름 3</a>
 </div>
 
+<div class="container">
+	<a href="#" id="img6" class="box">박쥐란&nbsp;</a>
+	<a href="#" id="img7" class="box">제두나 셀렘&nbsp;</a>
+    <a href="#" id="img8" class="box">아리우카리아&nbsp;&nbsp;</a>
+</div>
 	
 	
 	
 <footer>
-    &copy; 2024 나의 웹사이트. 모든 권리 보유.
+	<div class="footerdiv" style="display: flex">
+		<img class="logo2" src="../img/potpot4.png" align="left">
+
+		<a class="text2" align="left">This home page is plant <br>second hand trading site</a>
+	</div>
+	<div class="footerdiv2" style="display: flex">
+			<img class="instergram" src="../img/instergram.png">
+			<img class="discord" src="../img/discod.png">
+			<img class="twitter" src="../img/twitter.png">
+	</div>
+	
 </footer>
+
 
 
 
