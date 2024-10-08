@@ -142,7 +142,9 @@
    
    
 <div id="wrap">
+
     <header></header>
+
 </div>
 
 <%

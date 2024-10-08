@@ -24,5 +24,6 @@
     <mapper resource="com/smhrd/database/PotMapper.xml"/>
     <mapper resource="com/smhrd/database/SaleMapper.xml"/>
     <mapper resource="com/smhrd/database/SnsMapper.xml"/>
+    <mapper resource="com/smhrd/database/CmtMapper.xml"/>
   </mappers>
 </configuration>

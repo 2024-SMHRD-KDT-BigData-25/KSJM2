@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CmtMapper">
+
+	<!-- 댓글 등록 -->
+	<insert id="insert" parameterType="com.smhrd.model.PotCmt">
+		insert into tb_comment2(sns_idx, user_id, cmt_content)
+		values(#{sns_idx}, #{user_id} ,#{cmt_content})
+	</insert>
+
+	<!-- 여러개의 행을 가져올 때: resultType -> 리스트 내의 각 아이템의 타입 -->
+	<select id="select" resultType="com.smhrd.model.PotCmt">
+		select * from tb_comment2 where sns_idx=#{sns_idx}
+	</select>
+
+
+</mapper>
