@@ -3,17 +3,30 @@
 <mapper namespace="SaleMapper">
 
 	<insert id="write" parameterType="com.smhrd.model.PotSale">
-		insert into tb_sale(sale_category, sale_title, user_id, sale_price, sale_img, sale_content) values (#{sale_category}, #{sale_title}, #{user_id}, #{sale_price}, #{sale_img}, #{sale_content})
+		insert into tb_sale(sale_category, sale_title, user_id, sale_price, sale_img, sale_content)
+		values (#{sale_category}, #{sale_title}, #{user_id}, #{sale_price}, #{sale_img}, #{sale_content})
 	</insert>
 	
 	<!-- 여러개의 행을 가져올 때: resultType -> 리스트 내의 각 아이템의 타입 -->
+	<!-- 전체 리스트 -->
 	<select id="select" resultType="com.smhrd.model.PotSale">
-		select * from tb_sale order by sale_idx desc
+		select b.sale_idx, b.sale_title, b.user_id, b.sale_price, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sale_img, b.sale_views, a.user_nick
+		from tb_user a inner join tb_sale b
+		on(a.user_id = b.user_id)
+		order by b.sale_idx desc
 	</select>
 	
 	
 	<select id="getBoard" parameterType="int" resultType="com.smhrd.model.PotSale">
-		select * from tb_sale where sale_idx=#{sale_idx}
+		select b.sale_title, b.sale_price, a.user_id, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sale_content, b.sale_img, a.user_nick
+		from tb_user a inner join tb_sale b
+		on(a.user_id = b.user_id)
+		where b.sale_idx=#{sale_idx}
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="views">
+		update tb_sale set sale_views = sale_views + 1 where sale_idx = #{sale_idx}
+	</update>
 	
 </mapper>

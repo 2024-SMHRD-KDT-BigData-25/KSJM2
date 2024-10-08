@@ -100,6 +100,11 @@
  	<%
  	int sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
  	SaleDAO dao = new SaleDAO();
+ 	
+ 	// 조회수
+ 	int view = dao.views(sale_idx);
+ 	
+ 	// 게시물 정보
  	PotSale board = dao.getBoard(sale_idx);
  	
     // sale_img가 null인 경우를 체크
@@ -141,6 +146,20 @@
 
     <!-- 오른쪽 공간 (추가 콘텐츠가 들어가는 영역) -->
     <div class="right-space">
+    
+    	<div class="product-meta-data" style="flex: 2;">
+        <div class="line"></div>
+        <a href="product-details.html">
+          <h6><%=board.getSale_title() %></h6>
+        </a>
+        <p class="product-price"><%=board.getSale_price() %></p>
+        <p class="market_user_id"><%=board.getUser_nick() %></p>
+        <p class="market_date"><%=board.getCreated_at()%></p>
+        
+        <div class="short_overview my-5">
+          <p><%=board.getSale_content() %></p>
+        </div>
+      </div>
         <h2>오른쪽 콘텐츠</h2>
         <p>여기에 원하는 내용을 추가하세요.</p>
         <p>여기에 원하는 내용을 추가하세요.</p>

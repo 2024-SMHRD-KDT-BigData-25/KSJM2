@@ -43,8 +43,14 @@
   <%
   int sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
   SaleDAO dao = new SaleDAO();
+  
+  // 조회수
+  int view = dao.views(sale_idx);
+  
+  // 게시물 정보
   PotSale board = dao.getBoard(sale_idx);
   
+  // 이미지 파일 이름 정리
   String[] imgFiles = null;
   if (board.getSale_img() != null && !board.getSale_img().isEmpty()) {
       imgFiles = board.getSale_img().split(",");
@@ -79,7 +85,7 @@
           <h6><%=board.getSale_title() %></h6>
         </a>
         <p class="product-price"><%=board.getSale_price() %></p>
-        <p class="market_user_id"><%=board.getUser_id() %></p>
+        <p class="market_user_id"><%=board.getUser_nick() %></p>
         <p class="market_date"><%=board.getCreated_at()%></p>
         
         <div class="short_overview my-5">

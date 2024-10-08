@@ -332,7 +332,7 @@
                             <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %></a>
                           </th>
                           <!-- 유저네임 -->
-                          <td><%=m.getUser_id() %></td>
+                          <td><%=m.getUser_nick() %></td>
                           <td><%=m.getCreated_at() %></td>
                           <!-- 좋아요수 -->
                           <td><%=m.getSns_likes() %></td>

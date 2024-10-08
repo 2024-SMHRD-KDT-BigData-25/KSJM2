@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="login" parameterType="com.smhrd.model.PotUsers" resultType="com.smhrd.model.PotUsers">
-		select user_id, user_pw, user_name, user_nick, user_phone, user_post, user_addr1, user_addr2 from tb_user where user_id =#{user_id} and user_pw=#{user_pw}
+		select * from tb_user where user_id =#{user_id} and user_pw=#{user_pw}
 	</select>
 	
 	<select id="findid" parameterType="com.smhrd.model.PotUsers" resultType="com.smhrd.model.PotUsers">

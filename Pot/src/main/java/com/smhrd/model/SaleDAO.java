@@ -45,6 +45,18 @@ public class SaleDAO {
 		
 	}
 	
+	// 게시물 조회수
+	public int views(int sale_idx) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		int res = sqlSession.update("SaleMapper.views", sale_idx);
+		
+		sqlSession.close();
+		
+		return res;
+		
+	}
+	
 	
 	
 }

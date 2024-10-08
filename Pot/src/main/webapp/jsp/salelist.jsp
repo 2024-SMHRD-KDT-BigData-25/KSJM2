@@ -181,7 +181,7 @@
             
             <!-- ID와 Price를 한 줄에 나란히 표시 -->
             <div class="id-price">
-                <span><%= m.getUser_id() %></span>
+                <span><%= m.getUser_nick() %></span>
                 <span><%= m.getSale_price() %></span>
             </div>
             

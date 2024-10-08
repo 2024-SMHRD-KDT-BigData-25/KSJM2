@@ -32,6 +32,8 @@ public class PotSns {
 	
 	// 커뮤니티 좋아요수
 	private int sns_likes;
+	
+	private String user_nick;
 
 	public PotSns(String user_id, String sns_title, String sns_img, String sns_content) {
 		super();

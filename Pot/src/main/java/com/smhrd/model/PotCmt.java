@@ -26,6 +26,8 @@ public class PotCmt {
 
     // 댓글 상태 
     private int cmt_likes;
+    
+    private String user_nick;
 
 	public PotCmt(int sns_idx, String user_id, String cmt_content) {
 		super();

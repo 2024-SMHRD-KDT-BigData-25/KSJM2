@@ -35,6 +35,8 @@ public class PotSale {
 
     // 조회수 
     private int sale_views;
+    
+    private String user_nick;
 
 	public PotSale(String sale_category, String sale_title, String user_id, String sale_price, String sale_img,
 			String sale_content) {

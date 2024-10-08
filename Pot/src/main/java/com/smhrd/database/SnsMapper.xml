@@ -9,11 +9,17 @@
 	
 		<!-- 여러개의 행을 가져올 때: resultType -> 리스트 내의 각 아이템의 타입 -->
 	<select id="select" resultType="com.smhrd.model.PotSns">
-		select sns_idx, sns_title, user_id, TO_CHAR(created_at, 'YYYY-MM-DD') AS created_at, sns_likes, sns_views from tb_sns order by sns_idx desc
+		select a.sns_idx, a.sns_title, a.user_id, TO_CHAR(a.created_at, 'YYYY-MM-DD') AS created_at, a.sns_likes, a.sns_views, b.user_nick
+		from tb_sns a, tb_user b
+		where a.user_id = b.user_id
+		order by a.sns_idx desc
 	</select>
 	
 	<select id="getBoard" parameterType="int" resultType="com.smhrd.model.PotSns">
-		select user_id, sns_title, sns_img, sns_content, TO_CHAR(created_at, 'YYYY-MM-DD') AS created_at, sns_views, sns_likes from tb_sns where sns_idx=#{sns_idx}
+		select a.user_id, b.sns_title, b.sns_img, b.sns_content, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sns_views, b.sns_likes, a.user_nick
+		from tb_user a inner join tb_sns b
+		on(a.user_id = b.user_id)
+		where b.sns_idx=#{sns_idx}
 	</select>
 	
 	<!-- 조회수 증가 -->

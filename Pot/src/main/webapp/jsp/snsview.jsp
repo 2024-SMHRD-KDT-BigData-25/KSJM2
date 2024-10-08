@@ -171,7 +171,7 @@ button:hover {
 <div class="container">
     <h1><%=board.getSns_title() %></h1>
     <div class="post-meta">
-        <span>작성자: <%=board.getUser_id() %></span> | 
+        <span>작성자: <%=board.getUser_nick() %></span> | 
         <span>작성일: <%=board.getCreated_at() %></span> | 
         <span id="viewCount">조회수: <%=board.getSns_views() %></span> <!-- 조회수 표시 -->
     </div>
@@ -198,7 +198,7 @@ button:hover {
         <h2>댓글 (총 <%=cmtlist.size() %>개)</h2>
         <% for(PotCmt cmt:cmtlist){ %>
         <div class="comment">
-            <span class="comment-author"><%=cmt.getUser_id() %></span>
+            <span class="comment-author"><%=cmt.getUser_nick() %></span>
             <p class="comment-meta"><%=cmt.getCreated_at() %></p>
             <p><%=cmt.getCmt_content() %></p>
             <button class="reply-button">대댓글</button>
