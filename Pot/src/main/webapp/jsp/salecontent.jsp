@@ -6,7 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>식물마켓 | POTPOT</title>
+
+<link rel="stylesheet" href="../CSS/market_content.css">
+
+
 </head>
 <body>
 
