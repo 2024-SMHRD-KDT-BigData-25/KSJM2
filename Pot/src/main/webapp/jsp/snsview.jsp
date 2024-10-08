@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.PotUsers"%>
 <%@page import="com.smhrd.model.PotSns"%>
 <%@page import="com.smhrd.model.SnsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 상세페이지</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -145,6 +147,9 @@
 	    } else {
 	        imgFiles = new String[0]; // 빈 배열로 초기화
 	    }
+	    
+	    PotUsers member = (PotUsers)session.getAttribute("member");
+	    
 	%>
 
     <div class="container">
@@ -172,7 +177,7 @@
             <button id="likeButton" class="like-button"><i class="fa-solid fa-seedling"></i></i> <span id="likeCount"><%=board.getSns_likes() %></span></button>
         </div>
 
-        <div class="comment-section">
+        <div class="comment-section" id="comment-section">
             <h2>댓글 (총 2개)</h2>
             <div class="comment">
                 <span class="comment-author">댓글 작성자 1</span>
@@ -195,12 +200,79 @@
                 </div>
             </div>
             <form>
-                <textarea placeholder="댓글을 입력하세요..." rows="3"></textarea>
-                <button type="submit">댓글 작성</button>
+                <textarea id="cmt_content" name="cmt_content" placeholder="댓글을 입력하세요" rows="3"></textarea>
+                <input type="button" value="댓글 작성" onclick="cmtinsert()">
             </form>
         </div>
     </div>
 
+<script>
+
+	$(document).ready(function(){
+		getList()
+	})
+	
+	function getList(){
+		  var sns_idx = <%=sns_idx%>; // JSP에서 sns_idx 값을 가져와 JavaScript 변수에 저장
+		  
+		$.ajax({
+			url: "CmtList", // 요청경로
+			data: {"sns_idx": sns_idx},
+			type: "get",
+			success: printList,
+			error: function(){
+				alert("통신 실패!")
+			}
+		})
+	}
+	
+	function printList(data){
+		var data = JSON.parse(data)
+		
+		var html = "" // id=>list 곳에 추가가 될 html 코드
+		
+		for(var board of data) {
+				html += "<span class='comment-author'>" + board.user_id + "</span>"
+				html += "<p class='comment-meta'>" + board.created_at + "</p>"
+				html += "<p>" + board.cmt_content + "</p>"
+				html += "<button class='reply-button'>대댓글</button>"
+				html += "<div class='reply-form'>"
+				html += "<textarea placeholder='대댓글을 입력하세요...' rows='2'></textarea>"
+				html += "<button class='submit-reply'>대댓글 작성</button>"
+				html += "</div>"
+  		}
+		
+		// html(): 특정 태그 사이에 html 코드를 바꾸고 싶을 때
+		// text(): text바꾸고 싶을 때
+		// append(): 특정 태그 사이에 값을 추가 (뒤쪽에) => 누적
+		// prepend(): 앞쪽에 추가 => 누적
+		
+		$("#comment-section").html(html)
+	}
+	
+	function cmtinsert(){
+		
+		  var sns_idx = <%=sns_idx%>; // JSP에서 sns_idx 값을 가져와 JavaScript 변수에 저장
+		    var user_id = <%=member.getUser_id()%>; // Java에서 JSP로 변환된 값을 가져와 JavaScript 변수에 저장
+		    var cmt_content = document.getElementById("cmt_content").value; // 댓글 내용을 가져옴
+		    
+		    
+		$.ajax({
+			url: "CmtInsert",
+			data: {"sns_idx": sns_idx,
+					"user_id": user_id,
+					"cmt_content": cmt_content
+					}, // 서버로 보낼 데이터 (json)
+			type: "get",
+			success: getList(),
+			error:function(){
+				alert("통신실패!")
+			}
+		})
+		
+	}
+
+</script>
   
 </body>
 </html>
