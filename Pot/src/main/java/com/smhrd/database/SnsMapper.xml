@@ -16,4 +16,11 @@
 		select user_id, sns_title, sns_img, sns_content, TO_CHAR(created_at, 'YYYY-MM-DD') AS created_at, sns_views, sns_likes from tb_sns where sns_idx=#{sns_idx}
 	</select>
 	
+	<!-- 조회수 증가 -->
+	<update id="views">
+		update tb_sns set sns_views = sns_views + 1 where sns_idx = #{sns_idx}
+	</update>
+	
+
+	
 </mapper>

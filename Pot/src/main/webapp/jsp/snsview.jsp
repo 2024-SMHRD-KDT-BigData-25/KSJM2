@@ -162,6 +162,11 @@ button:hover {
 	    CmtDAO Dao = new CmtDAO();
 	    List<PotCmt> cmtlist = Dao.getList(sns_idx);
 	    
+	    // 조회수
+	    
+	    int views = dao.views(sns_idx);
+	    
+	    
 	%>
 
 
@@ -197,7 +202,7 @@ button:hover {
 			<% for(PotCmt cmt:cmtlist){ %>
 			<div class="comment">
 				<span class="comment-author"><%=cmt.getUser_id() %></span>
-				<p class="comment-meta">2024-10-07 10:00<%=cmt.getCreated_at() %></p>
+				<p class="comment-meta"><%=cmt.getCreated_at() %></p>
 				<p><%=cmt.getCmt_content() %></p>
 				<button class="reply-button">대댓글</button>
 				<div class="reply-form">
@@ -209,8 +214,9 @@ button:hover {
 			
 			<form action="CmtInsert">
 				<input type="hidden" name="sns_idx" value=<%= sns_idx%>>
+				<%if(member !=null) {%>
 				<input type="hidden" name="user_id" value=<%= member.getUser_id()%>>
-				
+				<%} %>
 				<textarea name="cmt_content" placeholder="댓글을 입력하세요" rows="3"></textarea>
 				<%if(member != null) {%>
 				<input type="submit" value="댓글 작성">

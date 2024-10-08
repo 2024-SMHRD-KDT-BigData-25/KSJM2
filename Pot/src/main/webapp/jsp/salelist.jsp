@@ -173,7 +173,7 @@
 <div class="card-container">
     <% for (PotSale m : pagedList) { %>
         <div class="card">
-            <a href="salecontent.jsp?sale_idx=<%= m.getSale_idx() %>">
+            <a href="slide3.jsp?sale_idx=<%= m.getSale_idx() %>">
                 <% String[] parts = m.getSale_img().split(","); %>
                 <img src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>">
             </a>

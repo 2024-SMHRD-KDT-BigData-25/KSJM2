@@ -48,5 +48,17 @@ public class SnsDAO {
 			
 		}
 		
+		// 게시물 조회수
+		public int views(int sns_idx) {
+			SqlSession sqlSession = sqlSessionFactory.openSession(true);
+			
+			int res = sqlSession.update("SnsMapper.views", sns_idx);
+			
+			sqlSession.close();
+			
+			return res;
+			
+		}
+		
 		
 }
