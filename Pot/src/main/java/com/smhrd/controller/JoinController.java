@@ -12,7 +12,7 @@ import com.smhrd.model.MemberDAO;
 import com.smhrd.model.PotUsers;
 
 
-@WebServlet("/html/JoinController")
+@WebServlet("/jsp/JoinController")
 public class JoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class JoinController extends HttpServlet {
 		
 		// 회원가입 성공(res>0) => index.jsp / 실패 => join.html
 		if(res>0) {
-			response.sendRedirect("main.html");
+			response.sendRedirect("main.jsp");
 		}else {
 			response.sendRedirect("join.html");
 		}

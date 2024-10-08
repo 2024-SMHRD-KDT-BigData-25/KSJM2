@@ -4,7 +4,7 @@
 
 	<!-- 댓글 등록 -->
 	<insert id="insert" parameterType="com.smhrd.model.PotCmt">
-		insert into tb_comment2(sns_idx, user_id, cmt_content,)
+		insert into tb_comment2(sns_idx, user_id, cmt_content)
 		values(#{sns_idx}, #{user_id} ,#{cmt_content})
 	</insert>
 

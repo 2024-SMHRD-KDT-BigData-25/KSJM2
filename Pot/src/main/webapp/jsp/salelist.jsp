@@ -135,7 +135,7 @@
         <ul class="nav-items">
           <li><a href="salelist.jsp">식물마켓</a></li>
           <li><a href="#식물찾기">식물찾기</a></li>
-          <li><a href="#커뮤티니">커뮤니티</a></li>
+          <li><a href="snslist.jsp">커뮤니티</a></li>
           <% if(member == null) { %>
           <li ><a href="../html/Join_Login.html"><img class="img" src="../img/join1.png" height="10px"></a></li>
           <% }else { %>

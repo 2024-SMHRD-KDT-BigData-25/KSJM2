@@ -1,5 +1,12 @@
 package com.smhrd.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class PotCmt {
 
     // 댓글 식별자 
@@ -13,9 +20,6 @@ public class PotCmt {
 
     // 댓글 작성일자 
     private String created_at;
-
-    // 부모 댓글 식별자 
-    private int prt_idx;
 
     // 댓글 내용 
     private String cmt_content;
