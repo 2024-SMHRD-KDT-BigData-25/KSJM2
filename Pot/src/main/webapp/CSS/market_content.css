@@ -1,0 +1,116 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 마켓 콘텐츠 스타일 */
+.market-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* 카테고리 스타일 */
+.plant {
+    list-style: none;
+    padding: 0;
+}
+
+.plant-item {
+    display: inline;
+    margin-right: 10px;
+}
+
+/* 제품 상세 스타일 */
+.product-details {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* 이미지 스타일 */
+.product-images {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.product-images img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* 제품 메타 데이터 스타일 */
+.product-meta-data {
+    flex: 2;
+}
+
+.product-meta-data h6 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #e74c3c;
+    margin: 10px 0;
+}
+
+.market_user_id,
+.market_date {
+    font-size: 14px;
+    color: #777;
+}
+
+/* 제품 소개글 */
+.short_overview {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* 버튼 스타일 */
+.chat-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.chat-btn:hover {
+    background-color: #2980b9;
+}
+
+/* 수정, 삭제, 리스트 버튼 스타일 */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.btn-info {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
