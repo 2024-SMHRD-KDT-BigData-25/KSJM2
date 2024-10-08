@@ -81,7 +81,7 @@
 	.logo > img { height: 70px; }
 	.nav-items > li {
   		display: inline-block;
-	}
+	}                        
 	.nav-items > li > a {
  	 line-height: 40px;
  	 padding: 0 10px;
