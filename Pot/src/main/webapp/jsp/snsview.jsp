@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시판 상세페이지</title>
-	
+
+<script src="jquery-3.7.1.min.js"></script>
+
 <style>
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -142,90 +143,87 @@ button:hover {
 </head>
 <body>
 
-	<%
-		// 게시물 불러오기
-		int sns_idx = Integer.parseInt(request.getParameter("sns_idx"));
-		SnsDAO dao = new SnsDAO();
-		PotSns board = dao.getBoard(sns_idx);
-		
-	    String[] imgFiles = null;
-	    if (board.getSns_img() != null && !board.getSns_img().isEmpty()) {
-	        imgFiles = board.getSns_img().split(",");
-	    } else {
-	        imgFiles = new String[0]; // 빈 배열로 초기화
-	    }
-	    
-	    // 유저 정보 불러오기
-	    PotUsers member = (PotUsers)session.getAttribute("member");
-	    
-	    // 댓글 불러오기
-	    CmtDAO Dao = new CmtDAO();
-	    List<PotCmt> cmtlist = Dao.getList(sns_idx);
-	    
-	    // 조회수
-	    
-	    int views = dao.views(sns_idx);
-	    
-	    
-	%>
+<%
+    // 게시물 불러오기
+    int sns_idx = Integer.parseInt(request.getParameter("sns_idx"));
+    SnsDAO dao = new SnsDAO();
+    
+    int views = dao.views(sns_idx);
+    
+    
+    PotSns board = dao.getBoard(sns_idx);
+    
+    String[] imgFiles = null;
+    if (board.getSns_img() != null && !board.getSns_img().isEmpty()) {
+        imgFiles = board.getSns_img().split(",");
+    } else {
+        imgFiles = new String[0]; // 빈 배열로 초기화
+    }
+    
+    // 유저 정보 불러오기
+    PotUsers member = (PotUsers)session.getAttribute("member");
+    
+    // 댓글 불러오기
+    CmtDAO Dao = new CmtDAO();
+    List<PotCmt> cmtlist = Dao.getList(sns_idx);
+%>
 
+<div class="container">
+    <h1><%=board.getSns_title() %></h1>
+    <div class="post-meta">
+        <span>작성자: <%=board.getUser_id() %></span> | 
+        <span>작성일: <%=board.getCreated_at() %></span> | 
+        <span id="viewCount">조회수: <%=board.getSns_views() %></span> <!-- 조회수 표시 -->
+    </div>
+    <div class="post-content">
+        <% 
+            // 여러 개의 이미지 파일을 반복해서 출력
+            for(String img : imgFiles) {
+                if(img != null && !img.trim().isEmpty()) { %>
+        <img src="../upload/<%=img.trim()%>" style="max-width: 200px; margin-right: 10px;">
+        <% 
+                } 
+            } %>
+        <br>
+        <%=board.getSns_content() %>
+    </div>
 
-	<div class="container">
-		<h1><%=board.getSns_title() %></h1>
-		<div class="post-meta">
-			<span>작성자: <%=board.getUser_id() %></span> | <span>작성일: <%=board.getCreated_at() %></span>
-			| <span>조회수: <%=board.getSns_views() %></span>
-		</div>
-		<div class="post-content">
-			<% 
-				// 여러 개의 이미지 파일을 반복해서 출력
-				for(String img : imgFiles) {
-					if(img != null && !img.trim().isEmpty()) { %>
-			<img src="../upload/<%=img.trim()%>"
-				style="max-width: 200px; margin-right: 10px;">
-			<% 
-				} 
-			} %>
-			<br>
-			<%=board.getSns_content() %>
+    <div class="like-section">
+        <button id="likeButton" class="like-button">
+            <i class="fa-solid fa-seedling"></i> <span id="likeCount"><%=board.getSns_likes() %></span>
+        </button>
+    </div>
 
-		</div>
+    <div class="comment-section" id="comment-section">
+        <h2>댓글 (총 <%=cmtlist.size() %>개)</h2>
+        <% for(PotCmt cmt:cmtlist){ %>
+        <div class="comment">
+            <span class="comment-author"><%=cmt.getUser_id() %></span>
+            <p class="comment-meta"><%=cmt.getCreated_at() %></p>
+            <p><%=cmt.getCmt_content() %></p>
+            <button class="reply-button">대댓글</button>
+            <div class="reply-form">
+                <textarea placeholder="대댓글을 입력하세요..." rows="2"></textarea>
+                <button class="submit-reply">대댓글 작성</button>
+            </div>
+        </div>
+        <%} %>
+        
+        <form action="CmtInsert">
+            <input type="hidden" name="sns_idx" value="<%= sns_idx %>">
+            <%if(member != null) {%>
+            <input type="hidden" name="user_id" value="<%= member.getUser_id() %>">
+            <%} %>
+            <textarea name="cmt_content" placeholder="댓글을 입력하세요" rows="3"></textarea>
+            <%if(member != null) {%>
+            <input type="submit" value="댓글 작성">
+            <% } else { %>
+            <input type="button" value="댓글 작성" onclick="alert('로그인 후 작성 가능합니다.')">
+            <%} %>
+        </form>
+    </div>
+</div>
 
-		<div class="like-section">
-			<button id="likeButton" class="like-button">
-				<i class="fa-solid fa-seedling"></i></i> <span id="likeCount"><%=board.getSns_likes() %></span>
-			</button>
-		</div>
-
-		<div class="comment-section" id="comment-section">
-			<h2>댓글 (총 n개)</h2>
-			<% for(PotCmt cmt:cmtlist){ %>
-			<div class="comment">
-				<span class="comment-author"><%=cmt.getUser_id() %></span>
-				<p class="comment-meta"><%=cmt.getCreated_at() %></p>
-				<p><%=cmt.getCmt_content() %></p>
-				<button class="reply-button">대댓글</button>
-				<div class="reply-form">
-					<textarea placeholder="대댓글을 입력하세요..." rows="2"></textarea>
-					<button class="submit-reply">대댓글 작성</button>
-				</div>
-			</div>
-			<%} %>
-			
-			<form action="CmtInsert">
-				<input type="hidden" name="sns_idx" value=<%= sns_idx%>>
-				<%if(member !=null) {%>
-				<input type="hidden" name="user_id" value=<%= member.getUser_id()%>>
-				<%} %>
-				<textarea name="cmt_content" placeholder="댓글을 입력하세요" rows="3"></textarea>
-				<%if(member != null) {%>
-				<input type="submit" value="댓글 작성">
-				<% }else { %>
-				<input type="button" value="댓글 작성" onclick="alert('로그인 후 작성 가능합니다.')">
-				<%} %>
-			</form>
-		</div>
-	</div>
 
 </body>
 </html>

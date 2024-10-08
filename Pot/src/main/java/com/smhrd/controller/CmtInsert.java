@@ -31,7 +31,7 @@ public class CmtInsert extends HttpServlet {
 		
 		if(res>0) {
 			System.out.println("성공");
-			
+			response.sendRedirect("snsview.jsp?sns_idx=" + sns_idx);
 		}else {
 			System.out.println("실패");
 			response.sendRedirect("snsview.jsp?sns_idx=" + sns_idx);
