@@ -75,7 +75,7 @@
 	                	<img src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>">
 	            </a>
 	            
-	            <div class="Product productName"><h4><%= m.getSale_title() %></h4></div>
+	            <h4><%= m.getSale_title() %></h4>
 	            
 	            <!-- ID와 Price를 한 줄에 나란히 표시 -->
 	            <div class="id-price">

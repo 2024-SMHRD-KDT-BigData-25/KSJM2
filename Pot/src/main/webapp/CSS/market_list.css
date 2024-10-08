@@ -57,6 +57,7 @@ header {
     padding: 5px 0; /* 여백 추가 */
 }
 
+
 .pagination {
     display: flex;
     justify-content: center; /* 가운데 정렬 */
