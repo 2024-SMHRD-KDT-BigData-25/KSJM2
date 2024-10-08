@@ -27,8 +27,7 @@
             width: 100%; /* 전체 너비를 사용 */
             height: 60px; /* 헤더 높이 설정 */
             z-index: 2000; /* 다른 콘텐츠보다 위에 보이도록 설정 */
-            background-color: #BFEBB0; /* 헤더 배경색 설정 */
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05); /* 그림자 효과 */
+            background-color: rgba(0, 0, 0, 00); /* 헤더 배경색 설정 */
         }
 
         #wrap {
@@ -130,7 +129,7 @@
 <div id="wrap">
     <header>
             <a class="logo" href="../jsp/main.jsp">
-        <img src="../img/potpot3.png" height="36px">
+        <img src="../img/potpot3.png" height="50px">
       </a>
       <nav>
         <ul class="nav-items">
@@ -206,6 +205,20 @@
     <button class="btn btn-success" onclick="location.href='sale_write.jsp'">글 작성</button>
 </div>
 <% } %>
+
+<footer>
+	<div class="footerdiv" style="display: flex">
+		<img class="logo2" src="../img/potpot4.png" align="left">
+
+		<a class="text2" align="left">This home page is plant <br>second hand trading site</a>
+	</div>
+	<div class="footerdiv2" style="display: flex">
+			<img class="instergram" src="../img/instergram.png">
+			<img class="discord" src="../img/discod.png">
+			<img class="twitter" src="../img/twitter.png">
+	</div>
+	
+</footer>
 
 </body>
 </html>
