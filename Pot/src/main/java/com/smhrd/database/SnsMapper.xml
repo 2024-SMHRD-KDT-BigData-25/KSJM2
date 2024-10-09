@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="getBoard" parameterType="int" resultType="com.smhrd.model.PotSns">
-		select a.user_id, b.sns_title, b.sns_img, b.sns_content, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sns_views, b.sns_likes, a.user_nick
+		select b.sns_idx, a.user_id, b.sns_title, b.sns_img, b.sns_content, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sns_views, b.sns_likes, a.user_nick
 		from tb_user a inner join tb_sns b
 		on(a.user_id = b.user_id)
 		where b.sns_idx=#{sns_idx}
@@ -26,6 +26,12 @@
 	<update id="views">
 		update tb_sns set sns_views = sns_views + 1 where sns_idx = #{sns_idx}
 	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="delete">
+		delete from tb_sns
+		where sns_idx=#{sns_idx}
+	</delete>
 	
 
 	

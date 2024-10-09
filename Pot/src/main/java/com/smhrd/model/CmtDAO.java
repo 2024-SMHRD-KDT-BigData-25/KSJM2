@@ -11,6 +11,7 @@ public class CmtDAO {
 
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
 
+	// 댓글 작성
 	public int writeCmt(PotCmt m) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int res = sqlSession.insert("CmtMapper.insert", m);
@@ -19,6 +20,7 @@ public class CmtDAO {
 		return res;
 	}
 	
+	// 댓글 불러오기
 	public List<PotCmt> getList(int sns_idx) {
 		
 		// 1. SqlSession 객체 생성 <= SqlSessionFactory
@@ -28,6 +30,15 @@ public class CmtDAO {
 		
 		sqlSession.close();
 		
+		return res;
+		
+	}
+	
+	// 댓글 삭제
+	public int delete(int cmt_idx) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int res = sqlSession.delete("CmtMapper.delete", cmt_idx);
+		sqlSession.close();
 		return res;
 		
 	}

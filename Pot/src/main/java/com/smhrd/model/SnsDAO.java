@@ -60,5 +60,17 @@ public class SnsDAO {
 			
 		}
 		
+		// 게시물 삭제
+		public int delete(int sns_idx) {
+			SqlSession sqlSession = sqlSessionFactory.openSession(true);
+			
+			int res = sqlSession.delete("SnsMapper.delete" , sns_idx);
+			
+			sqlSession.close();
+			
+			return res;
+			
+		}
+		
 		
 }

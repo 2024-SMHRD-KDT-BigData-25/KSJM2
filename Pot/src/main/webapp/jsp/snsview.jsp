@@ -14,7 +14,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게시판 상세페이지</title>
 
-<script src="jquery-3.7.1.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <style>
 body {
@@ -138,8 +139,7 @@ button:hover {
 	background-color: #004d40;
 }
 </style>
-<script src="https://kit.fontawesome.com/eefb1e8780.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -174,6 +174,9 @@ button:hover {
         <span>작성자: <%=board.getUser_nick() %></span> | 
         <span>작성일: <%=board.getCreated_at() %></span> | 
         <span id="viewCount">조회수: <%=board.getSns_views() %></span> <!-- 조회수 표시 -->
+        <% if(member != null && board.getUser_id().equals(member.getUser_id())) {%>
+        	<button class="submit-reply" data-idx="<%=board.getSns_idx()%>" id="snsdel-button" style="float: right;">삭제</button>
+        <%} %>
     </div>
     <div class="post-content">
         <% 
@@ -195,20 +198,11 @@ button:hover {
     </div>
 
     <div class="comment-section" id="comment-section">
-        <h2>댓글 (총 <%=cmtlist.size() %>개)</h2>
-        <% for(PotCmt cmt:cmtlist){ %>
+        <h2></h2>
         <div class="comment">
-            <span class="comment-author"><%=cmt.getUser_nick() %></span>
-            <p class="comment-meta"><%=cmt.getCreated_at() %></p>
-            <p><%=cmt.getCmt_content() %></p>
-            <button class="reply-button">대댓글</button>
-            <div class="reply-form">
-                <textarea placeholder="대댓글을 입력하세요..." rows="2"></textarea>
-                <button class="submit-reply">대댓글 작성</button>
-            </div>
+        	<div id="comment__list">  	
+			</div>
         </div>
-        <%} %>
-        
         <form action="CmtInsert">
             <input type="hidden" name="sns_idx" value="<%= sns_idx %>">
             <%if(member != null) {%>
@@ -221,9 +215,107 @@ button:hover {
             <input type="button" value="댓글 작성" onclick="alert('로그인 후 작성 가능합니다.')">
             <%} %>
         </form>
+        
+        <div id="comment__list">
+		    	
+		</div>
     </div>
 </div>
 
 
+
+<script>
+
+	var memberId = <%= member != null ? "'" + member.getUser_id() + "'" : "null" %>;
+
+	// 게시글 삭제
+	document.addEventListener("DOMContentLoaded", function() {
+	    document.getElementById("snsdel-button").addEventListener("click", function() {
+	        var sns_idx = this.getAttribute("data-idx"); // sns_idx 값을 가져옵니다.
+	        
+	        // sns_idx 값을 콘솔에 출력
+	        console.log("sns_idx: " + sns_idx);
+	        
+	        // 팝업 열기
+	        var popup = window.open("snsdelconfirm.jsp?sns_idx=" + sns_idx, "popup", "width=400,height=300");
+	    });
+	});
+
+
+	
+	
+	// 대댓글 버튼 클릭 시 대댓글 입력 필드 보이기
+	const replyButtons = document.querySelectorAll('.reply-button');
+	replyButtons.forEach((button) => {
+	    button.addEventListener('click', function() {
+	        const replyForm = this.nextElementSibling;
+	        replyForm.style.display = replyForm.style.display === 'block' ? 'none' : 'block';
+	    });
+	});
+	
+	
+	
+	$(document).ready(function(){
+		getList()
+	})
+	
+	function getList(){
+		$.ajax({
+			url: "CmtList", // 요청경로
+			data: {"sns_idx": <%=sns_idx%>},
+			type: "get", // 요청방식(http 요청 메서드)
+			success: printList,
+			error: function(){
+				alert("통신 실패!")
+			}
+		})
+	}
+	
+    // JavaScript에서 사용할 수 있도록 member의 user_id를 정의합니다.
+
+    function printList(data) {
+        var data = JSON.parse(data);
+        var html = ""; // 댓글 목록을 추가할 html 코드
+
+        for (var board of data) {
+            html += "<div class='comment'>";
+            html += "<span class='comment-author'>" + board.user_nick + "</span>";
+            html += "<p class='comment-meta'>" + board.created_at + "</p>";
+            html += "<p>" + board.cmt_content + "</p>";
+            html += "<button class='reply-button'>답글쓰기</button>";
+            // memberId가 null이 아닐 경우 삭제 버튼을 추가
+            if (memberId !== null && board.user_id === memberId) {
+                html += "<button class='reply-button' id='cmtdel-button' style='float: right;' onclick='deletecmt(" + board.cmt_idx + ")'>삭제</button>";
+            }
+            html += "<div class='reply-form'>";
+            html += "<textarea placeholder='대댓글을 입력하세요.' rows='2'></textarea>";
+            html += "<button class='submit-reply'></button>";
+            html += "</div>";
+            html += "</div>";
+        }
+
+        $("#comment__list").html(html);
+        
+    	 // 댓글 총 개수 업데이트
+        $('#comment-section h2').text("댓글 (총 " + data.length + "개)");
+    	 
+    }
+
+	
+	function deletecmt(cmt_idx){
+		$.ajax({
+			url: "CmtDelete",
+			data: {"cmt_idx": cmt_idx}, // 서버로 보낼 데이터 (json)
+			type: "get",
+			success: getList,
+			error:function(){
+				alert("통신실패!")
+			}
+		})
+		
+	}
+	
+	
+</script>
 </body>
 </html>

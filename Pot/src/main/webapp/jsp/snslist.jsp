@@ -239,7 +239,7 @@
             margin: 20px 0px; /* 상단 여백 및 좌우 여백 설정 */
             position: fixed; /* 고정 위치 */
             right: 30px; /* 오른쪽 여백 */
-            bottom: 50px; /* 아래쪽 여백 */
+            bottom: 200px; /* 아래쪽 여백 */
             z-index: 1000; /* 다른 요소보다 위에 표시 */
         }
         
@@ -301,7 +301,7 @@
                       <form action="">
                           <div class="search-wrap">
                               <label for="search" class="blind">커뮤니티 검색</label>
-                              <input id="search" type="search" name="" placeholder="식물 이름을 검색, 가드닝 노하우를 찾아보세요." value="">
+                              <input id="search" type="search" name="" placeholder="식물 이름을 검색, 가드닝 노하우를 찾아보세요.">
                               <button type="submit" class="btn btn-dark">검색</button>
                           </div>
                       </form>

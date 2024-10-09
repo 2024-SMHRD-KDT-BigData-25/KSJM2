@@ -104,7 +104,7 @@
             margin: 20px 0px; /* 상단 여백 및 좌우 여백 설정 */
             position: fixed; /* 고정 위치 */
             right: 30px; /* 오른쪽 여백 */
-            bottom: 30px; /* 아래쪽 여백 */
+            bottom: 50px; /* 아래쪽 여백 */
             z-index: 1000; /* 다른 요소보다 위에 표시 */
         }
 

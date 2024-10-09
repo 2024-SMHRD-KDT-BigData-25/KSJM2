@@ -10,11 +10,14 @@
 
 	<!-- 여러개의 행을 가져올 때: resultType -> 리스트 내의 각 아이템의 타입 -->
 	<select id="select" resultType="com.smhrd.model.PotCmt">
-		select b.user_id, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.cmt_content, a.user_nick
+		select b.user_id, b.cmt_idx, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.cmt_content, a.user_nick
 		from tb_user a inner join tb_comment2 b
 		on(a.user_id = b.user_id)
 		where b.sns_idx=#{sns_idx}
 	</select>
-
+	
+	<delete id="delete">
+		delete from tb_comment2 where cmt_idx=#{cmt_idx}
+	</delete>
 
 </mapper>
