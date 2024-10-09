@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SUIT';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    max-width: 360px; 
+    padding: 20px;
+    margin: 0 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    width: 800;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: grey;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.edit-btn:hover{
+    color: #01D281;
+}
+
+.profile {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #01D281;
+}
+
+.community-info {
+    margin-top: 30px;
+}
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.info-item p {
+    font-size: 14px;
+    color: grey;
+}
+
+.info-item span {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #01D281;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    text-align: center;
+}
+
+.purchase-history, .sale-history {
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.purchase-history p, .sale-history p {
+    font-size: 14px;
+    color: grey;
+    cursor: pointer;
+}
+
+.purchase-history p:hover, .sale-history p:hover{
+    color: #01D281;
+}
+
+
+
