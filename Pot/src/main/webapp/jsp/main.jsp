@@ -77,9 +77,9 @@
 			<div id="chat-footer">
 				<input type="text" id="msg" placeholder="메시지를 입력하세요">
 				<%if(member != null) {%>
-				<button id="send-btn" onclick="send()">전송</button>
+				<button id="send-btn" onclick="send()"><img class="push" src="../img/종이비행기.png"></button>
 				<%}else{ %>
-				<button id="send-btn" onclick="window.location.href='../html/Join_Login.html'">전송</button>
+				<button id="send-btn" onclick="window.location.href='../html/Join_Login.html'"><img class="push" src="../img/종이비행기.png"></button>
 				<%} %>
 			</div>
 		</div>
