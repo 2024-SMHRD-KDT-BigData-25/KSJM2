@@ -121,8 +121,9 @@
         <!-- 인기 식물 섹션 -->
         <div class="popular-plants">
             <h2>검색 결과</h2>
-            <%for(PotPlant l : list){ %>
+            
             <div class="plant-grid">
+            <%for(PotPlant l : list){ %>
                 <div class="plant-item">
                     <img src="<%=l.getPl_img()%>" alt="<%=l.getPl_name()%>">
                 </div>
