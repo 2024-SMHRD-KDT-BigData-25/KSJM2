@@ -3,7 +3,7 @@
 <mapper namespace="SnsMapper">
 
 	<insert id="write" parameterType="com.smhrd.model.PotSns">
-		insert into tb_sns(user_id, sns_title, sns_img, sns_content) values (#{user_id}, #{sns_title}, #{sns_img}, #{sns_content})
+		insert into tb_sns(user_id, sns_title, sns_img, sns_content) values (#{user_id}, #{sns_title}, #{sns_img, jdbcType=VARCHAR}, #{sns_content})
 	</insert>
 	
 	
