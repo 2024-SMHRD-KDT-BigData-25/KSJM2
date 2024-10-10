@@ -28,5 +28,6 @@
     <mapper resource="com/smhrd/database/SaleMapper.xml"/>
     <mapper resource="com/smhrd/database/SnsMapper.xml"/>
     <mapper resource="com/smhrd/database/CmtMapper.xml"/>
+    <mapper resource="com/smhrd/database/PlantMapper.xml"/>
   </mappers>
 </configuration>

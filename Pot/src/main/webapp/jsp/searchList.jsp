@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.PotPlant"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -60,6 +62,31 @@
         	text-align: left;
         	padding: 70px 0 ;
         }
+        
+        .search-btn {
+            width: 60%;
+            padding: 10px;
+            background-color: #00cc66;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            
+        }
+        
+                input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #FAFAFA;
+            border: 0px;
+            border-radius: 10px;
+        }
+        
+        
     </style>
        <script>
     // header, footer 동적으로 삽입
@@ -80,73 +107,30 @@
 </head>
 <body>
 <header></header>
+
+		<% List<PotPlant> list = (List<PotPlant>)session.getAttribute("search");%>
     <div class="container1">
         <!-- 검색 섹션 -->
         <div class="search-section" align="center">
-            <form action="search.jsp" method="get">
-                <div class="search">어찌고저찌고</div>
-                
+            <form action="searchController" method="get">
+                <input type="text" name="pl_search" placeholder="검색">
+                <input type="submit" class="search-btn" value="검색하기">
             </form>
         </div>
 
         <!-- 인기 식물 섹션 -->
         <div class="popular-plants">
             <h2>검색 결과</h2>
+            <%for(PotPlant l : list){ %>
             <div class="plant-grid">
                 <div class="plant-item">
-                    <img src="../img/2.jpg" alt="식물 1">
+                    <img src="<%=l.getPl_img()%>" alt="<%=l.getPl_name()%>">
                 </div>
                 <div class="plant-item">
-                	<div class="plant-text">뭔식물인지 모름 1</div>
+                	<div class="plant-text"><%=l.getPl_name() %></div>
                 </div>
-                <div class="plant-item">
-                    <img src="../img/4.jpg" alt="식물 2">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">뭔식물인지 모름 2</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/5.jpg" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">뭔식물인지 모름 3</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/박쥐란.png" alt="식물 1">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">박쥐란</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/스투키 컬러 홥문.png" alt="식물 2">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">스투키 컬러 홥문</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/스프링골풀.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">스프링골풀</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/아리우카리아.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">아리우카리아</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/제두나 셀렘.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">제두나 셀림</div>
-                </div>
-                <div class="plant-item">
-                    <img src="../img/틸란드시아 카피타타.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                	<div class="plant-text">틸란드시아 카피타타</div>
-                </div>
+                <%} %>
+                
             </div>
         </div>
     </div>

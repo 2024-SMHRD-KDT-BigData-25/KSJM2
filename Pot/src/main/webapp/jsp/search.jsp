@@ -85,9 +85,9 @@
     <div class="container1">
         <!-- 검색 섹션 -->
         <div class="search-section" align="center">
-            <form action="search.jsp" method="get">
-                <input type="text" name="search" placeholder="검색">
-                <button type="submit" class="search-btn">검색하기</button>
+            <form action="searchController" method="get">
+                <input type="text" name="pl_search" placeholder="검색">
+                <input type="submit" class="search-btn" value="검색하기">
             </form>
         </div>
 
