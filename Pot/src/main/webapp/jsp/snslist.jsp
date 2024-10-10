@@ -249,7 +249,10 @@
 		  padding: 0;
 		  font-size: 16px;
 		}
-        
+        .Picon {
+			    height: 17px;  
+		     
+        }
     </style>
 
 </head>
@@ -332,7 +335,8 @@
                           	<%if(m.getSns_img()==null) {%>
                             <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %></a>
                             <%}else{ %>
-                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>">타이틀+아이콘</a>
+                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %>
+                            <img src="../img/Picon.png" class="Picon"></a>
                             <%} %>
                             
                             
