@@ -329,9 +329,12 @@
                       <tr>
                           <td><%= m.getSns_idx() %></td>
                           <th>
-                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %>
+                          	<%if(m.getSns_img()==null) {%>
+                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %></a>
+                            <%}else{ %>
+                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>">타이틀+아이콘</a>
+                            <%} %>
                             
-                            </a>
                             
                           </th>
                           <!-- 유저네임 -->
