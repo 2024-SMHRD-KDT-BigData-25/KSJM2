@@ -35,7 +35,7 @@
 <body>
 
 <header></header>  
-
+<br><br><br><br><br>
 
 
 	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
@@ -43,13 +43,14 @@
 	<form action="Logout">
 	
 		<div class="container">
-	        <div class="header">
-	            <h1>My Page</h1>
-	            <button class="edit-btn" onclick="">수정</button>
-	            <input type="submit" class="edit-btn" value="로그아웃">
-	        </div>
+	        
+	        <h1>My Page</h1>
+	            
 	        <div class="profile">
-	            <h2 class="profile-name"><%=member.getUser_name() %></h2>
+	         	<h2><%=member.getUser_nick() %></h2>
+	        	<button class="edit-btn" onclick="">수정 &nbsp;</button>
+	            <input class="edit-btn" type="submit" value="로그아웃">
+	           
 	        </div>
 	
 	        <div class="community-info">
@@ -65,12 +66,14 @@
 	                </div>
 	            </div>
 	        </div>
-	
+	        
+		
+		
 	        <div class="purchase-history">
 	            <h3>구매 내역</h3>
 	            <p><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp; 주문 내역 조회</p>
 	        </div>
-	
+			
 	        <div class="sale-history">
 	            <h3>판매 내역</h3>
 	            <p><i class="fa-solid fa-list-check"></i>&nbsp;&nbsp; 상품 등록</p>
@@ -78,7 +81,7 @@
 	    </div>
 	</form>
 	
-	
+	<br><br><br><br><br>
 	<footer></footer>
 </body>
 </html>

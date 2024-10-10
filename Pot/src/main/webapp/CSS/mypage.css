@@ -2,33 +2,36 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'SUIT';
 }
 
-body {
-    font-family: 'SUIT';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+
 
 .container {
     background-color: white;
     width: 100%;
     max-width: 360px; 
     padding: 20px;
-    margin: 0 10px;
+    align-content: center;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom:50px;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 h1 {
     font-size: 24px;
-    width: 800;
+    width: 800px;
+    font-weight: bold;
+}
+
+h2{
+	font-size: 28px;
+    font-weight: bold;
+    color: #01D281;
+    width: 800px;
+    
 }
 
 .edit-btn {
@@ -37,6 +40,8 @@ h1 {
     color: grey;
     font-size: 14px;
     cursor: pointer;
+    
+    
 }
 
 .edit-btn:hover{
@@ -44,26 +49,20 @@ h1 {
 }
 
 .profile {
-    margin-top: 40px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.profile-name {
-    font-size: 28px;
-    font-weight: bold;
-    color: #01D281;
+	margin-top: 40px;
+	margin-bottom: 20px;
+   
 }
 
 .community-info {
     margin-top: 30px;
+    width: 800px;
 }
 
 .info-box {
     display: flex;
     justify-content: space-between;
-    padding: 50px;
+    padding: 30px;
     background-color: #f0f0f0;
     border-radius: 10px;
 }
@@ -71,6 +70,7 @@ h1 {
 .info-item p {
     font-size: 14px;
     color: grey;
+    margin: 20px;  
 }
 
 .info-item span {
@@ -87,18 +87,22 @@ h1 {
 
 .purchase-history, .sale-history {
     margin-top: 30px;
+    width: 800px;
+    
 }
 
 h3 {
     font-size: 16px;
     color: black;
     margin-bottom: 10px;
+   
 }
 
 .purchase-history p, .sale-history p {
     font-size: 14px;
     color: grey;
     cursor: pointer;
+    display: flex;
 }
 
 .purchase-history p:hover, .sale-history p:hover{
