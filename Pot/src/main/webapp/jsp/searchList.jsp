@@ -91,7 +91,7 @@
 
         <!-- 인기 식물 섹션 -->
         <div class="popular-plants">
-            <h2>인기 식물</h2>
+            <h2>검색 결과</h2>
             <div class="plant-grid">
                 <div class="plant-item">
                     <img src="../img/2.jpg" alt="식물 1">
