@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
     <title>POTPOT</title>
    <link rel="stylesheet" href="../CSS/main.css">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    
    <script>
     // header, footer 동적으로 삽입
     document.addEventListener('DOMContentLoaded', function() {
@@ -23,12 +27,21 @@
         });
     });
   </script>
+  
+      <link rel="stylesheet" href="../CSS/chatstyle.css">
+      
+      
 </head>
 <body>
 
 
 <header></header>   
 
+<%
+    PotUsers member = (PotUsers) session.getAttribute("member");
+	
+    String membernick = member != null ? member.getUser_nick(): "";
+%>
                  
 
 <div class="container">
@@ -53,6 +66,36 @@
     <a href="#" id="img8" class="box">아리우카리아&nbsp;&nbsp;</a>
 </div>
    
+   
+       <!-- 채팅 -->
+    
+	<div id="chat-container">
+		<div id="chat-header" onclick="toggleChat()">채팅</div>
+	    
+		<div id="chat-box">
+			<div id="msgArea"></div>
+			<div id="chat-footer">
+				<input type="text" id="msg" placeholder="메시지를 입력하세요">
+				<%if(member != null) {%>
+				<button id="send-btn" onclick="send()">전송</button>
+				<%}else{ %>
+				<button id="send-btn" onclick="window.location.href='../html/Join_Login.html'">전송</button>
+				<%} %>
+			</div>
+		</div>
+	</div>
+  
+    
+
+
+
+<script>
+    var membernick = "<%= membernick %>";
+</script>
+
+<script src="../chatscript.js"></script>
+
+
    
 <footer></footer>
 </body>
