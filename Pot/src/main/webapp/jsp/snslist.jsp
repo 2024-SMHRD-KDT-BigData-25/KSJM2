@@ -329,7 +329,9 @@
                       <tr>
                           <td><%= m.getSns_idx() %></td>
                           <th>
+                          
                             <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %></a>
+                            
                           </th>
                           <!-- 유저네임 -->
                           <td><%=m.getUser_nick() %></td>
@@ -372,6 +374,7 @@
       
       <!-- 버튼 컨테이너 추가 -->
 <% if(member == null) { %>
+
 <% }else { %>
 <div class="button-container">
     <button class="btn btn-success" onclick="location.href='sns_write.jsp'">글 작성</button>

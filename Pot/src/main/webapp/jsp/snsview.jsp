@@ -181,6 +181,7 @@ button:hover {
     <div class="post-content">
         <% 
             // 여러 개의 이미지 파일을 반복해서 출력
+            
             for(String img : imgFiles) {
                 if(img != null && !img.trim().isEmpty()) { %>
         <img src="../upload/<%=img.trim()%>" style="max-width: 200px; margin-right: 10px;">

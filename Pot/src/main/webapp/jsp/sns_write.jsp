@@ -105,7 +105,7 @@
 	<script>
 	    const maxFiles = 5; // 최대 파일 개수 제한
 	
-	    document.getElementById('img').addEventListener('change', function() {
+	    document.getElementById('fileUpload').addEventListener('change', function() {
 	        const fileCount = this.files.length;
 	        if (fileCount > maxFiles) {
 	            alert('최대 ' + maxFiles + '개의 파일만 업로드할 수 있습니다.');
