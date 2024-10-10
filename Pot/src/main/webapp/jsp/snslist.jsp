@@ -329,8 +329,9 @@
                       <tr>
                           <td><%= m.getSns_idx() %></td>
                           <th>
-                          
-                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %></a>
+                            <a href="snsview.jsp?sns_idx=<%=m.getSns_idx()%>"><%=m.getSns_title() %>
+                            
+                            </a>
                             
                           </th>
                           <!-- 유저네임 -->
