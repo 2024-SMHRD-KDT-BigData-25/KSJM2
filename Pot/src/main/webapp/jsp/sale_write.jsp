@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>물품 등록중</title>
+<title>판매 글쓰기</title>
 
 	<script type="text/javascript" src="../member.js"></script>
 	
@@ -93,6 +93,15 @@
     main{
     padding: 80px;
     }
+    h2{
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;}
     
 
 </style>
@@ -120,6 +129,7 @@
 <body>
 <header></header> 
 <main>
+<h2>판매 글쓰기</h2>
 	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
 	
 	<form action="SaleWrite" method="post" name="frm" enctype="multipart/form-data" onsubmit="return salecheck()">
