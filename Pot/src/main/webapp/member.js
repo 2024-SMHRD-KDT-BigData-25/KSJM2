@@ -2,6 +2,12 @@
  * 
  */
 
+
+function idfind(){
+	
+	window.open("/Pot/html/find_id.html", "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=350");
+}
+
 function idCheck(){
 	
 	if (document.frm.user_id.value==""){

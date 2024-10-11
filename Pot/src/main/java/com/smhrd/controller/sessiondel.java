@@ -20,7 +20,15 @@ public class sessiondel extends HttpServlet {
 		
 		session.invalidate();
 		
-		 response.sendRedirect("../html/Join_Login.html");
+		 response.setContentType("text/html;charset=UTF-8");
+         response.getWriter().println("<html>");
+         response.getWriter().println("<head><title>로그인 실패</title></head>");
+         response.getWriter().println("<body>");
+         response.getWriter().println("<script type='text/javascript'>");
+         response.getWriter().println("window.close();"); // 이전 페이지로 돌아가기
+         response.getWriter().println("</script>");
+         response.getWriter().println("</body>");
+         response.getWriter().println("</html>");
 	}
 
 }
