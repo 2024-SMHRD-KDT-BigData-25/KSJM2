@@ -43,13 +43,13 @@
 .product-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: flex_start;
             margin: 20px auto;
             width: 90%;
         }
         /* Flexbox 스타일 추가 */
         .product {
-             background-color: #fff;
+            background-color: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
@@ -218,8 +218,8 @@
 <% for (PotSale m : pagedList) { %>
 		<div class="product">      
                 <% String[] parts = m.getSale_img().split(","); %>
-                <img src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>">
-            <div class="product-name"><a href="#"><%= m.getSale_title() %></a></div>
+                <a href="slide3.jsp?sale_idx=<%= m.getSale_idx()%>"><img src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>"></a>
+            <div class="product-name"><a href="slide3.jsp?sale_idx=<%= m.getSale_idx()%>"><%= m.getSale_title() %></a></div>
             
             <!-- ID와 Price를 한 줄에 나란히 표시 -->
             <div class="id-price">
