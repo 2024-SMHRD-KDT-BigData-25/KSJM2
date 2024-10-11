@@ -65,8 +65,7 @@ font-family: 'SUIT';
 		
 		#board-search .search-window {
 		  padding: 15px 0;
-		  background-color: #f9f7f9;
-		  border-radius: 20px;
+		  
 		}
 		#board-search .search-window .search-wrap {
 		  position: relative;
@@ -231,7 +230,7 @@ font-family: 'SUIT';
         }
         
         .btn-success:hover {
-            background: #01D281;
+          background: #01D281;
 		  border-color: #01D281;
 		  color: #fff; /* 글 작성 버튼 호버 색상 */
         }
@@ -356,29 +355,7 @@ font-family: 'SUIT';
                           <td><%=m.getSns_views() %></td>
                       </tr>
       					<%} %>
-                      <tr>
-                          <td>2</td>
-                          <th><a href="#!">알로카시아 희소식!</a></th>
-                          <!-- 유저네임 -->
-                          <td>그린홀릭</td>
-                          <td>2024.10.07</td>
-                          <!-- 좋아요수 -->
-                          <td>4</td>
-                          <!-- 조회수 -->
-                          <td>66</td>
-                      </tr>
-      
-                      <tr>
-                          <td>1</td>
-                          <th><a href="#!">초보식집사의 플랜테리어</a></th>
-                          <!-- 유저네임 -->
-                          <td>팟홈모드</td>
-                          <td>2024.10.07</td>
-                          <!-- 좋아요수 -->
-                          <td>77</td>
-                          <!-- 조회수 -->
-                          <td>394</td>
-                      </tr>
+                      
                       </tbody>
                   </table>
               </div>

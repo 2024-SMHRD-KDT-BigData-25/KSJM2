@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charset="UTF-8">
 <!-- 문서의 문자 인코딩을 UTF-8로 설정 -->
@@ -75,6 +76,8 @@ form input::file-selector-button {
 	display: none;
 }
 </style>
+
+
 <script>
     // header, footer 동적으로 삽입
     document.addEventListener('DOMContentLoaded', function() {
@@ -93,9 +96,19 @@ form input::file-selector-button {
   </script>
 
 </head>
+
+
+
+
 <body>
+
 	<header></header>
+	
 	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
+
+
+
+
 
 	<form action="SnsWrite" method="post" name="frm"
 		enctype="multipart/form-data" onsubmit="return snscheck()">
@@ -148,6 +161,11 @@ form input::file-selector-button {
 		</table>
 	</form>
 
+
+
+
+
+
 	<script>
 	    const maxFiles = 5; // 최대 파일 개수 제한
 	
@@ -161,6 +179,9 @@ form input::file-selector-button {
     
 
 	</script>
+	
+	
+	
 	<br>
 	<br>
 	<footer></footer>
