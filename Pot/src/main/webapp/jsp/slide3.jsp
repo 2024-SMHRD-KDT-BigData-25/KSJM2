@@ -90,8 +90,8 @@
         </a>
         
         <p class="product-price"><%=board.getSale_price() %>원</p>
-        <p class="product_user_id"><%=board.getUser_nick() %></p>
-        <p class="product_date"><%=board.getCreated_at() %></p>
+        <br><p class="product_user_id"><%=board.getUser_nick() %></p>
+        <br><p class="product_date"><%=board.getCreated_at() %></p>
         
         <div class="short_overview my-5">
         <p><%=board.getSale_content() %></p>
