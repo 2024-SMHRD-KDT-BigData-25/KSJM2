@@ -31,6 +31,9 @@
     });
   </script>
     <style>
+    * {
+font-family: 'SUIT';
+}
 	body {
 		background-color: white;
 	}
