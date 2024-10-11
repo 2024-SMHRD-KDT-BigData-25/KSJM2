@@ -29,5 +29,6 @@
     <mapper resource="com/smhrd/database/SnsMapper.xml"/>
     <mapper resource="com/smhrd/database/CmtMapper.xml"/>
     <mapper resource="com/smhrd/database/PlantMapper.xml"/>
+    <mapper resource="com/smhrd/database/LikeMapper.xml"/>
   </mappers>
 </configuration>

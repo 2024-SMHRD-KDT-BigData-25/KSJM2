@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/likeplus")
-public class likeplus extends HttpServlet {
+import com.smhrd.model.LikeDAO;
+import com.smhrd.model.PotLike;
+
+@WebServlet("/jsp/likeinsert")
+public class likeinsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -16,7 +19,18 @@ public class likeplus extends HttpServlet {
 		int sns_idx = Integer.parseInt(request.getParameter("sns_idx"));
 		String user_id = request.getParameter("user_id");
 		
+		PotLike like = new PotLike(sns_idx, user_id);
 		
+		LikeDAO dao = new LikeDAO();
+		
+		int res = dao.insert(like);
+		
+		if(res>0) {
+			
+			response.sendRedirect("snsview.jsp?sns_idx=" + sns_idx);
+		}
+		
+
 	}
 
 }

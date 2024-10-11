@@ -16,5 +16,12 @@ public class PotLike {
 	    // 회원 아이디 
 	    private String user_id;
 
+		public PotLike(int sns_idx) {
+			super();
+			this.sns_idx = sns_idx;
+		}
+
 	   
+	    
+	    
 	}
