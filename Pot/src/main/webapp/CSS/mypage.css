@@ -68,9 +68,9 @@ h2{
 }
 
 .info-item p {
-    font-size: 14px;
+    font-size: 17px;
     color: grey;
-    margin: 20px;  
+    margin: -10px 15px 0px 15px 
 }
 
 .info-item span {

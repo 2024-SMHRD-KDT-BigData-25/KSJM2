@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.PotSns"%>
+<%@page import="com.smhrd.model.SnsDAO"%>
 <%@page import="com.smhrd.model.PotUsers"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -38,7 +40,13 @@
 <br><br><br><br><br>
 
 
-	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
+	<% PotUsers member = (PotUsers)session.getAttribute("member");
+	
+		SnsDAO dao = new SnsDAO();
+		
+		PotSns res = dao.count(member.getUser_id());
+	
+	%>
 	
 	<form action="Logout">
 	
@@ -48,17 +56,17 @@
 	            
 	        <div class="profile">
 	         	<h2><%=member.getUser_nick() %></h2>
-	        	<button class="edit-btn" onclick="">수정 &nbsp;</button>
-	            <input class="edit-btn" type="submit" value="로그아웃">
-	           
+	        	<button class="edit-btn" type="button" onclick="location.href='myinfo_modify.jsp'">수정 &nbsp;</button>
+	        	<button class="edit-btn" type="submit">로그아웃</button>       
 	        </div>
+	</form>
 	
 	        <div class="community-info">
 	            <h3>커뮤니티 활동정보</h3>
 	            <div class="info-box">
 	                <div class="info-item">
 	                    <p>작성한 글</p>
-	                    <span>0</span>
+	                    <span><%=res.getUser_id() %></span>
 	                </div>
 	                <div class="info-item">
 	                    <p>판매한 식물</p>
@@ -79,7 +87,6 @@
 	            <p><i class="fa-solid fa-list-check"></i>&nbsp;&nbsp; 상품 등록</p>
 	        </div>
 	    </div>
-	</form>
 	
 	<br><br><br><br><br>
 	<footer></footer>

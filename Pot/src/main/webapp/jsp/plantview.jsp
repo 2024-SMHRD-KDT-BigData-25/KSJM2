@@ -47,12 +47,15 @@
         }
         .DC {
         	height: 20px;
+        	margin-right: 10px;
         }
         .DC1{
         	height: 20px;
+        	margin-right: 10px;
         }
         .DC2{
         	height: 20px;
+        	margin-right: 10px;
         }
         .plant-name{
         text-align: left;
@@ -98,7 +101,7 @@
     <div class="container1">
         <img src="<%=res.getPl_img() %>" alt="<%=res.getPl_name() %>" style="max-width: 100%; height: 650px; border-radius: 8px;" >
         <div class="plant-name">
-        <strong>산세베리아</strong>
+        <strong><%=res.getPl_name() %></strong>
         </div>
         <div class="description">
         	<h3><strong>식물 소개</strong></h3>
@@ -109,7 +112,7 @@
             <h2>추가 정보</h2>
             <p><img src="../img/적정온도.png" class="DC"><%=res.getPl_temp() %></p>
             <p><img src="../img/개화시기.png" class="DC1"><%=res.getPl_time() %></p>
-            <p><img src="../img/식물효과.png" class="DC2"><%=res.getPl_effect() %></p>
+            <p><img src="../img/식물효과.png" class="DC2">식물효과 - <%=res.getPl_effect() %></p>
         </div>
     </div>
     

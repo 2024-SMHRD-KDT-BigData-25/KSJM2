@@ -25,6 +25,10 @@
 		select user_pw from tb_user where user_id=#{user_id} and user_name=#{user_name} and user_phone=#{user_phone}
 	</select>
 	
+	<update id="update" parameterType="com.smhrd.model.PotUsers">
+		update tb_user set user_id=#{user_id}, user_pw=#{user_pw}, user_name=#{user_name}, user_nick=#{user_nick}, user_post=#{user_post}, user_addr1=#{user_addr1}, user_addr2=#{user_addr2} where user_id=#{user_id}
+	</update>
+	
 </mapper>
 
 

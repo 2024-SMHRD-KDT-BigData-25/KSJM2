@@ -71,5 +71,16 @@ public class MemberDAO {
 		
 		return res;
 	}
+	
+	public int update(PotUsers m) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		int res = sqlSession.update("PotMapper.update", m);
+		
+		sqlSession.close();
+		
+		return res;
+	}
 
 }

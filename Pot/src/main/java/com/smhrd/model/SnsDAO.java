@@ -72,5 +72,17 @@ public class SnsDAO {
 			
 		}
 		
+		// 조회수
+		public PotSns count(String user_id) {
+			
+			SqlSession sqlSession = sqlSessionFactory.openSession(true);
+			
+			PotSns res = sqlSession.selectOne("SnsMapper.count", user_id);
+			
+			sqlSession.close();
+			
+			return res;
+		}
+		
 		
 }

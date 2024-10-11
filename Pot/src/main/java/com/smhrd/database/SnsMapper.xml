@@ -34,6 +34,11 @@
 		where sns_idx=#{sns_idx}
 	</delete>
 	
+	<!-- 작성 게시물 수 조회 -->
+	<select id="count" parameterType="String" resultType="com.smhrd.model.PotSns">
+		select count(*) as user_id from tb_sns where user_id=#{user_id}
+	</select>
+	
 
 	
 </mapper>

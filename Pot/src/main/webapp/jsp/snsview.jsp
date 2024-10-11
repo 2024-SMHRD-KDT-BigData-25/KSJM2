@@ -317,6 +317,20 @@ button:hover {
 		
 	}
 	
+	function getLike(){
+		$.ajax({
+			url: "CmtList", // 요청경로
+			data: {"sns_idx": <%=sns_idx%>},
+			type: "get", // 요청방식(http 요청 메서드)
+			success: printList,
+			error: function(){
+				alert("통신 실패!")
+			}
+		})
+	}
+	
+	
+	
 	
 </script>
 </body>
