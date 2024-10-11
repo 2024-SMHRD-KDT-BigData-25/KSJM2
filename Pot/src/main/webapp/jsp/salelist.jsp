@@ -54,7 +54,7 @@
             display: flex; /* Flexbox 사용 */
             flex-wrap: wrap; /* 아이템이 넘칠 경우 다음 줄로 이동 */
             gap: 20px; /* 카드 간 간격 */
-            justify-content: center; /* 카드들을 가운데 정렬 */
+            justify-content: flex-start; /* 카드들을 가운데 정렬 */
             padding: 0 100px; /* 좌우 패딩을 100px로 설정하여 여백 증가 */
             margin-top: 50px; /* 상단 여백을 50px로 설정 */
         }
