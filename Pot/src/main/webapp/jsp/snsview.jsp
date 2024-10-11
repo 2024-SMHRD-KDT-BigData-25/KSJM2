@@ -194,7 +194,7 @@ button:hover {
     </div>
 
     <div class="like-section">
-        <button id="likeButton" class="like-button">
+        <button type="button" id="likeButton" class="like-button" onclick="">
             <i class="fa-solid fa-seedling"></i> <span id="likeCount"><%=board.getSns_likes() %></span>
         </button>
     </div>
@@ -319,7 +319,7 @@ button:hover {
 	
 	function getLike(){
 		$.ajax({
-			url: "CmtList", // 요청경로
+			url: "", // 요청경로
 			data: {"sns_idx": <%=sns_idx%>},
 			type: "get", // 요청방식(http 요청 메서드)
 			success: printList,
@@ -327,6 +327,20 @@ button:hover {
 				alert("통신 실패!")
 			}
 		})
+	}
+	
+	function likeplus(){
+		$.ajax({
+			url: "likeplus",
+			data: {"sns_idx": <%=sns_idx%>,
+					"user_idx": <%=member.getUser_id()%>}, // 서버로 보낼 데이터 (json)
+			type: "get",
+			success: getLike,
+			error:function(){
+				alert("통신실패!")
+			}
+		})
+		
 	}
 	
 	
