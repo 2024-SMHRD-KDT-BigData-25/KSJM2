@@ -71,15 +71,32 @@
             border-radius: 4px; /* 모서리 둥글기 */
         }
     </style>
+    <script>
+    // header, footer 동적으로 삽입
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('header.jsp')
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector('header').innerHTML = data;
+        });
+      
+      fetch('footer.jsp')
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector('footer').innerHTML = data;
+        });
+    });
+  </script>
+    
 </head>
 <body>
-
+<header></header>
 	<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
 	
 <form action="SnsWrite" method="post" name="frm" enctype="multipart/form-data" onsubmit="return snscheck()"> <!-- 폼의 action과 method 설정 -->
 <table> 
+<br><br><br><br>
     <tr><td><h2>글쓰기</h2></td></tr> <!-- 제목 표시 -->
-    
     <tr><td class="header">Title</td></tr> <!-- 제목 섹션 헤더 -->
     <tr><td><input type="text" placeholder="제목을 입력하세요" name="sns_title"></td></tr> <!-- 제목 입력 필드 -->
     
@@ -115,7 +132,8 @@
     
 
 	</script>
-	
+	<br><br>
+	<footer></footer>
 	
 </body>
 </html>
