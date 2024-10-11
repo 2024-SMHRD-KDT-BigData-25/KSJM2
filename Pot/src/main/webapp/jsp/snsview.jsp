@@ -138,6 +138,9 @@ button {
 button:hover {
 	background-color: #004d40;
 }
+* {
+font-family: 'SUIT';
+}
 </style>
 <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
 </head>

@@ -31,6 +31,9 @@
     });
   </script>
     <style>
+    * {
+font-family: 'SUIT';
+}
 	body {
 		background-color: white;
 	}
@@ -294,7 +297,7 @@
 	
     <section class="notice">
         <div class="page-title">
-              <div class="container">
+              <div class="container12">
                   <h3>식집사 커뮤니티</h3><br>
                   <h5>POTPOT 커뮤니티에 합류하세요!</h5>
               </div>
