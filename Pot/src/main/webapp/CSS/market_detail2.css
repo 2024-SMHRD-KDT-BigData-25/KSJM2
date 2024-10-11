@@ -1,0 +1,159 @@
+* {
+	font-family: 'SUIT';
+}
+
+body {
+   background-color: white;
+   display: flex; /* Flexbox로 정렬 */
+   justify-content: space-between; /* 슬라이더와 오른쪽 공간 사이에 여백을 분배 */
+   margin: 0;
+   padding: 0;
+   align-items: flex-start;
+   height: 100vh;
+   flex-direction: column;
+}
+        
+
+    
+.slider-container {
+   position: relative; /* 내부에 위치하는 요소들을 기준으로 배치 */
+   width: 50%; /* 슬라이더의 너비를 50%로 설정 */
+   overflow: hidden; /* 슬라이더 범위를 벗어나는 요소 숨기기 */
+            
+   padding-bottom: 50%; /* 높이를 비율로 설정 (너비의 28%) */
+   height: 0; /* 높이 0으로 설정하고 패딩을 사용하여 비율 조절 */
+   margin-top: 5%; /* 위쪽 여백 추가 */
+   margin-left: 15%; /* 왼쪽 여백 추가 */
+   margin-top: 300px;
+}
+
+        /* 슬라이더에 포함된 개별 슬라이드 */
+.slide {
+   display: flex;
+   position: absolute;
+   width: 100%;
+   height: 100%; /* 슬라이드 높이 100%로 설정 */
+}
+
+       
+.slide img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+       
+.active {
+  display: block;
+}
+
+        /* 슬라이드 전환 시 페이드 효과 */
+@keyframes fadeEffect {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+        /* 슬라이드 버튼 (이전/다음) 스타일 */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            color: #01D281;
+        }
+
+        /* '이전' 버튼 위치 */
+        .prev {
+            left: 10px;
+        }
+
+        /* '다음' 버튼 위치 */
+        .next {
+            right: 10px;
+        }
+        
+        .prev:hover, .next:hover{
+        color: white;
+        }
+
+        /* 슬라이더 오른쪽에 위치한 공간 스타일 */
+        .right-space {
+            width: 30%; /* 오른쪽 공간의 너비 설정 */
+            
+            margin-right: 15%;
+            padding: 20px;
+            margin-top: 300px;
+            box-sizing: border-box; /* 패딩을 포함한 박스 모델 계산 */
+            background-color: white;
+            
+}           
+
+.line {
+    height: 2.5px;
+    background-color: #01D281;
+    width: 130px;
+    margin-bottom: 20px;
+}
+
+.product-meta-data h2 {
+      font-size: 30px;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 20px;
+      
+}
+
+.product-meta-data p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.product-price {
+   color: #01D281;
+   font-size: 300px;
+   font-weight: 900;
+   margin-bottom: 10px;
+   
+}
+
+.market_user_id, .market_date{
+	font-size: 30px;
+	color: #555;
+	margin-bottom: 5px;
+}
+
+.short_overview {
+    margin-top: 20px;
+    color: black;
+    line-height: 25px;
+    font-weight: 500;
+    
+}
+
+button{
+   background-color: #01D281;
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   width: 170px;
+   
+   cursor: pointer;
+   display: inline-block;
+   text-align: center;
+   margin-top: 20px;
+   text-decoration: none;
+   align-content: left;
+}
+
+button:hover {
+   background-color: black;
+}
+.main {
+	display: flex;
+    margin-bottom: 150px;
+}

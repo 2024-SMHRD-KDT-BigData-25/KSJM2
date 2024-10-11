@@ -63,6 +63,7 @@
 		#board-search .search-window {
 		  padding: 15px 0;
 		  background-color: #f9f7f9;
+		  border-radius: 20px;
 		}
 		#board-search .search-window .search-wrap {
 		  position: relative;
@@ -73,7 +74,7 @@
 		}
 		#board-search .search-window .search-wrap input {
 		  height: 40px;
-		  width: 100%;
+		  width: 81%;
 		  font-size: 14px;
 		  padding: 7px 14px;
 		  border: 1px solid #ccc;
@@ -208,7 +209,7 @@
 		  display: block;
 		  clear: both;
 		}
-		.container {
+		.container5 {
 		  width: 1100px;
 		  margin: 0 auto;
 		}
@@ -253,6 +254,8 @@
 			    height: 17px;  
 		     
         }
+        .btn btn-dark{
+        left : 300px}
     </style>
 
 </head>
@@ -299,7 +302,7 @@
       
           <!-- board seach area -->
           <div id="board-search">
-              <div class="container">
+              <div class="container5">
                   <div class="search-window">
                       <form action="">
                           <div class="search-wrap">
