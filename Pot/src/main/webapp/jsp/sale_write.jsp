@@ -68,7 +68,6 @@
         border: 0;
         outline: 1.5px rgb(71, 241, 153) solid;
         border-radius: 5px;
-        padding-left: 10px;
         background-color: rgb(71, 241, 153);
         cursor: pointer;
         margin: 10px; /* 버튼 간 여백 추가 */
@@ -79,6 +78,8 @@
         outline: 1.5px rgb(27, 155, 89) solid;
         background-color: rgb(77, 221, 146);
     }
+    
+    	
 
     /* 파일 업로드 라벨 스타일 */
     .file-upload-label {
@@ -103,6 +104,11 @@
     font-weight: bold;
     unicode-bidi: isolate;}
     
+    .fileChoise{
+    	width : 30px;
+    }
+     form input::file-selector-button {
+        display: none;    
 
 </style>
 <script>
@@ -135,7 +141,7 @@
 	<form action="SaleWrite" method="post" name="frm" enctype="multipart/form-data" onsubmit="return salecheck()">
 		<div id="vp">
 			<div>
-				<label id="category">카테고리:</label>
+				<label id="category">카테고리</label>
 				<div>
 					<select class="category" name="sale_category">
 						<option value="">카테고리
@@ -160,9 +166,11 @@
 			
 			<div>
 				<label>사진</label>
-				<div>
+				<div><label>
+					<img src="../img/파일선택.png" class="fileChoise">
 	    			<input type="file" name="img" id="img" multiple="multiple">
-				</div>
+	    			
+				</label></div>
 			</div>
 			<div>
 				<label>내용</label>
@@ -193,7 +201,7 @@
 	        }
 	    });
     
-
+	
 	</script>
 </main>
 <footer></footer>
