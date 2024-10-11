@@ -6,96 +6,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fade Image Slider without Container</title>
-
-    <style>
-        /* 페이지 전체의 기본 스타일 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex; /* Flexbox로 정렬 */
-            justify-content: space-between; /* 슬라이더와 오른쪽 공간 사이에 여백을 분배 */
-            align-items: flex-start; /* 상단 정렬 */
-            height: 100vh; /* 화면 전체 높이 사용 */
-        }
-
-        /* 슬라이더 컨테이너 */
-        .slider-container {
-            position: relative; /* 내부에 위치하는 요소들을 기준으로 배치 */
-            width: 30%; /* 슬라이더의 너비를 50%로 설정 */
-            overflow: hidden; /* 슬라이더 범위를 벗어나는 요소 숨기기 */
-            border: 2px solid #ccc; /* 슬라이더 테두리 */
-            padding-bottom: 28%; /* 높이를 비율로 설정 (너비의 28%) */
-            height: 0; /* 높이 0으로 설정하고 패딩을 사용하여 비율 조절 */
-            margin-top: 5%; /* 위쪽 여백 추가 */
-            margin-left: 15%; /* 왼쪽 여백 추가 */
-        }
-
-        /* 슬라이더에 포함된 개별 슬라이드 */
-        .slide {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%; /* 슬라이드 높이 100%로 설정 */
-        }
-
-        /* 슬라이드 안의 이미지 스타일 */
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* cover or contain 사용하기 이미지 비율을 유지하면서 슬라이드 영역에 맞춤 */
-        }
-
-        /* 현재 보여지고 있는 슬라이드 */
-        .active {
-            display: block;
-            
-        }
-
-        /* 슬라이드 전환 시 페이드 효과 */
-        @keyframes fadeEffect {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
-        }
-
-        /* 슬라이드 버튼 (이전/다음) 스타일 */
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: transparent;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-
-        /* '이전' 버튼 위치 */
-        .prev {
-            left: 10px;
-        }
-
-        /* '다음' 버튼 위치 */
-        .next {
-            right: 10px;
-        }
-
-        /* 슬라이더 오른쪽에 위치한 공간 스타일 */
-        .right-space {
-            width: 30%; /* 오른쪽 공간의 너비 설정 */
-            margin-top: 5%; /* 위쪽 여백 추가 */
-            margin-right: 15%;
-            padding: 20px;
-            border: 2px dashed #000; /* 대시 테두리 */
-            box-sizing: border-box; /* 패딩을 포함한 박스 모델 계산 */
-            background-color: #fff;
-        }
-    </style>
+    <title>식물마켓 Details | POTPOT</title>
+    
+	<link rel="stylesheet" href="../CSS/main.css">
+	<link rel="stylesheet" href="../CSS/market_detail2.css">
+	
+	   <script>
+	    // header, footer 동적으로 삽입
+	    document.addEventListener('DOMContentLoaded', function() {
+	      fetch('header.jsp')
+	        .then(response => response.text())
+	        .then(data => {
+	          document.querySelector('header').innerHTML = data;
+	        });
+	      
+	      fetch('footer.jsp')
+	        .then(response => response.text())
+	        .then(data => {
+	          document.querySelector('footer').innerHTML = data;
+	        });
+	    });
+	  </script>
+  
 </head>
 <body>
+
+<header></header>
 
  	<%
  	int sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
@@ -115,29 +51,29 @@
         imgFiles = new String[0]; // 빈 배열로 초기화
     }
  	%>
+ 
 
-    <!-- 이미지 슬라이더 -->
+
+<!-- 이미지 슬라이더 -->
+<div class="main">
     <div class="slider-container">
-     				<% 
-    				// 여러 개의 이미지 파일을 반복해서 출력
-    				for(int i = 0; i < imgFiles.length; i++) {
-    				    if(i == 0) { 
-    				%>
-        				<div class="slide active">
-            					<img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
-        				</div>
-
+                 <% 
+                // 여러 개의 이미지 파일을 반복해서 출력
+                for(int i = 0; i < imgFiles.length; i++) {
+                    if(i == 0) { 
+                %>
+                    <div class="slide active">
+                           <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
+                    </div>
 					
-    				<% 
-    				    } else { %>
-
-    				    <div class="slide">
-        			      <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
-        				</div>
-<%
- }
-    				}
-    				%>
+				<%} else { %>
+					<div class="slide">
+                       <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
+                    </div>
+                    <% }
+                      } %>
+               
+                
         <!-- '이전' 버튼 -->
         <a class="prev" onclick="changeSlide(-1)">❮</a>
         <!-- '다음' 버튼 -->
@@ -147,25 +83,25 @@
     <!-- 오른쪽 공간 (추가 콘텐츠가 들어가는 영역) -->
     <div class="right-space">
     
-    	<div class="product-meta-data" style="flex: 2;">
+       <div class="product-meta-data" style="flex: 2;">
         <div class="line"></div>
         <a href="product-details.html">
-          <h6><%=board.getSale_title() %></h6>
+          <h2><%= board.getSale_title() %></h2>
         </a>
-        <p class="product-price"><%=board.getSale_price() %></p>
-        <p class="market_user_id"><%=board.getUser_nick() %></p>
-        <p class="market_date"><%=board.getCreated_at()%></p>
+        
+        <p class="product-price"><%=board.getSale_price() %>원</p>
+        <p class="product_user_id"><%=board.getUser_nick() %></p>
+        <p class="product_date"><%=board.getCreated_at() %></p>
         
         <div class="short_overview my-5">
-          <p><%=board.getSale_content() %></p>
+        <p><%=board.getSale_content() %></p>
+          
+          <button>판매자와 채팅하기</button>
         </div>
       </div>
-        <h2>오른쪽 콘텐츠</h2>
-        <p>여기에 원하는 내용을 추가하세요.</p>
-        <p>여기에 원하는 내용을 추가하세요.</p>
-        <p>여기에 원하는 내용을 추가하세요.</p>
-        <p>여기에 원하는 내용을 추가하세요.</p>
+        
     </div>
+</div>
 
 <script>
     /* 현재 활성화된 슬라이드의 인덱스를 저장 */
@@ -193,5 +129,9 @@
     }
 </script>
 
+
+<footer></footer>
+
 </body>
 </html>
+
