@@ -1,3 +1,6 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.smhrd.model.PotLike"%>
+<%@page import="com.smhrd.model.LikeDAO"%>
 <%@page import="com.smhrd.model.PotCmt"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.CmtDAO"%>
@@ -147,12 +150,34 @@ font-family: 'SUIT';
 <body>
 
 <%
+
+	// 유저 정보 불러오기
+	PotUsers member = (PotUsers)session.getAttribute("member");
+
+
     // 게시물 불러오기
     int sns_idx = Integer.parseInt(request.getParameter("sns_idx"));
     SnsDAO dao = new SnsDAO();
     
     // 조회수
     int views = dao.views(sns_idx);
+    
+    // 좋아요
+    LikeDAO likedao = new LikeDAO();
+    
+    // 좋아요 수
+    int snslike = likedao.count(sns_idx);
+    
+    // 좋아요 유무
+    
+    PotLike likeres = null;
+    
+    if(member != null){
+    PotLike likeuser = new PotLike(sns_idx, member.getUser_id());
+    likeres = likedao.likeuser(likeuser);
+    }
+    
+    
     
     
     PotSns board = dao.getBoard(sns_idx);
@@ -164,8 +189,6 @@ font-family: 'SUIT';
         imgFiles = new String[0]; // 빈 배열로 초기화
     }
     
-    // 유저 정보 불러오기
-    PotUsers member = (PotUsers)session.getAttribute("member");
     
     // 댓글 불러오기
     CmtDAO Dao = new CmtDAO();
@@ -197,9 +220,34 @@ font-family: 'SUIT';
     </div>
 
     <div class="like-section">
-        <button type="button" id="likeButton" class="like-button" onclick="">
-            <i class="fa-solid fa-seedling"></i> <span id="likeCount"><%=board.getSns_likes() %></span>
+    
+    <%if(member != null){ 
+    	if(likeres != null){ %>
+		<form action="likedelete">
+    	<input type="hidden" name="sns_idx" value=<%=sns_idx %>>
+    	<input type="hidden" name="user_id" value=<%=member.getUser_id() %>>
+        <button type="submit" id="likeButton" class="like-button">
+            <i class="fa-solid fa-seedling"></i> <span id="likeCount"><%=snslike%></span>
         </button>
+		</form>
+	
+	<%} else{%>
+	    <form action="likeinsert">
+    	<input type="hidden" name="sns_idx" value=<%=sns_idx %>>
+    	<input type="hidden" name="user_id" value=<%=member.getUser_id() %>>
+        <button type="submit" id="likeButton" class="like-button">
+            <i class="fa-solid fa-seedling"></i> <span id="likeCount"><%=snslike %></span>
+        </button>
+		</form>
+	<%} 
+	}else{%>
+        <button type="button" id="likeButton" class="like-button" onclick="alert('로그인 후 이용 가능합니다.')">
+            <i class="fa-solid fa-seedling"></i> <span id="likeCount"><%=snslike %></span>
+        </button>
+	<%} %>
+	
+	
+    
     </div>
 
     <div class="comment-section" id="comment-section">
@@ -319,33 +367,6 @@ font-family: 'SUIT';
 		})
 		
 	}
-	
-	function getLike(){
-		$.ajax({
-			url: "", // 요청경로
-			data: {"sns_idx": <%=sns_idx%>},
-			type: "get", // 요청방식(http 요청 메서드)
-			success: printList,
-			error: function(){
-				alert("통신 실패!")
-			}
-		})
-	}
-	
-	function likeplus(){
-		$.ajax({
-			url: "likeplus",
-			data: {"sns_idx": <%=sns_idx%>,
-					"user_idx": <%=member.getUser_id()%>}, // 서버로 보낼 데이터 (json)
-			type: "get",
-			success: getLike,
-			error:function(){
-				alert("통신실패!")
-			}
-		})
-		
-	}
-	
 	
 	
 	
