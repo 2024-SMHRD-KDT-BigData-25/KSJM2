@@ -71,6 +71,10 @@
             margin: 15px 0 10px;
             text-align: left;
         }
+        .product-name a{
+        	color: inherit;
+        	text-decoration: none;
+        }
 
         .id-price {
             	display: flex;
@@ -170,8 +174,8 @@
 <main>
 <body>
 	<div class="menu1" align="center">
-    <a href="test1.jsp">Plant</a>
-    <a href="test1.jsp">Tool</a>
+    <a href="salelist.jsp">Plant</a>
+    <a href="#">Tool</a>
     </div>
 
    <% PotUsers member = (PotUsers)session.getAttribute("member"); %>
@@ -215,7 +219,7 @@
 		<div class="product">      
                 <% String[] parts = m.getSale_img().split(","); %>
                 <img src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>">
-            <div class="product-name"><%= m.getSale_title() %></div>
+            <div class="product-name"><a href="#"><%= m.getSale_title() %></a></div>
             
             <!-- ID와 Price를 한 줄에 나란히 표시 -->
             <div class="id-price">
