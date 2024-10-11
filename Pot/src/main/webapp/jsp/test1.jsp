@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.PotUsers"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -54,10 +55,20 @@
         .product-name {
             font-size: 18px;
             margin: 15px 0 10px;
+            text-align: left;
+        }
+        .product-priceName {
+        	display: flex;
+        	justify-content: space-between;
+        }
+        .product-nickName{
+            font-size: 16px;
+            text-align: left;
         }
         .product-price {
             font-size: 16px;
             color: #555;
+            text-align: right;
         }
         .pagination {
             text-align: center;
@@ -121,6 +132,9 @@ display: flex;
 <header></header>
 <main>
 <body>
+
+ <% PotUsers member = (PotUsers)session.getAttribute("member"); %>
+ 
 	<div class="menu1" align="center">
     <a href="test1.jsp">Plant</a>
     <a href="test1.jsp">Tool</a>
@@ -132,29 +146,33 @@ display: flex;
         <%-- 하드코딩된 상품 리스트 --%>
         <%
             String[][] products = {
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"},
-                {"기화옌 스투키", "16000", "../img/2.jpg"}
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
+                {"기화옌 스투키","nickName", "16000", "../img/2.jpg"},
             };
             
             for (String[] product : products) {
                 String name = product[0];
-                String price = product[1];
-                String imagePath = product[2];
+                String nickName = product[1];
+                String price = product[2];
+                String imagePath = product[3];
         %>
                 <div class="product">
                     <img src="<%= imagePath %>" alt="<%= name %>">
                     <div class="product-name"><%= name %></div>
-                    <div class="product-price">₩<%= price %></div>
+                    <div class="product-priceName">
+                    	<div class="product-nickName"><%= nickName %></div>
+	                    <div class="product-price">₩<%= price %></div>
+                    </div>
                 </div>
         <%
             }
