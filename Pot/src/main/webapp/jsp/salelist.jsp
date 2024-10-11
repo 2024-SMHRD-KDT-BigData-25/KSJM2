@@ -54,7 +54,7 @@
             border-radius: 10px;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
-            margin-bottom: 20px;
+            margin: 10px;
             text-align: center;
             padding: 15px;
         }

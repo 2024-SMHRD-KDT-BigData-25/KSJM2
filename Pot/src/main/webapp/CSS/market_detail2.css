@@ -8,10 +8,9 @@ body {
    justify-content: space-between; /* 슬라이더와 오른쪽 공간 사이에 여백을 분배 */
    margin: 0;
    padding: 0;
-   align-items: flex-start;
+   align-items: center;
    height: 100vh;
    flex-direction: column;
-
 }
         
 
