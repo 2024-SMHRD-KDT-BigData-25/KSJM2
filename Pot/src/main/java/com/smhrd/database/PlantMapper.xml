@@ -5,4 +5,15 @@
 	<select id="search" resultType="com.smhrd.model.PotPlant">
 		select * from tb_plant where pl_name like concat(concat('%',#{pl_search}),'%')
 	</select>
+	
+	<select id="view" parameterType="int" resultType="com.smhrd.model.PotPlant">
+		select * from tb_plant where pl_idx=#{pl_idx}
+	</select>
+	
+		<!-- 조회수 증가 -->
+	<update id="views">
+		update tb_plant set pl_views = pl_views + 1 where pl_idx = #{pl_idx}
+	</update>
+	
+	
 </mapper>

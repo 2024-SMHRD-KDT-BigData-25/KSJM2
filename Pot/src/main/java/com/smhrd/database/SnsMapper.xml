@@ -15,6 +15,7 @@
 		order by a.sns_idx desc
 	</select>
 	
+	
 	<select id="getBoard" parameterType="int" resultType="com.smhrd.model.PotSns">
 		select b.sns_idx, a.user_id, b.sns_title, b.sns_img, b.sns_content, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sns_views, b.sns_likes, a.user_nick
 		from tb_user a inner join tb_sns b

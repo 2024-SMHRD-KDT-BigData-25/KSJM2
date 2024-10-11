@@ -125,10 +125,10 @@
             <div class="plant-grid">
             <%for(PotPlant l : list){ %>
                 <div class="plant-item">
-                    <img src="<%=l.getPl_img()%>" alt="<%=l.getPl_name()%>">
+                	<a href="plantview.jsp?pl_idx=<%= l.getPl_idx()%>"><img src="<%=l.getPl_img()%>" alt="<%=l.getPl_name()%>"></a>
                 </div>
                 <div class="plant-item">
-                	<div class="plant-text"><%=l.getPl_name() %></div>
+                	<div class="plant-text"><a href="plantview.jsp?pl_idx=<%= l.getPl_idx()%>"><%=l.getPl_name() %></a></div>
                 </div>
                 <%} %>
                 

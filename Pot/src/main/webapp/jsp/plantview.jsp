@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.PotPlant"%>
+<%@page import="com.smhrd.model.PlantDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -81,22 +83,33 @@
 
 <header></header> 
 
-
+	<% int pl_idx = Integer.parseInt(request.getParameter("pl_idx"));
+	
+		PlantDAO dao = new PlantDAO();
+		
+		int views = dao.views(pl_idx);
+		
+		
+		PotPlant res = dao.view(pl_idx);
+		
+	
+	%>
+	
     <div class="container1">
-        <img src="../img/산세베리아.PNG" alt="산세베리아" style="max-width: 100%; height: 650px; border-radius: 8px;" >
+        <img src="<%=res.getPl_img() %>" alt="<%=res.getPl_name() %>" style="max-width: 100%; height: 650px; border-radius: 8px;" >
         <div class="plant-name">
         <strong>산세베리아</strong>
         </div>
         <div class="description">
         	<h3><strong>식물 소개</strong></h3>
-            <p> 이 식물은 공기 정화 능력이 뛰어나며, 적은 관리로도 잘 자랍니다. 다양한 환경에서도 잘 자라기 때문에 실내에서 기르기 적합합니다.</p>
+            <p><%=res.getPl_kind() %></p>
         </div>
 	<br>
         <div class="info">
             <h2>추가 정보</h2>
-            <p><img src="../img/적정온도.png" class="DC"><strong>적정 온도 :</strong> 20°C ~ 25°C</p>
-            <p><img src="../img/개화시기.png" class="DC1"><strong>개화 시기 :</strong> 여름철</p>
-            <p><img src="../img/식물효과.png" class="DC2"><strong>효과 :</strong> 공기 정화, 스트레스 감소</p>
+            <p><img src="../img/적정온도.png" class="DC"><%=res.getPl_temp() %></p>
+            <p><img src="../img/개화시기.png" class="DC1"><%=res.getPl_time() %></p>
+            <p><img src="../img/식물효과.png" class="DC2"><%=res.getPl_effect() %></p>
         </div>
     </div>
     

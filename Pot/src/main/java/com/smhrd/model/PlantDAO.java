@@ -22,5 +22,29 @@ public class PlantDAO {
 		
 		return list;
 	}
+	
+	public PotPlant view(int pl_idx) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		PotPlant res = sqlSession.selectOne("PlantMapper.view", pl_idx);
+		
+		sqlSession.close();
+		
+		return res;
+		
+	}
+	
+	// 게시물 조회수
+	public int views(int pl_idx) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		int res = sqlSession.update("PlantMapper.views", pl_idx);
+		
+		sqlSession.close();
+		
+		return res;
+		
+	}
 
 }

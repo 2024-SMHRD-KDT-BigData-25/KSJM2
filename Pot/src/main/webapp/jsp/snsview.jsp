@@ -148,6 +148,7 @@ button:hover {
     int sns_idx = Integer.parseInt(request.getParameter("sns_idx"));
     SnsDAO dao = new SnsDAO();
     
+    // 조회수
     int views = dao.views(sns_idx);
     
     
