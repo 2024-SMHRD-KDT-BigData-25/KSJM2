@@ -160,7 +160,7 @@
 		
 			<div>
 				<label>가격</label><br>
-				<input type="text" name="sale_price" placeholder="가격을 입력해주세요" class="label123">
+				<input type="text" pattern="[0-9]+" title="숫자만 입력이 가능합니다." name="sale_price" placeholder="가격을 입력해주세요" class="label123">
 				
 			</div>
 			

@@ -40,7 +40,6 @@
 <%
     PotUsers member = (PotUsers) session.getAttribute("member");
 	
-    String membernick = member != null ? member.getUser_nick(): "";
 %>
                  
 
@@ -107,7 +106,7 @@
 
 
 <script>
-    var membernick = "<%= membernick %>";
+
 </script>
 
 <script src="../chatscript.js"></script>

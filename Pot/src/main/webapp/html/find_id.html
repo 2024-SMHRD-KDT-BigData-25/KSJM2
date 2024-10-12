@@ -59,11 +59,36 @@
 
             <div class="content">
                 <input id="namebox" type="text" name="user_name" placeholder="이름을 입력해주세요!"><br>
-                <input id="phonebox" type="text" name="user_phone" placeholder="핸드폰 번호를 입력해주세요!"><br><br><br>
+                <input id="phonebox" type="tel"  pattern="[0-9]{10,11}" title="비상비상" name="user_phone" placeholder="핸드폰 번호를 입력해주세요!"><br><br><br>
                 <input id="find" type="submit" value="찾기">
-                <p><input id="cancle" type="button" value="취소" onclick="history.back()"></p>
+                <p><button id="cancle" type="button" onclick="no()">취소</button></p>
             </div>
 	</form>
 	
+	
+	<script>
+	
+    function no() {
+        window.close(); // 팝업창만 닫기
+    }
+    
+    // 폼 제출 시 입력값 검증
+    document.frm.onsubmit = function () {
+        const name = document.frm.user_name.value.trim();
+        const phone = document.frm.user_phone.value.trim();
+
+        // 누락된 필드 체크
+        let errorMessage = "";
+        if (name === "") errorMessage += "이름을 입력해주세요.\n";
+        if (phone === "") errorMessage += "연락처를 입력해주세요.\n";
+
+        if (errorMessage) {
+            alert(errorMessage); // 누락된 항목 경고 메시지 표시
+            return false; // 폼 제출 방지
+        }
+    };
+    
+	
+	</script>
 </body>
 </html>

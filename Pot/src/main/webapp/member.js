@@ -3,11 +3,20 @@
  */
 
 
+/* 아이디 찾기 오픈 */
 function idfind(){
 	
 	window.open("/Pot/html/find_id.html", "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=350");
 }
 
+/* 비밀번호 찾기 오픈 */
+function pwfind(){
+	
+	window.open("/Pot/html/find_pw.html", "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=400");
+}
+
+
+/* 회원가입 아이디 중복 체크 */
 function idCheck(){
 	
 	if (document.frm.user_id.value==""){
@@ -20,6 +29,7 @@ function idCheck(){
 	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
+/* 중복 체크 아이디 사용 */
 function idok() {
 	opener.document.frm.user_id.value=document.frm.user_id.value;
 	opener.document.frm.reid.value=document.frm.user_id.value;
@@ -27,6 +37,7 @@ function idok() {
 	
 }
 
+/* 회원가입 정보 작성 유무 체크 */
 function joinCheck() {
 	
 	if(document.frm.user_id.value.length == 0){
