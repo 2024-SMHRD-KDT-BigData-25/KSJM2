@@ -264,7 +264,10 @@ font-family: 'SUIT';
 	<% PotUsers member = (PotUsers)session.getAttribute("member");
 	
 		SnsDAO dao = new SnsDAO();
-		List<PotSns> list = dao.getList();
+		List<PotSns> list = ( List<PotSns> )request.getAttribute("sns_search");
+		if( list == null ) {
+			list = dao.getList();
+		}
 		
 		// 페이지당 게시물 수
 	    int pageSize = 24; // 게시물 수를 24로 변경
@@ -297,10 +300,10 @@ font-family: 'SUIT';
           <div id="board-search">
               <div class="container5">
                   <div class="search-window">
-                      <form action="">
+                      <form action="SnsSearchController">
                           <div class="search-wrap">
                               <label for="search" class="blind">커뮤니티 검색</label>
-                              <input id="search" type="search" name="" placeholder="식물 이름을 검색, 가드닝 노하우를 찾아보세요.">
+                              <input id="search" type="search" name="search" placeholder="식물 이름을 검색, 가드닝 노하우를 찾아보세요.">
                               <button type="submit" class="btn btn-dark">검색</button>
                           </div>
                       </form>
@@ -324,7 +327,7 @@ font-family: 'SUIT';
                       </thead>
 
                       <tbody>
-                       <% for (PotSns m : pagedList) { %>
+                      <% for (PotSns m : pagedList) { %>
                       <tr>
                           <td><%= m.getSns_idx() %></td>
                           <th>
@@ -345,7 +348,9 @@ font-family: 'SUIT';
                           <!-- 조회수 -->
                           <td><%=m.getSns_views() %></td>
                       </tr>
-      					<%} %>
+      					<%}  %>
+      					
+      					
                       
                       </tbody>
                   </table>
