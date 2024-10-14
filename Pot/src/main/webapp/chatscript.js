@@ -113,6 +113,8 @@ function toggleChat() {
       $("#msg").keypress(function(event) {
           if (event.key === "Enter") {
               event.preventDefault();  // 기본 동작 방지 (폼 제출 등)
-              send();  // 메시지 전송
+			  $("#send-btn").click();
           }
       });
+
+	  
