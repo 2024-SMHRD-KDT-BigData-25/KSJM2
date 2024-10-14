@@ -57,6 +57,31 @@ public class SaleDAO {
 		
 	}
 	
+public List<PotSale> getPlantList() {
+		
+		// 1. SqlSession 객체 생성 <= SqlSessionFactory
+		SqlSession sqlSession = sqlSessionFactory.openSession(true); // true => autoCommit 옵션
+		
+		List<PotSale> res = sqlSession.selectList("SaleMapper.getPlantList");
+		
+		sqlSession.close();
+		
+		return res;
+		
+	}
+
+public List<PotSale> getToolList() {
+	
+	// 1. SqlSession 객체 생성 <= SqlSessionFactory
+	SqlSession sqlSession = sqlSessionFactory.openSession(true); // true => autoCommit 옵션
+	
+	List<PotSale> res = sqlSession.selectList("SaleMapper.getToolList");
+	
+	sqlSession.close();
+	
+	return res;
+	
+}
 	
 	
 }

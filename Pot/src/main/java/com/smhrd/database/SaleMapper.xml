@@ -29,4 +29,22 @@
 		update tb_sale set sale_views = sale_views + 1 where sale_idx = #{sale_idx}
 	</update>
 	
+	<select id="getPlantList" resultType="com.smhrd.model.PotSale">
+		select 
+			b.sale_idx, b.sale_title, b.user_id, b.sale_price, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sale_img, b.sale_views, a.user_nick
+		from tb_user a inner join tb_sale b
+		on (a.user_id = b.user_id)
+		where b.sale_category = '식물'
+		order by b.sale_idx desc
+	</select>
+	
+	<select id="getToolList" resultType="com.smhrd.model.PotSale">
+		select b.sale_idx, b.sale_title, b.user_id, b.sale_price, TO_CHAR(b.created_at, 'YYYY-MM-DD') AS created_at, b.sale_img, b.sale_views, a.user_nick
+		from tb_user a 
+		inner join tb_sale b
+		on a.user_id = b.user_id
+        where b.sale_category = '용품'
+		order by b.sale_idx desc
+	</select>
+	
 </mapper>

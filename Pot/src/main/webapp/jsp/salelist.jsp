@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.PotUsers"%>
 <%@page import="com.smhrd.model.PotSale"%>
 <%@page import="java.util.List"%>
@@ -165,7 +166,7 @@
 
 <main>
 		<div class="menu1" align="center">
-			<a href="salelist.jsp">Plant</a> <a href="#">Tool</a>
+			<a href="salelist.jsp?category=식물">Plant</a> <a href="salelist.jsp?category=도구">Tool</a>
 		</div>
 
 		<% PotUsers member = (PotUsers)session.getAttribute("member"); %>
@@ -188,7 +189,17 @@
 			    // DAO -> 전체 게시물 정보를 가져오는 기능
 			    SaleDAO dao = new SaleDAO();
 			    List<PotSale> list = dao.getList();
-			    System.out.println(list.size());
+			    String category = request.getParameter("category");
+			    System.out.println(category);
+			    if (category == null) {
+			    	list = dao.getList();
+			    } else if (category.equals("도구")){
+			    	list = dao.getToolList();
+			    } else {
+			    	list = dao.getPlantList();
+			    }
+			    
+			    
 			
 			    // 페이지당 게시물 수
 			    int pageSize = 12; // 게시물 수를 24로 변경

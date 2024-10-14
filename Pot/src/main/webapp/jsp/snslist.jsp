@@ -264,7 +264,7 @@ font-family: 'SUIT';
 	<% PotUsers member = (PotUsers)session.getAttribute("member");
 	
 		SnsDAO dao = new SnsDAO();
-		List<PotSns> list = ( List<PotSns> )request.getAttribute("sns_search");
+		List<PotSns> list = (List<PotSns>) request.getAttribute("sns_search");
 		if( list == null ) {
 			list = dao.getList();
 		}
