@@ -139,7 +139,7 @@
    color: white;
    padding: 10px 20px;
    border: none;
-   width: 170px;
+   width: 95px;
    
    cursor: pointer;
    display: inline-block;
@@ -199,7 +199,7 @@
         </a>
         
         <p class="product-price"><%=board.getSale_price() %>원</p>
-        <br><b class="product_user_nick"><font size="5px"><%=board.getUser_nick() %></font></b><button class="chat">채팅</button>
+        <br><b class="product_user_nick"><font size="5px"><%=board.getUser_nick() %></font></b><button class="chat">채팅하기</button>
         <br><p class="product_date"><%=board.getCreated_at() %></p>
         
         <div class="short_overview my-5">
