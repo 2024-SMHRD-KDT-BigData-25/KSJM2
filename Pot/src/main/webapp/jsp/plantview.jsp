@@ -13,7 +13,6 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             line-height: 1.6;
-            background-color: #f0f0f0; /* 배경색 추가 */
         }
         .container1 {
             width: 800px; /* 컨테이너 너비 설정 */
