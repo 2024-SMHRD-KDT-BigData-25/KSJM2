@@ -5,10 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식물 가게</title>
+    <title>식물 찾기 :: POTPOT</title>
+    
+    <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
+    
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'SUIT';
             margin: 0;
             padding: 0;
         }
@@ -22,27 +25,46 @@
         .search-section {
             margin-bottom: 20px;
         }
+        
         input[type="text"] {
-            width: 100%;
-            padding: 10px;
+            width: 81%;
+            height: 40px;
+            padding: 7px 14px;
             margin-bottom: 20px;
-            font-size: 16px;
+            font-size: 14px;
             box-sizing: border-box;
-            background-color: #FAFAFA;
-            border: 0px;
-            border-radius: 10px;
+            
+            border: 1px solid #ccc;
+            
+            
+           
         }
+        
+         input[type="text"]:focus {
+         	border-color: #01D281;
+		  	outline: 0;
+		  	border-width: 1px;
+         }
+        
         .search-btn {
-            width: 60%;
+            width: 35%;
             padding: 10px;
-            background-color: #00cc66;
-            color: white;
-            border: none;
+            background-color: white;
+            color: #01D281;
+            border: 1.5px solid;
             font-size: 16px;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 50px;
             
         }
+        
+        .search-btn:hover {
+        	color: white;
+        	border-color: #01D281;
+        	background: #01D281;
+        }
+        
+        
         .popular-plants {
             margin-top: 20px;
         }
@@ -63,6 +85,7 @@
             height: 170px;
             border-radius: 10px;
         }
+        
     </style>
 
 
@@ -79,8 +102,9 @@
         <!-- 검색 섹션 -->
         <div class="search-section" align="center">
             <form action="searchController" method="get">
-                <input type="text" name="pl_search" placeholder="검색">
-                <input type="submit" class="search-btn" value="검색하기">
+            	<i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="btn-txt" name="pl_search" placeholder="궁금한 식물 이름을 검색해보세요.">
+                <input type="submit" class="search-btn" value="검색하기" >
             </form>
         </div>
 

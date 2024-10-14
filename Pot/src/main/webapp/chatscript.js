@@ -13,7 +13,7 @@ function toggleChat() {
 
 
 // 웹 소켓 서버에 연결(WebSocket)
-      const webSocket = new WebSocket("ws://http://localhost:8081/Pot/jsp/main");
+      const webSocket = new WebSocket("ws://localhost:8081/Pot/jsp/main");
 
       webSocket.onopen = onOpen;
       webSocket.onclose = onClose;
@@ -74,9 +74,9 @@ function toggleChat() {
       }
 
       function displayMessage(msg) {
-          var str = "<div class='col-6'>";
-          str += "<div>";
-           str += "<p><strong>" + msg + "</p>";  // memberName을 추가
+          var str = "<div class='col-7'>";
+          str += "<div class='userchatbox'>";
+           str += "<p class='userchat'><strong>" + msg + "</p>";  // memberName을 추가
           str += "</div></div>";
 
           $("#msgArea").append(str);
@@ -93,8 +93,8 @@ function toggleChat() {
           }
 
           var str = "<div class='col-6'>";
-          str += "<div>";
-          str += "<p align='right'>" + msg + "</p>";
+          str += "<div class='mychatbox'>";
+          str += "<p class='mychat'>" + msg + "</p>";
           str += "</div></div>";
 
           $("#msgArea").append(str);
@@ -113,6 +113,8 @@ function toggleChat() {
       $("#msg").keypress(function(event) {
           if (event.key === "Enter") {
               event.preventDefault();  // 기본 동작 방지 (폼 제출 등)
-              send();  // 메시지 전송
+			  $("#send-btn").click();
           }
       });
+
+	  

@@ -105,6 +105,36 @@
   border-style: solid;
   border-width: 3px;
 }
+.col-7 {
+}
+
+.col-6 {
+	display: flex;
+    flex-direction: row-reverse;
+}
+.mychatbox{
+    font-size: 16px;
+    text-align: right;
+    display: inline-block;
+
+    margin: 5px;
+    padding: 5px 8px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px #dbdbdb;
+    background-color: #01D281;
+}
+
+.userchatbox {
+    font-size: 16px;
+    text-align: right;
+    display: inline-block;
+
+    margin: 5px;
+    padding: 5px 8px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px #dbdbdb;
+    background-color: white;
+}
 </style>
       
       

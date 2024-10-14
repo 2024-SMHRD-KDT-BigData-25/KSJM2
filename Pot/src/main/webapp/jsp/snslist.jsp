@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.LikeDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.model.PotSns"%>
 <%@page import="java.util.List"%>
@@ -285,7 +286,13 @@ font-family: 'SUIT';
 	    List<PotSns> pagedList = new ArrayList<>(list.subList(startIndex, endIndex));
 	    int totalPages = (int) Math.ceil((double) list.size() / pageSize); // 총 페이지 수
 		
+	    
 	
+	    // 좋아요
+	    
+	    LikeDAO likedao = new LikeDAO();
+	    
+	    
 	%>
 	
     <section class="notice">
@@ -327,7 +334,12 @@ font-family: 'SUIT';
                       </thead>
 
                       <tbody>
-                      <% for (PotSns m : pagedList) { %>
+                      <% for (PotSns m : pagedList) { 
+                      
+                    	  int snslike = likedao.count(m.getSns_idx());
+                      %>
+                      
+
                       <tr>
                           <td><%= m.getSns_idx() %></td>
                           <th>
@@ -344,7 +356,7 @@ font-family: 'SUIT';
                           <td><%=m.getUser_nick() %></td>
                           <td><%=m.getCreated_at() %></td>
                           <!-- 좋아요수 -->
-                          <td><%=m.getSns_likes() %></td>
+                          <td><%=snslike %></td>
                           <!-- 조회수 -->
                           <td><%=m.getSns_views() %></td>
                       </tr>
