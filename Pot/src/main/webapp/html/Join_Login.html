@@ -69,7 +69,7 @@ a {
 }
 
 
-button {
+.ghost, .btn-login {
 	border-radius: 20px;
 	border: 1px solid #01D281;
 	background-color: #01D281;
@@ -82,23 +82,39 @@ button {
 	transition: transform 80ms ease-in;   
 }
 
+.btn-login {
+	margin-top:-17px;
+}
+
+.btn-find {
+	color: black;
+	border-style: none;
+	height: 20px;
+	margin-top: 15px;
+	border-color: white;
+	background-color: white;
+}
+
+.btn-find:hover{
+	color: #01D281;
+}
+
 .button-container {
-    display: flex; /* Flexbox를 사용하여 정렬 */
-    justify-content: center; /* 버튼을 중앙 정렬 */
-    gap: 10px; /* 버튼 사이에 간격 추가 */
-     /* 버튼 위에 여백 추가 (선택 사항) */
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
 }
 
 a:hover{
 	color: #01D281;
 }
 
-button:hover {
+.btn-login:hover {
 	background: white;
 	color: #01D281;
 }
 
-button:active {
+.btn-login:active {
 	transform: scale(0.95);
 }
 
@@ -108,9 +124,15 @@ button:active {
 	color: white;
 }
 
+.button-container p {
+	margin-top: 15px;
+	margin-left: -8px;
+	margin-right: -8px;
+	color: black;
+	
+}
 
-
-button.ghost {
+.btn-login .ghost {
 	background-color: transparent;
 	border-color: black;
 }
@@ -333,8 +355,8 @@ footer a {
 					
 
 					<div class="button-container">
-                        <button type="submit" value="가입" onclick="return joinCheck()">가입</button>
-					    <button type="button" value="취소" onclick="history.back()">취소</button>
+                        <button class= "btn-login" type="submit" value="가입" onclick="return joinCheck()">가입</button>
+					    <button class= "btn-login" type="button" value="취소" onclick="history.back()">취소</button>
                     </div>
             </form>
         </div>
@@ -352,11 +374,12 @@ footer a {
 
 				<div class="button-container">
                    <!-- <a href="find_id.html">아이디 찾기</a> --> 
-                    <button type="button" onclick="idfind()">아이디 찾기</button>
-                    <button type="button" onclick="pwfind()">비밀번호 찾기</button>
+                    <button class= "btn-find" type="button" onclick="idfind()">아이디 찾기</button>
+                    <p>|</p>
+                    <button class= "btn-find" type="button" onclick="pwfind()">비밀번호 찾기</button>
                     <!-- <a href="find_pw.html">비밀번호 찾기</a> -->
                 </div>
-                <button type="submit" value="로그인 하기">로그인 하기</button>
+                <button class= "btn-login" type="submit" value="로그인 하기">로그인 하기</button>
             </form>
         </div>
 

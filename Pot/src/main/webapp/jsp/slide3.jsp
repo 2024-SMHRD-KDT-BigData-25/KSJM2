@@ -88,7 +88,6 @@
             margin-top: 7%;
             margin-right: 15%;
             padding: 20px;
-            border: 2px dashed #000;
             box-sizing: border-box;
             background-color: #fff;
         }
@@ -121,7 +120,7 @@
    
 }
 
-.market_user_nick, .market_date{
+.product_user_nick, .product_date{
 	font-size: 30px;
 	color: #555;
 	margin-bottom: 5px;
@@ -140,16 +139,20 @@
    color: white;
    padding: 10px 20px;
    border: none;
-   width: 170px;
+   width: 95px;
    
    cursor: pointer;
    display: inline-block;
    text-align: center;
-   margin-top: 20px;
    text-decoration: none;
    align-content: left;
 }
 
+
+.chat123{
+display:flex;
+justify-content: space-between;
+}
 .chat:hover {
    background-color: black;
 }
@@ -200,13 +203,13 @@
         </a>
         
         <p class="product-price"><%=board.getSale_price() %>원</p>
-        <br><p class="product_user_nick"><%=board.getUser_id() %></p>
+        <br><div class="chat123"></a><b class="product_user_nick"><font size="5px"><%=board.getUser_nick() %></font></b><button class="chat">채팅하기</button></div>
         <br><p class="product_date"><%=board.getCreated_at() %></p>
         
         <div class="short_overview my-5">
         <p><%=board.getSale_content() %></p>
           
-          <button class="chat">판매자와 채팅하기</button>
+          
         </div>
       </div>
         
