@@ -17,6 +17,7 @@
             margin: 0 auto;
             padding: 20px;
             padding-top: 100px;
+            margin-bottom: 40px;
         }
         .search-section {
             margin-bottom: 20px;
@@ -24,7 +25,7 @@
         input[type="text"] {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-size: 16px;
             box-sizing: border-box;
             background-color: #FAFAFA;

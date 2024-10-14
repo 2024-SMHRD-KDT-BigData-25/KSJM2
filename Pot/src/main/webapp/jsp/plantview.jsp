@@ -110,7 +110,9 @@
         <div class="info">
             <h2>추가 정보</h2>
             <p><img src="../img/적정온도.png" class="DC"><%=res.getPl_temp() %></p>
+            <%if(res.getPl_time() != null){ %> 
             <p><img src="../img/개화시기.png" class="DC1"><%=res.getPl_time() %></p>
+            <%} %>
             <p><img src="../img/식물효과.png" class="DC2">식물효과 - <%=res.getPl_effect() %></p>
         </div>
     </div>
