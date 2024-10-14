@@ -153,3 +153,13 @@ function snscheck(){
 	
 	return true;
 }
+
+function cmtCheck() {
+	
+	if(document.cmtfrm.cmt_content.value.length == 0){
+		alert("댓글을 작성해 주세요")
+		cmtfrm.cmt_content.focus();
+		return false;
+	}
+		return true;
+}

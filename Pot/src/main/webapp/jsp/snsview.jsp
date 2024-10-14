@@ -20,6 +20,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+<script src="../member.js"></script>
+
 <style>
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -271,14 +273,14 @@ height:100px;
         	<div id="comment__list">  	
 			</div>
         </div>
-        <form action="CmtInsert">
+        <form action="CmtInsert" name="cmtfrm">
             <input type="hidden" name="sns_idx" value="<%= sns_idx %>">
             <%if(member != null) {%>
             <input type="hidden" name="user_id" value="<%= member.getUser_id() %>">
             <%} %>
             <textarea name="cmt_content" placeholder="댓글을 입력하세요" rows="3"></textarea>
             <%if(member != null) {%>
-            <input type="submit" value="댓글 작성">
+            <button type="submit" onclick="cmtCheck()">댓글 작성</button>
             <% } else { %>
             <input type="button" value="댓글 작성" onclick="alert('로그인 후 작성 가능합니다.')">
             <%} %>
