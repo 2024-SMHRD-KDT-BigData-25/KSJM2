@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../CSS/chatstyle.css">
     
 <!-- 커뮤니티 배너 롤링 css -->
+
 <style>
     * {
   margin: 0;

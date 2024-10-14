@@ -84,5 +84,16 @@ public class SnsDAO {
 			return res;
 		}
 		
+		public List<PotSns> search(String m) {
+			
+			SqlSession sqlSession = sqlSessionFactory.openSession(true);
+			
+			List<PotSns> list = sqlSession.selectList("SnsMapper.search", m);
+			
+			sqlSession.close();
+			
+			return list;
+		}
+		
 		
 }
