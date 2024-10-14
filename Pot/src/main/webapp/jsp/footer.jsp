@@ -15,6 +15,9 @@
             padding: 10px;
             width: 100%;
             bottom: 0;
+            display: flex;
+    justify-content: space-between;
+    align-items: center;
         }
         
         .footerdiv {
