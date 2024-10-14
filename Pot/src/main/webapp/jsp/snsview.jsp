@@ -24,8 +24,6 @@
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	margin: 0;
-	padding: 20px;
-	background: linear-gradient(to right, #f6f5f7, #01D281);
 	color: #333;
 	text-align: left;
 }
@@ -33,6 +31,7 @@ body {
 .container {
 	max-width: 800px;
 	margin: auto;
+	margin-bottom: 50px;
 	background: white;
 	padding: 30px;
 	border-radius: 10px;
@@ -144,10 +143,26 @@ button:hover {
 * {
 font-family: 'SUIT';
 }
+
+#header{
+width:100%;
+height:100px;
+}
+
+#footer{
+width:100%;
+height:100px;
+
+}
+
+
 </style>
 <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<div id="header">
+<jsp:include page="header.jsp"></jsp:include>
+</div>
 
 <%
 
@@ -276,6 +291,9 @@ font-family: 'SUIT';
 </div>
 
 
+<div id="footer">
+<jsp:include page="footer.jsp"></jsp:include>
+</div>
 
 <script>
 

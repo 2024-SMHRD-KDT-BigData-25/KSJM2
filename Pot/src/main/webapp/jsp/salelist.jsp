@@ -219,7 +219,7 @@
 						<!-- ID와 Price를 한 줄에 나란히 표시 -->
 						<div class="id-price">
 							<div class="product-nickName"><%= m.getUser_nick() %></div>
-							<div class="product-price"><%= m.getSale_price() %></div>
+							<div class="product-price"><%= m.getSale_price() %>원</div>
 						</div>
 						
 				</div>
