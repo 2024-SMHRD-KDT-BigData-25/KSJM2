@@ -106,14 +106,18 @@
   border-width: 3px;
 }
 .col-7 {
+	display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .col-6 {
 	display: flex;
     flex-direction: row-reverse;
+    align-items: center;
 }
 .mychatbox{
-    font-size: 16px;
+    font-size: 15px;
     text-align: right;
     display: inline-block;
 
@@ -125,8 +129,8 @@
 }
 
 .userchatbox {
-    font-size: 16px;
-    text-align: right;
+    font-size: 15px;
+    text-align: left;
     display: inline-block;
 
     margin: 5px;
@@ -134,6 +138,15 @@
     border-radius: 15px;
     box-shadow: 3px 3px 3px #dbdbdb;
     background-color: white;
+}
+.mychtime{
+	color: gray;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+.userchtime{
+	color: gray;
+    font-size: 0.8em;
 }
 </style>
       
