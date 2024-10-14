@@ -7,10 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식물 가게</title>
+    <title>식물 찾기 :: POTPOT</title>
+    
+    <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
+    
     <style>
+        
+        * {
+        	font-family: 'SUIT';
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            
             margin: 0;
             padding: 0;
         }
@@ -40,7 +48,10 @@
             margin-top: 20px;
         }
         .popular-plants h2 {
-            font-size: 18px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #01D281;
+            text-align: center;
             margin-bottom: 15px;
             margin-left: 10px;
         }
@@ -64,27 +75,52 @@
         }
         
         .search-btn {
-            width: 60%;
+            width: 35%;
             padding: 10px;
-            background-color: #00cc66;
-            color: white;
-            border: none;
+            background-color: white;
+            color: #01D281;
+            border: 1.5px solid;
             font-size: 16px;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 50px;
             
         }
         
-                input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #FAFAFA;
-            border: 0px;
-            border-radius: 10px;
+        .search-btn:hover {
+        	color: white;
+        	border-color: #01D281;
+        	background: #01D281;
         }
+        
+        input[type="text"] {
+            width: 81%;
+            height: 40px;
+            padding: 7px 14px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            box-sizing: border-box;
+            
+            border: 1px solid #ccc;
+        }
+        
+         input[type="text"]:focus {
+         	border-color: #01D281;
+		  	outline: 0;
+		  	border-width: 1px;
+         }
+         
+         .plant-grid a:hover {
+         	text-decoration: underline;
+         }
+         
+         a:link {
+         	color:#01D281;
+         	
+         }
+         
+         a:visited {
+         	color: black;
+         }
         
         
     </style>
@@ -113,14 +149,17 @@
         <!-- 검색 섹션 -->
         <div class="search-section" align="center">
             <form action="searchController" method="get">
-                <input type="text" name="pl_search" placeholder="검색">
+            	<i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="pl_search" placeholder="궁금한 식물 이름을 검색해보세요.">
                 <input type="submit" class="search-btn" value="검색하기">
             </form>
         </div>
 
+		<br><br>
+
         <!-- 인기 식물 섹션 -->
         <div class="popular-plants">
-            <h2>검색 결과</h2>
+            <h2>검색 결과</h2> <br><br>
             
             <div class="plant-grid">
             <%for(PotPlant l : list){ %>

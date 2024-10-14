@@ -7,13 +7,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식물 정보 상세페이지</title>
+    <title>식물찾기 Detail | POTPOT</title>
     <style>
+    
+    	* {
+    		font-family: 'SUIT';
+    	}
+    
         body {
-            font-family: Arial, sans-serif;
+            
             margin: 20px;
             line-height: 1.6;
         }
+        
         .container1 {
             width: 800px; /* 컨테이너 너비 설정 */
             margin: 0px auto; /* 위쪽 여백 추가 및 가운데 정렬 */
@@ -28,7 +34,7 @@
             margin-top: 10px;
             border-top: 1px solid #ccc;
             padding-top: 10px;
-            background-color: #e9e9e9; /* 어두운 배경색 설정 */
+            background-color: rgb(236, 236, 236); 
             padding: 15px; /* 패딩 추가 */
             border-radius: 5px; /* 모서리 둥글게 */
         }
@@ -36,9 +42,11 @@
             margin: 5px 0;
         }
         .plant-name {
-            text-align: center; /* 이름 중앙 정렬 */
-            font-size: 24px; /* 글자 크기 조정 */
-            margin-top: 10px; /* 위쪽 여백 */
+            text-align: center;
+            font-size: 24px; 
+            margin-top: 10px; 
+            color: #01D281;
+            font-weight: 900;
         }
         .description {
             text-align: center; /* 설명 중앙 정렬 */
