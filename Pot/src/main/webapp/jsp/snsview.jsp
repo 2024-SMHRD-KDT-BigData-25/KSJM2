@@ -282,7 +282,7 @@ height:100px;
             <%if(member != null) {%>
             <button type="submit" onclick="cmtCheck()">댓글 작성</button>
             <% } else { %>
-            <input type="button" value="댓글 작성" onclick="alert('로그인 후 작성 가능합니다.')">
+            <button type="button" onclick="alert('로그인 후 작성 가능합니다.')">댓글 작성</button>
             <%} %>
         </form>
         
