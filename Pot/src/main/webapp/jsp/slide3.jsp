@@ -1,3 +1,4 @@
+<%@page import="java.util.Optional"%>
 <%@page import="com.smhrd.model.PotSale"%>
 <%@page import="com.smhrd.model.SaleDAO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -6,82 +7,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식물마켓 Details | POTPOT</title>
+    <title>Fade Image Slider without Container</title>
+
+    <style>
     
-	<link rel="stylesheet" href="../CSS/main.css">
-	<link rel="stylesheet" href="../CSS/market_detail2.css">
-	
-	   <script>
-	    // header, footer 동적으로 삽입
-	    document.addEventListener('DOMContentLoaded', function() {
-	      fetch('header.jsp')
-	        .then(response => response.text())
-	        .then(data => {
-	          document.querySelector('header').innerHTML = data;
-	        });
-	      
-	      fetch('footer.jsp')
-	        .then(response => response.text())
-	        .then(data => {
-	          document.querySelector('footer').innerHTML = data;
-	        });
-	    });
-	  </script>
-  
+    
+		body {
+		    font-family: Arial, sans-serif;
+		    margin: 0;
+		    padding: 0;
+		    background-color: white;
+		    display: flex;
+		    flex-direction: column; /* 수직 방향으로 정렬 */
+		    height: 100vh;
+		}
+
+		.content {
+		    display: flex; /* 슬라이더와 오른쪽 콘텐츠를 나란히 배치 */
+		    flex: 1; /* 남은 공간을 차지하도록 설정 */
+		    padding-bottom: 5%; /* footer와의 간격을 위해 아래쪽 패딩 추가 */
+		}
+
+
+        .slider-container {
+            position: relative;
+            width: 30%;
+            overflow: hidden;
+            padding-bottom: 28%;
+            height: 0;
+            margin-top: 7%;
+            margin-left: 15%;
+            margin-right: 10%; /* 슬라이더와 오른쪽 콘텐츠 사이의 간격을 설정 */
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            color: #01D281;
+        }
+        
+        .prev:hover, .next:hover{
+       		color: white;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .right-space {
+            width: 30%;
+            margin-top: 7%;
+            margin-right: 15%;
+            padding: 20px;
+            border: 2px dashed #000;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        
+        .line {
+    height: 2.5px;
+    background-color: #01D281;
+    width: 130px;
+    margin-bottom: 20px;
+}
+
+.product-meta-data h2 {
+      font-size: 30px;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 20px;
+      
+}
+
+.product-meta-data p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.product-price {
+   color: #01D281;
+   font-size: 300px;
+   font-weight: 900;
+   margin-bottom: 10px;
+   
+}
+
+.market_user_nick, .market_date{
+	font-size: 30px;
+	color: #555;
+	margin-bottom: 5px;
+}
+
+.short_overview {
+    margin-top: 20px;
+    color: black;
+    line-height: 25px;
+    font-weight: 500;
+    
+}
+
+.chat{
+   background-color: #01D281;
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   width: 170px;
+   
+   cursor: pointer;
+   display: inline-block;
+   text-align: center;
+   margin-top: 20px;
+   text-decoration: none;
+   align-content: left;
+}
+
+.chat:hover {
+   background-color: black;
+}
+    </style>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 
-<header></header>
 
- 	<%
- 	int sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
- 	SaleDAO dao = new SaleDAO();
- 	
- 	// 조회수
- 	int view = dao.views(sale_idx);
- 	
- 	// 게시물 정보
- 	PotSale board = dao.getBoard(sale_idx);
- 	
-    // sale_img가 null인 경우를 체크
-    String[] imgFiles = null;
-    if (board.getSale_img() != null && !board.getSale_img().isEmpty()) {
-        imgFiles = board.getSale_img().split(",");
-    } else {
-        imgFiles = new String[0]; // 빈 배열로 초기화
+
+    <%
+    int sale_idx;
+    try {
+        sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
+    } catch (NumberFormatException e) {
+        sale_idx = 0; // 기본값 설정 또는 에러 처리
     }
- 	%>
- 
+    SaleDAO dao = new SaleDAO();
+    PotSale board = dao.getBoard(sale_idx);
 
-
-<!-- 이미지 슬라이더 -->
-<div class="main">
-    <div class="slider-container">
-                 <% 
-                // 여러 개의 이미지 파일을 반복해서 출력
-                for(int i = 0; i < imgFiles.length; i++) {
-                    if(i == 0) { 
-                %>
-                    <div class="slide active">
-                           <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
-                    </div>
-					
-				<%} else { %>
-					<div class="slide">
-                       <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>">
-                    </div>
-                    <% }
-                      } %>
-               
-                
-        <!-- '이전' 버튼 -->
-        <a class="prev" onclick="changeSlide(-1)">❮</a>
-        <!-- '다음' 버튼 -->
-        <a class="next" onclick="changeSlide(1)">❯</a>
-    </div>
-
-    <!-- 오른쪽 공간 (추가 콘텐츠가 들어가는 영역) -->
-    <div class="right-space">
+    String[] imgFiles = Optional.ofNullable(board.getSale_img())
+                                .filter(s -> !s.isEmpty())
+                                .map(s -> s.split(","))
+                                .orElse(new String[0]);
+    %>
+	<div class="content">
+		
+	    <div class="slider-container">
+	        <% 
+	        for(int i = 0; i < imgFiles.length; i++) {
+	        %>
+	            <div class="slide <%= i == 0 ? "active" : "" %>">
+	                <img src="../upload/<%=imgFiles[i]%>" alt="Image <%=i%>" loading="lazy">
+	            </div>
+	        <% 
+	        }
+	        %>
+	        <button class="prev" onclick="changeSlide(-1)" aria-label="Previous slide">❮</button>
+	        <button class="next" onclick="changeSlide(1)" aria-label="Next slide">❯</button>
+	    </div>
+	
+	    <div class="right-space">
     
        <div class="product-meta-data" style="flex: 2;">
         <div class="line"></div>
@@ -90,48 +200,42 @@
         </a>
         
         <p class="product-price"><%=board.getSale_price() %>원</p>
-        <br><p class="product_user_id"><%=board.getUser_nick() %></p>
+        <br><p class="product_user_nick"><%=board.getUser_id() %></p>
         <br><p class="product_date"><%=board.getCreated_at() %></p>
         
         <div class="short_overview my-5">
         <p><%=board.getSale_content() %></p>
           
-          <button>판매자와 채팅하기</button>
+          <button class="chat">판매자와 채팅하기</button>
         </div>
       </div>
         
     </div>
-</div>
 
-<script>
-    /* 현재 활성화된 슬라이드의 인덱스를 저장 */
-    let currentSlide = 0;
+	</div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
 
-    /* 모든 슬라이드를 배열로 가져옴 */
-    const slides = document.querySelectorAll('.slide');
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? '1' : '0';
+            });
+        }
 
-    /* 주어진 인덱스의 슬라이드를 보여주는 함수 */
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active'); /* 모든 슬라이드의 'active' 클래스를 제거 */
-            if (i === index) {
-                slide.classList.add('active'); /* 현재 인덱스의 슬라이드에 'active' 클래스 추가 */
-            }
-        });
-    }
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
-    /* 슬라이드를 변경하는 함수 (이전/다음 버튼 클릭 시 호출) */
-    function changeSlide(direction) {
-        /* 방향에 따라 현재 슬라이드 인덱스를 변경 */
-        currentSlide = (currentSlide + direction + slides.length) % slides.length;
-        /* 변경된 슬라이드 보여주기 */
+        // 초기 슬라이드 표시
         showSlide(currentSlide);
-    }
-</script>
+    </script>
+
+<div>
 
 
-<footer></footer>
-
+<jsp:include page="footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
-

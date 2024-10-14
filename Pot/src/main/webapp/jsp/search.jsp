@@ -63,25 +63,17 @@
             border-radius: 10px;
         }
     </style>
-       <script>
-    // header, footer 동적으로 삽입
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('header.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('header').innerHTML = data;
-        });
-      
-      fetch('footer.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('footer').innerHTML = data;
-        });
-    });
-  </script>
+
+
+
 </head>
+
 <body>
-<header></header>
+
+<jsp:include page="header.jsp"></jsp:include>
+
+<main>
+
     <div class="container1">
         <!-- 검색 섹션 -->
         <div class="search-section" align="center">
@@ -125,7 +117,10 @@
             </div>
         </div>
     </div>
+</main>
 
-<footer></footer>
+<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
+
 </html>

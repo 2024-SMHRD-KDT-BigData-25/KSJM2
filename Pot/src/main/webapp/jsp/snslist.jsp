@@ -14,22 +14,9 @@
     <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
     
 	<link rel="stylesheet" href="../CSS/main.css">
-	<script>
-    // header, footer 동적으로 삽입
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('header.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('header').innerHTML = data;
-        });
-      
-      fetch('footer.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('footer').innerHTML = data;
-        });
-    });
-  </script>
+
+
+
     <style>
     * {
 font-family: 'SUIT';
@@ -261,11 +248,15 @@ font-family: 'SUIT';
     </style>
 
 </head>
+
+
 <body>
+
+<jsp:include page="header.jsp"></jsp:include>
 
 	<% PotUsers member1 = (PotUsers)session.getAttribute("member"); %>
 	
-<header></header>
+
 
 
 
@@ -372,7 +363,7 @@ font-family: 'SUIT';
 </div>
 <% } %>
 
-<footer></footer>
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

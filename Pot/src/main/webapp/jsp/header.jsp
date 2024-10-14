@@ -6,7 +6,82 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="../CSS/main.css">
+
+<style>
+
+* {
+
+      box-sizing: border-box;
+    }
+    
+    
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    
+    
+    li {
+      list-style: none;
+      
+    }
+    
+    
+    a {
+      text-decoration: none;
+    }
+    
+    
+    header {
+     position: fixed;
+     width: 100%;
+     height: 60px;
+     z-index: 2000;
+     background-color: rgba(0,0,0,0.00);
+   }
+   
+   
+   nav {
+       float: right;
+      
+   }
+   
+   
+   .logo {
+     display: inline-block;
+     height: 50px;
+     margin: 12px 0 12px 25px;
+   }
+   
+   
+   .logo > img { height: 70px; }
+   
+   
+   .nav-items > li {
+        display: inline-block;
+   }      
+   
+                     
+   .nav-items > li > a {
+     line-height: 40px;
+     padding: 0 10px;
+     color: #01D281; 
+   }
+   .nav-items > li > a:hover {
+     color: rgba(0, 0, 0, 0.8);
+   }
+   
+   .img {
+   display: inline-block;
+   line-height: 60px;
+     padding: 0 20px;
+     padding-top: 20px;
+        height: 1.2cm;
+        width: 1.8cm;
+}
+
+
+</style>
 </head>
 <body>
 <header>

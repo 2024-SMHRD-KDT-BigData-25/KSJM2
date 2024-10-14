@@ -10,23 +10,6 @@
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     
-    
-   <script>
-    // header, footer 동적으로 삽입
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('header.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('header').innerHTML = data;
-        });
-      
-      fetch('footer.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('footer').innerHTML = data;
-        });
-    });
-  </script>
   
       <link rel="stylesheet" href="../CSS/chatstyle.css">
       
@@ -34,8 +17,7 @@
 </head>
 <body>
 
-
-<header></header>
+<jsp:include page="header.jsp"></jsp:include>
 
 <%
     PotUsers member = (PotUsers) session.getAttribute("member");
@@ -113,6 +95,6 @@
 
 
    
-<footer></footer>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

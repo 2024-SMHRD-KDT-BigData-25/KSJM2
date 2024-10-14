@@ -5,7 +5,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="../CSS/main.css">
+
+<style>
+
+        footer {
+            background-color: #01D281;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            bottom: 0;
+        }
+        
+        .footerdiv {
+         flex-flow: column wrap;
+         align-content: flex-start;
+         /*   width: 150px;*/
+      }
+      
+      .logo2 {
+         display: inline-block;
+         height: 70px;
+         width: 130px;
+         margin-top: 20px;
+         margin-left: 20px;
+      }
+      
+      .text2 {
+          display: inline-block;
+         margin-left: 30px;
+         margin-top : 1px;
+         text-align: bottom;
+         text-align: left;
+         font-size: 10px;
+         color: gray
+      }
+      
+      .instergram {
+         height: 20px;
+         margin-right: 10px;
+         margin-top: 1px;
+      }
+      .discord {
+         height: 35px;
+         padding-bottom: 10px;
+         margin-right: 10px;
+      }
+      .twitter {
+         height: 25px;
+         margin-right: 10px;
+      }
+      
+      .footerdiv2 {
+         justify-content: flex-end;
+         align-items: flex-start;
+      }
+      
+
+
+</style>
+
+
+
+
 </head>
 <body>
 <footer>

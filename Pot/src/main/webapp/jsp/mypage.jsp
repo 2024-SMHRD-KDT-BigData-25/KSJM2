@@ -15,29 +15,23 @@
     <script src="https://kit.fontawesome.com/eefb1e8780.js" crossorigin="anonymous"></script>
 
 
-<script>
-    // header, footer 동적으로 삽입
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('header.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('header').innerHTML = data;
-        });
-      
-      fetch('footer.jsp')
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector('footer').innerHTML = data;
-        });
-    });
-  </script>
+  
+  <style>
+  
+  
+  #footer{
+  	width:100%;
+  	position: absolute;
+  	bottom:0px;
+  }
+  </style>
   
   
 </head>
 <body>
-
-<header></header>  
-<br><br><br><br><br>
+	<div>
+		<jsp:include page="header.jsp"></jsp:include>
+	</div>
 
 
 	<% PotUsers member = (PotUsers)session.getAttribute("member");
@@ -47,19 +41,19 @@
 		PotSns res = dao.count(member.getUser_id());
 	
 	%>
-	
-	<form action="Logout">
+	<main>
 	
 		<div class="container">
 	        
 	        <h1>My Page</h1>
 	            
-	        <div class="profile">
-	         	<h2><%=member.getUser_nick() %></h2>
-	        	<button class="edit-btn" type="button" onclick="location.href='myinfo_modify.jsp'">수정 &nbsp;</button>
-	        	<button class="edit-btn" type="submit">로그아웃</button>       
-	        </div>
-	</form>
+			<form action="Logout">
+		        <div class="profile">
+		         	<h2><%=member.getUser_nick() %></h2>
+		        	<button class="edit-btn" type="button" onclick="location.href='myinfo_modify.jsp'">수정 &nbsp;</button>
+		        	<button class="edit-btn" type="submit">로그아웃</button>       
+		        </div>
+			</form>
 	
 	        <div class="community-info">
 	            <h3>커뮤니티 활동정보</h3>
@@ -87,8 +81,11 @@
 	            <p><i class="fa-solid fa-list-check"></i>&nbsp;&nbsp; 상품 등록</p>
 	        </div>
 	    </div>
-	
-	<br><br><br><br><br>
-	<footer></footer>
+	</main>
+	    
+	    <div id="footer">	    
+	<jsp:include page="footer.jsp"></jsp:include>
+	    </div>
+
 </body>
 </html>
