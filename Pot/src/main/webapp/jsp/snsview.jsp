@@ -237,7 +237,7 @@ height:100px;
     <div class="like-section">
     
     <%if(member != null){ 
-    	if(likeres.getSns_idx() == 0){ %>
+    	if(likeres.getSns_idx() != 0){ %>
 		<form action="likedelete">
     	<input type="hidden" name="sns_idx" value=<%=sns_idx %>>
     	<input type="hidden" name="user_id" value=<%=member.getUser_id() %>>
