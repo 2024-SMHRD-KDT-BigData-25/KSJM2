@@ -8,6 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>식물찾기 Detail | POTPOT</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
     <style>
     
     	* {
@@ -32,18 +35,18 @@
         .info {
         
             margin-top: 10px;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-            background-color: rgb(236, 236, 236); 
+            
+            
+            background-color: #F0FFF0; 
             padding: 15px; /* 패딩 추가 */
-            border-radius: 5px; /* 모서리 둥글게 */
+            border-radius: 20px; /* 모서리 둥글게 */
         }
         .info p {
             margin: 5px 0;
         }
         .plant-name {
             text-align: center;
-            font-size: 24px; 
+            font-size: 28px; 
             margin-top: 10px; 
             color: #01D281;
             font-weight: 900;
@@ -69,6 +72,15 @@
         }
         .description{
         text-align: left;
+        }
+        
+        h2 {
+        	color: black;
+        	font-weight: bold;
+        	font-size: 18px;
+        	margin-right: 20px;
+        	height: 20px;
+        	
         }
     </style>
     
@@ -111,17 +123,21 @@
         <strong><%=res.getPl_name() %></strong>
         </div>
         <div class="description">
-        	<h3><strong>식물 소개</strong></h3>
+        	
+        	<h3>
+        		<i class="fa-brands fa-pagelines"></i>
+        		<strong>🍀식물 소개</strong>
+        	</h3>
             <p><%=res.getPl_kind() %></p>
         </div>
 	<br>
         <div class="info">
-            <h2>추가 정보</h2>
-            <p><img src="../img/적정온도.png" class="DC"><%=res.getPl_temp() %></p>
+            <h2>추가 정보 </h2>
+            <p><img class="DC">🔆 <%=res.getPl_temp() %></p>
             <%if(res.getPl_time() != null){ %> 
-            <p><img src="../img/개화시기.png" class="DC1"><%=res.getPl_time() %></p>
+            <p><img class="DC1">💐 <%=res.getPl_time() %></p>
             <%} %>
-            <p><img src="../img/식물효과.png" class="DC2">식물효과 - <%=res.getPl_effect() %></p>
+            <p><img class="DC2">🎀 식물효과 - <%=res.getPl_effect() %></p>
         </div>
     </div>
     
