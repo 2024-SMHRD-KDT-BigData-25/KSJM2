@@ -9,9 +9,99 @@
    <link rel="stylesheet" href="../CSS/main.css">
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../CSS/chatstyle.css">
     
+<!-- 커뮤니티 배너 롤링 css -->
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'SUIT'
+}
+
+.itme {
+  display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: auto;
+  vertical-align: middle;
+}
+
+.item h4 {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 15px;
   
-      <link rel="stylesheet" href="../CSS/chatstyle.css">
+}
+
+.item span {
+  text-align: center;
+  height: 105px;
+  font-size: 13px;
+  
+}
+
+.item p {
+  color: gray;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.wrap { 
+  overflow: hidden;
+}
+.roller {
+  display: flex;
+}
+.rolling_list { 
+  display: flex;
+}
+.wrap .rolling_list .item { 
+  width: 320px; 
+  height: 200px;
+  border-radius: 20px;
+  border-color: #01D281;
+  border-style: solid;
+  border-width: 1px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; 
+  background: white;
+  color: #01D281;
+  margin-right: 30px;
+  flex-direction: column;
+}
+.roller .rolling_list.original {
+  animation: rollingTop1 70s linear infinite;
+}
+.roller .rolling_list.clone {
+  animation: rollingTop2 70s linear infinite;
+}
+@keyframes rollingTop1 {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-100%); }
+  50.01% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+@keyframes rollingTop2 {
+  0% { transition: translateX(0); }
+  100% { transform: translateX(-200%); }
+}
+
+/* hover시 일시정지 */
+.roller:hover .rolling_list {
+   animation-play-state: paused;
+}
+
+.roller:hover .item:hover  {
+  border-color: #01D281;
+  border-style: solid;
+  border-width: 3px;
+}
+</style>
       
       
 </head>
@@ -48,6 +138,56 @@
 </div>
 </div>
 
+<br><br><br>
+
+<!-- 커뮤니티 배너 롤링 -->
+<div class="wrap">
+  <div class="roller">
+    <ul class="rolling_list">
+      <li class="item">
+        <h4>[식물 자랑] <br> 3년 키운 행운목, 드디어 꽃이 폈어요!</h4><br>
+        <span>여러분~ 드디어 제 행운목에 꽃이 폈어요! 🎉 <br>
+		      3년 동안 정성껏 키웠는데, 이렇게 보답해주니 <br> 너무 감격스럽네요!! <br>
+		      꽃 피우는 노하우가 궁금하신 분들, 댓글 남겨주세요!</span><br>
+		<p>스마트 님</p>
+      </li>
+      <li class="item">
+       <h4>[초보 가드너] <br> 처음 키우는 몬스테라, 어떻게 하면 잘 자랄까요?</h4><br>
+        <span>안녕하세요, 식물 입문자입니다! <br>
+		      얼마 전 몬스테라를 입양했는데, 잎이 누렇게 변하고 <br> 있어요 😢😢
+		      물은 일주일에 한 번 주고 있고, <br> 창가에 두고 있습니다.<br>
+		      혹시 제가 뭘 잘못하고 있는 걸까요?  도와주세요!</span><br>
+		<p>손 님</p>
+      </li>
+      <li class="item">
+        <h4>[팁 공유] <br> 집에서 허브 키우기, 이것만 주의하세요</h4><br>
+        <span>허브 키우기의 매력에 빠지신 분들 주목! <br>
+		      바질, 로즈마리, 민트 등 인기 허브 키우는 팁 공유합니다. <br>
+		      가장 중요한 건 배수와 햇빛! <br> 자세한 내용은 본문을 확인해주세요~</span><br>
+		<p>랑태주 님</p>
+      </li>
+      <li class="item">
+        <h4>[질문] <br> 반려식물 여행 갈 때 돌보기, 어떻게 하시나요?</h4><br>
+        <span>반려식물 여행 갈 때 돌보기, 어떻게 하시나요? <br>
+		      곧 1주일 여행을 가는데, 반려식물들이 걱정되네요. <br>
+		      자동 물주기 장치를 사용해본 분 계신가요? <br> 아니면 다른 좋은 방법이 있을까요?<br>
+		      여러분의 노하우를 공유해주세요!</span><br>
+		<p>yoo 님</p>
+      </li>
+      <li class="item">
+        <h4>[팁 공유] <br>20년 식집사가 공개하는 초보 탈출 가이드 🌱</h4><br>
+        <span>안녕하세요, 여러분! 집이 작은 정글로 변한 지 <br>20년째 접어든 베테랑 식집사입니다.  <br>
+		      그동안 쌓아온 경험을 바탕으로 여러분께 꼭 알려드리고 <br>싶은 팁들을 공유하려고 해요. <br> 
+		      과습은 식물의 적, 햇빛은 생명,  통풍이 핵심!! <br> </span><br>
+		<p>강남헬리콥터맘 님</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br><br><br><br>
+
+<!-- 마켓 리스트 -->
 <div class="market_list">
 	<h1>POTPOT Market</h1>
 </div>
@@ -86,12 +226,19 @@
     
 
 
-
+<!-- 커뮤니티 배너 롤링 js -->
 <script>
-
+let roller = document.querySelector('.roller .rolling_list');
+roller.id = 'roller1';
+let clone = roller.cloneNode(true)
+clone.id = 'roller2';
+document.querySelector('.roller').appendChild(clone);
+roller.classList.add('original');
+clone.classList.add('clone');
 </script>
 
 <script src="../chatscript.js"></script>
+
 
 
    
