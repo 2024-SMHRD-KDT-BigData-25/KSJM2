@@ -38,9 +38,10 @@
 
 .item span {
   text-align: center;
-  height: 105px;
+  height: 100px;
   font-size: 15px;
   color: black;
+  overflow:hidden;
   
 }
 
@@ -62,7 +63,7 @@
 }
 .wrap .rolling_list .item { 
   width: 320px; 
-  height: 250px;
+  height: 235px;
   border-radius: 20px;
   border-color: #01D281;
   border-style: solid;
