@@ -74,10 +74,17 @@ function toggleChat() {
       }
 
       function displayMessage(msg) {
+		const now = new Date();
+				const timeString = now.toLocaleTimeString(		'ko-KR', {
+				    hour: '2-digit',      // 두 자리로 시간 표시
+				    minute: '2-digit',    // 두 자리로 분 표시
+				    hour12: true          // 12시간 형식(오전/오후)
+				});
           var str = "<div class='col-7'>";
           str += "<div class='userchatbox'>";
-           str += "<p class='userchat'><strong>" + msg + "</p>";  // memberName을 추가
-          str += "</div></div>";
+           str += "<p class='userchat'><strong>" + msg + "</p></div>";  // memberName을 추가
+		   str += "<span class='userchtime'>" +timeString+"</span>"
+          str += "</div>";
 
           $("#msgArea").append(str);
 
@@ -86,6 +93,12 @@ function toggleChat() {
       }
 
       function send() {
+		const now = new Date();
+		const timeString = now.toLocaleTimeString(		'ko-KR', {
+		    hour: '2-digit',      // 두 자리로 시간 표시
+		    minute: '2-digit',    // 두 자리로 분 표시
+		    hour12: true          // 12시간 형식(오전/오후)
+		});
           let msg = $("#msg").val();
 
           if (msg.trim() === "") {
@@ -94,8 +107,9 @@ function toggleChat() {
 
           var str = "<div class='col-6'>";
           str += "<div class='mychatbox'>";
-          str += "<p class='mychat'>" + msg + "</p>";
-          str += "</div></div>";
+          str += "<p class='mychat'>" + msg + "</p></div>";
+		  str += "<span class='mychtime'>"+timeString+"</span>"
+          str += "</div>";
 
           $("#msgArea").append(str);
 
