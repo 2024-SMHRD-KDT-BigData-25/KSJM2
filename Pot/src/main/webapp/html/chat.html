@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat Room</title>
+</head>
+<body>
+    <h1>Chat Room</h1>
+    <input type="text" id="messageInput" placeholder="메시지를 입력하세요" />
+    <button onclick="sendMessage()">전송</button>
+    <div id="chatBox"></div>
+
+    <script>
+        const roomId = prompt("Enter Room ID:");
+        const userNumber = prompt("Enter User Number:");
+        const socket = new WebSocket("ws://localhost:8081/Pot/html/chat/${roomId}/${userNumber}");
+
+        socket.onopen = () => {
+            console.log("WebSocket 연결됨");
+        };
+
+        socket.onmessage = (event) => {
+            const chatBox = document.getElementById("chatBox");
+            const message = document.createElement("p");
+            message.textContent = event.data;
+            chatBox.appendChild(message);
+        };
+
+        socket.onclose = () => {
+            console.log("WebSocket 연결 종료");
+        };
+
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            const message = input.value;
+            socket.send(message);
+            input.value = "";
+        }
+    </script>
+</body>
+</html>

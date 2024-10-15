@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ChatMapper">
+
+	<insert id="makechat" parameterType="com.smhrd.model.PotChat">
+		insert into tb_chat_room(sale_idx, sale_id, user_id) values (#{sale_idx}, #{sale_id}, #{user_id})
+	</insert>
+	
+	
+	<select id="getchat" parameterType="com.smhrd.model.PotChat" resultType="com.smhrd.model.PotChat">
+		select *
+		from tb_chat_room
+		where sale_idx=#{sale_idx} and sale_id=#{sale_id} and user_id=#{user_id}
+	</select>
+	
+	<select id="chatlist" parameterType="com.smhrd.model.PotChat" resultType="com.smhrd.model.PotChat">
+		select *
+		from tb_chat_room
+	</select>
+
+
+</mapper>

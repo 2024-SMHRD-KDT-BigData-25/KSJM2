@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.ChatDAO"%>
+<%@page import="com.smhrd.model.PotChat"%>
 <%@page import="com.smhrd.model.PotSns"%>
 <%@page import="com.smhrd.model.SnsDAO"%>
 <%@page import="com.smhrd.model.PotUsers"%>
@@ -39,6 +42,10 @@
 		SnsDAO dao = new SnsDAO();
 		
 		PotSns res = dao.count(member.getUser_id());
+		
+		ChatDAO chatdao = new ChatDAO();
+		
+		List<PotChat> list = chatdao.chatlist();
 	
 	%>
 	<main>
@@ -65,6 +72,12 @@
 	                <div class="info-item">
 	                    <p>판매한 식물</p>
 	                    <span>0</span>
+	                    
+	                    <%for(PotChat m : list){ 
+	                    if(m.getUser_id().equals(member.getUser_id()) || m.getSale_id().equals(member.getUser_id())){
+	                    %>
+	                    <a href="chat.jsp?chat_idx=<%=m.getChat_idx()%>">채팅</a>
+	                    <%}} %>
 	                </div>
 	            </div>
 	        </div>

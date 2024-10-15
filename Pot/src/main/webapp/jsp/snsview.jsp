@@ -174,6 +174,8 @@ height:100px;
 
     // 게시물 불러오기
     int sns_idx = Integer.parseInt(request.getParameter("sns_idx"));
+    
+    
     SnsDAO dao = new SnsDAO();
     
     // 조회수

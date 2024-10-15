@@ -30,5 +30,6 @@
     <mapper resource="com/smhrd/database/CmtMapper.xml"/>
     <mapper resource="com/smhrd/database/PlantMapper.xml"/>
     <mapper resource="com/smhrd/database/LikeMapper.xml"/>
+    <mapper resource="com/smhrd/database/ChatMapper.xml"/>
   </mappers>
 </configuration>

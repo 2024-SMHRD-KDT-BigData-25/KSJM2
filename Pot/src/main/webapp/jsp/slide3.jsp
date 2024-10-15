@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.PotUsers"%>
 <%@page import="java.util.Optional"%>
 <%@page import="com.smhrd.model.PotSale"%>
 <%@page import="com.smhrd.model.SaleDAO"%>
@@ -164,6 +165,9 @@ justify-content: space-between;
 
 
     <%
+    
+    PotUsers member = (PotUsers) session.getAttribute("member");
+    
     int sale_idx;
     try {
         sale_idx = Integer.parseInt(request.getParameter("sale_idx"));
@@ -203,7 +207,16 @@ justify-content: space-between;
         </a>
         
         <p class="product-price"><%=board.getSale_price() %>원</p>
-        <br><div class="chat123"></a><b class="product_user_nick"><font size="5px"><%=board.getUser_nick() %></font></b><button class="chat">채팅하기</button></div>
+        <br><div class="chat123"></a><b class="product_user_nick"><font size="5px"><%=board.getUser_nick() %></font></b>
+        <%if(member != null) { %>
+        <form action="makechatroom">
+        <input type="hidden" value="<%=sale_idx%>" name="sale_idx">
+        <input type="hidden" value="<%=board.getUser_id()%>" name="sale_id">
+        <input type="hidden" value="<%=member.getUser_id()%>" name="user_id">
+        <button type="submit" class="chat">채팅하기</button>
+        </form>
+        <%} %>
+        </div>
         <br><p class="product_date"><%=board.getCreated_at() %></p>
         
         <div class="short_overview my-5">
