@@ -123,7 +123,8 @@
 		.footer1 button{
 			background-color: #F3F3F3;
 			border: none;
-			margin-left: 20px;
+			margin-left: 14px;
+    		margin-top: 7px;
 		}
 		.push {
 		height: 20px;
