@@ -148,6 +148,16 @@
 	color: gray;
     font-size: 0.8em;
 }
+.NK{
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 10px;
+    margin-right: 15px;
+}
+.NKU {
+	margin-left: 15px;
+    font-size: 10px;
+}
 </style>
       
       
@@ -161,7 +171,10 @@
 	
 %>
                  
-
+<%if(member != null) { %>
+<% String userNick = member.getUser_nick(); %>
+<input type="hidden" id="user-nick" value="<%= userNick %>" />
+<%} %>
 <div class="container">
     <div class="box1">
     	<img class="img1" align="right" src="../img/center1.png">
@@ -270,9 +283,6 @@
 		</div>
 	</div>
   
-    
-
-
 <!-- 커뮤니티 배너 롤링 js -->
 <script>
 let roller = document.querySelector('.roller .rolling_list');

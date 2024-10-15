@@ -24,20 +24,12 @@ public class chatserver {
         clients.add(session);
         messageHistory.put(session, new StringBuilder()); // 세션당 메시지 기록 초기화
 
-        // 새로운 클라이언트가 접속했다고 메시지 전송
+        // 새로운 클라이언트 접속을 JSON 형태로 전송
+        String welcomeMessage = "{\"nickname\":\"System\",\"message\":\"새로운 클라이언트 접속\",\"time\":\"\"}";
+        
         for (Session client : clients) {
             try {
-                client.getBasicRemote().sendText("새로운 클라이언트 접속");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // 이전 메시지를 새로운 클라이언트에게 전송
-        StringBuilder history = messageHistory.get(session);
-        if (history.length() > 0) {
-            try {
-                session.getBasicRemote().sendText(history.toString());
+                client.getBasicRemote().sendText(welcomeMessage);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -49,9 +41,12 @@ public class chatserver {
         clients.remove(session);
         messageHistory.remove(session); // 세션 종료 시 메시지 기록 삭제
 
+        // 클라이언트 접속 해제를 JSON 형태로 전송
+        String disconnectMessage = "{\"nickname\":\"System\",\"message\":\"다른 클라이언트 접속 해제\",\"time\":\"\"}";
+        
         for (Session client : clients) {
             try {
-                client.getBasicRemote().sendText("다른 클라이언트 접속 해제");
+                client.getBasicRemote().sendText(disconnectMessage);
             } catch (IOException e) {
                 e.printStackTrace();
             }
