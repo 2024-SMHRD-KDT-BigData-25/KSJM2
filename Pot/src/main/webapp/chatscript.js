@@ -13,7 +13,7 @@ function toggleChat() {
 
 
 // 웹 소켓 서버에 연결(WebSocket)
-      const webSocket = new WebSocket("ws://localhost:8081/Pot/jsp/main");
+      const webSocket = new WebSocket(`ws://localhost:8081/Pot/jsp/main`);
 
       webSocket.onopen = onOpen;
       webSocket.onclose = onClose;

@@ -150,13 +150,21 @@
 <header></header>
 
 	<%
-	int chat_idx;
-	if(request.getParameter("chat_idx")==null){
-	PotChat chatroom = (PotChat)session.getAttribute("chatroom");
-	chat_idx = chatroom.getChat_idx();
-	} else if((PotChat)session.getAttribute("chatroom")==null){
-		chat_idx = Integer.parseInt(request.getParameter("chat_idx"));
-	}
+	  int chat_idx = -1;  // 초기값 설정 (예외 상황 대비)
+    PotChat chatroom = (PotChat) session.getAttribute("chatroom");
+
+    try {
+        if (chatroom != null) {
+            chat_idx = chatroom.getChat_idx();
+        } else if (request.getParameter("chat_idx") != null) {
+            chat_idx = Integer.parseInt(request.getParameter("chat_idx"));
+        } else {
+            throw new Exception("chat_idx를 확인할 수 없습니다.");
+        }
+    } catch (Exception e) {
+        out.println("<p>오류: " + e.getMessage() + "</p>");
+        e.printStackTrace();
+    }
 	%>
 	
 	
@@ -197,7 +205,7 @@
         console.log("chatIdx:", chatIdx);
 
     	
-          const webSocket = new WebSocket("ws://172.30.1.38:8081/Pot/jsp/chat/" + chatIdx );
+          const webSocket = new WebSocket("ws://localhost:8081/Pot/jsp/chat/" + chatIdx );
 
           webSocket.onopen = onOpen;
           webSocket.onclose = onClose;
