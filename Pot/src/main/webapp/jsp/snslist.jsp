@@ -227,11 +227,11 @@ font-family: 'SUIT';
             display: flex; 
             justify-content: flex-end; /* 오른쪽 정렬 */
             gap: 10px; /* 버튼 간격 */
-            margin: 20px 0px; /* 상단 여백 및 좌우 여백 설정 */
-            position: fixed; /* 고정 위치 */
+            margin: 5px 0px -15px 0px; /* 상단 여백 및 좌우 여백 설정 */
             right: 30px; /* 오른쪽 여백 */
             bottom: 200px; /* 아래쪽 여백 */
             z-index: 1000; /* 다른 요소보다 위에 표시 */
+            justify-content: flex-end;
         }
         
        	.btn-success {
@@ -314,6 +314,11 @@ font-family: 'SUIT';
                               <button type="submit" class="btn btn-dark">검색</button>
                           </div>
                       </form>
+                      <% if(member != null) { %>
+						<div class="button-container">
+    						<button class="btn btn-success" onclick="location.href='sns_write.jsp'">글 작성</button>
+						</div>
+					<% } %>
                   </div>
               </div>
           </div>
@@ -372,13 +377,7 @@ font-family: 'SUIT';
       </section>
       
       <!-- 버튼 컨테이너 추가 -->
-<% if(member == null) { %>
 
-<% }else { %>
-<div class="button-container">
-    <button class="btn btn-success" onclick="location.href='sns_write.jsp'">글 작성</button>
-</div>
-<% } %>
 
 <jsp:include page="footer.jsp"></jsp:include>
 
