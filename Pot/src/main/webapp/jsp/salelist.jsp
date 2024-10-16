@@ -18,6 +18,7 @@
 			body {
 				font-family: Arial, sans-serif;
 				background-color: white;
+				margin:0px
 				
 			}
 			
