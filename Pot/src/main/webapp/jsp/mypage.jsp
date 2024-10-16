@@ -43,9 +43,6 @@
 		
 		PotSns res = dao.count(member.getUser_id());
 		
-		ChatDAO chatdao = new ChatDAO();
-		
-		List<PotChat> list = chatdao.chatlist();
 	
 	%>
 	<main>
@@ -84,12 +81,7 @@
 	        </div>
 			
 	        <div class="sale-history">
-	        	<h3>채팅</h3>
-	            <%for(PotChat m : list){ 
-	                    if(m.getUser_id().equals(member.getUser_id()) || m.getSale_id().equals(member.getUser_id())){
-	                    %>
-	                    <a href="chat.jsp?chat_idx=<%=m.getChat_idx()%>">1대1 채팅목록</a>
-	                    <%}} %>
+	        	<a href="1vs1chat.jsp"><h3>채팅</h3></a>
 	        </div>
 	    </div>
 	</main>

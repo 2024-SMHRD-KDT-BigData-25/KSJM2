@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ChatMapper">
 
+	<!-- 채팅방 만들기 -->
 	<insert id="makechat" parameterType="com.smhrd.model.PotChat">
 		insert into tb_chat_room(sale_idx, sale_id, user_id) values (#{sale_idx}, #{sale_id}, #{user_id})
 	</insert>
@@ -13,11 +14,14 @@
 		where sale_idx=#{sale_idx} and sale_id=#{sale_id} and user_id=#{user_id}
 	</select>
 	
+	<!-- 채팅방 리스트 -->
 	<select id="chatlist" parameterType="com.smhrd.model.PotChat" resultType="com.smhrd.model.PotChat">
-		select *
-		from tb_chat_room
+		select a.chat_idx, a.sale_idx, a.sale_id, a.user_id, b.sale_title, b.sale_img
+		from tb_chat_room a inner join tb_sale b
+		on (a.sale_idx = b.sale_idx)
 	</select>
 
+	<!-- 채팅방 게시물 정보 -->
 	<select id="getsale" parameterType="int" resultType="com.smhrd.model.PotChat">
 		select * from tb_chat_room where chat_idx=#{chat_idx}
 	</select>

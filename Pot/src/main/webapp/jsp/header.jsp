@@ -37,7 +37,7 @@
      width: 100%;
      height: 60px;
      z-index: 2000;
-     background-color: rgba(0,0,0,0.00);
+     background-color: white;
    }
    
    

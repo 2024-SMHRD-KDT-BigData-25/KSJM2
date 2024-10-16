@@ -23,6 +23,10 @@ public class PotChat {
 
     // 방 개설일자 
     private String created_at;
+    
+    private String sale_img;
+    
+    private String sale_title;
 
 	public PotChat(int sale_idx, String sale_id, String user_id) {
 		super();

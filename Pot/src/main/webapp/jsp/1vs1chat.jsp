@@ -1,3 +1,9 @@
+<%@page import="com.smhrd.model.PotSale"%>
+<%@page import="com.smhrd.model.SaleDAO"%>
+<%@page import="com.smhrd.model.PotChat"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.ChatDAO"%>
+<%@page import="com.smhrd.model.PotUsers"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -75,6 +81,22 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
+
+	<%
+	
+		PotUsers member = (PotUsers)session.getAttribute("member");
+	
+		ChatDAO chatdao = new ChatDAO();
+		
+		List<PotChat> chatlist = chatdao.chatlist();
+		
+		SaleDAO saledao = new SaleDAO();
+		
+		List<PotSale> salelist = saledao.getList();
+	%>
+	
+	
+	
 <main>
     <div class="container">
         <div class="header">
@@ -84,38 +106,15 @@
             <!-- 메뉴 내용이 필요하면 여기에 추가 -->
         </div>
         <div class="chat-list">
-            <div class="chat-item">
-                <img src="" alt="상품 사진 1">
-                'son' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 2">
-                'smart' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 3">
-                'yoo' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 4">
-                'jang' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 5">
-                'supershy' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 6">
-                'pot' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 7">
-                'love' 님과 채팅방
-            </div>
-            <div class="chat-item">
-                <img src="" alt="상품 사진 8">
-                'chowon814' 님과 채팅방
-            </div>
+        <%for(PotChat c : chatlist){ 
+        	if(c.getUser_id().equals(member.getUser_id()) || c.getSale_id().equals(member.getUser_id())){
+        	 String[] parts = c.getSale_img().split(","); %>
+				<a href="chat.jsp?chat_idx=<%=c.getChat_idx()%>"><div class="chat-item">
+	                <img src="../upload/<%=parts[0] %>" alt="<%=c.getSale_title()%>">
+	                <%=c.getSale_title() %>
+	            </div></a>
+			<%}
+        }%>
             <!-- 더 많은 채팅방 항목을 추가할 수 있습니다 -->
         </div>
     </div>
