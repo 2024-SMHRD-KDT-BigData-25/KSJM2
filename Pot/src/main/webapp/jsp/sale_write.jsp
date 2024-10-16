@@ -17,7 +17,7 @@
         display: flex;
         align-items: center; /* 수직 중앙 정렬 */
         height: 100vh; /* 전체 높이 설정 */
-        background-color: #f0f0f0; /* 배경색 추가 */
+        background-color: white; /* 배경색 추가 */
         flex-direction: column;
     }
     table {

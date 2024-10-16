@@ -207,7 +207,7 @@ text-align: right;
     <div class="chat-container">
         <!-- 상단 헤더 -->
         <div class="header1">
-            유저 닉네임
+            거래 채팅
         </div>
 
         <!-- 거래 정보 상자 -->

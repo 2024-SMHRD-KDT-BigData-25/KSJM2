@@ -20,6 +20,10 @@
 font-family: 'SUIT';
 }
 /* 테이블을 중앙에 위치시키기 위한 스타일 */
+
+body{
+margin:0px
+}
 table {
 	margin: auto;
 }
