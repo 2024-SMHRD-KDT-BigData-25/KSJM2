@@ -15,5 +15,9 @@
 		update tb_plant set pl_views = pl_views + 1 where pl_idx = #{pl_idx}
 	</update>
 	
+	<!-- 조회수 기준 -->
+	<select id="list" parameterType="com.smhrd.model.PotPlant" resultType="com.smhrd.model.PotPlant">
+		select * from tb_plant order by pl_views desc
+	</select>
 	
 </mapper>

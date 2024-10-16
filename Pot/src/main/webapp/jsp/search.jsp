@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.PotPlant"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.PlantDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -96,6 +99,14 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
+	<%
+		PlantDAO dao = new PlantDAO();
+	
+		List<PotPlant> list = dao.plant();
+		
+		int count = 0;
+	%>
+
 <main>
 
     <div class="container1">
@@ -112,33 +123,15 @@
         <div class="popular-plants">
             <h2>인기 식물</h2>
             <div class="plant-grid">
-                <div class="plant-item">
-                    <img src="../img/2.jpg" alt="식물 1">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/4.jpg" alt="식물 2">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/5.jpg" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/박쥐란.png" alt="식물 1">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/스투키 컬러 홥문.png" alt="식물 2">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/스프링골풀.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/아리우카리아.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/제두나 셀렘.png" alt="식물 3">
-                </div>
-                <div class="plant-item">
-                    <img src="../img/틸란드시아 카피타타.png" alt="식물 3">
-                </div>
+            <%for(PotPlant p:list){ %>
+                <a href="plantview.jsp?pl_idx=<%=p.getPl_idx()%>"><div class="plant-item">
+                    <img src="<%=p.getPl_img()%>" alt="<%=p.getPl_name()%>">
+                </div></a>
+               <% count++;
+               if(count==9){
+            	   break;
+               }
+               } %>
             </div>
         </div>
     </div>

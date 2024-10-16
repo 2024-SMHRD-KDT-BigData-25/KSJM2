@@ -46,5 +46,17 @@ public class PlantDAO {
 		return res;
 		
 	}
+	
+	public List<PotPlant> plant() {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<PotPlant> res = sqlSession.selectList("PlantMapper.list");
+		
+		sqlSession.close();
+		
+		return res;
+		
+	}
 
 }
