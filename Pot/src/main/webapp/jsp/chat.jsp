@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.PotSale"%>
+<%@page import="com.smhrd.model.SaleDAO"%>
+<%@page import="com.smhrd.model.SnsDAO"%>
 <%@page import="com.smhrd.model.PotChat"%>
 <%@page import="com.smhrd.model.ChatDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -62,22 +65,25 @@
             padding: 10px;
             margin: 10px;
             border-radius: 10px;
-            display: flex;
+            border: 1px solid #e0e0e0;
+            
+        }
+        
+        .trade-a{
+        	display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid #e0e0e0;
+            
+        
         }
-        .trade-info div {
-            background-color: #00cc66;
-            width: 40px;
-            height: 40px;
+        .trade-a div {
+            height: 50px;
             border-radius: 5px;
         }
-        .trade-info .price {
+        .trade-a .price {
             font-size: 16px;
             font-weight: bold;
             color: #333;
-            margin-left: 10px;
         }
         #message-box {
             flex-grow: 1;
@@ -144,6 +150,21 @@
      margin-top: 0px;
     padding: 80px;
 }
+
+.abc{
+width: 50px;
+}
+
+.def{
+width: 178px;
+margin-left:10px;
+}
+
+.ghi{
+width: 120px;
+text-align: right;
+}
+
     </style>
 </head>
 <body>
@@ -165,6 +186,20 @@
         out.println("<p>오류: " + e.getMessage() + "</p>");
         e.printStackTrace();
     }
+    
+	
+    ChatDAO chatdao = new ChatDAO();
+    
+    PotChat res = chatdao.getchat(chat_idx);
+    
+	session.removeAttribute("chatroom");
+	
+	
+	SaleDAO saledao = new SaleDAO();
+	
+	PotSale saleres = saledao.getBoard(res.getSale_idx());
+	
+	String[] parts = saleres.getSale_img().split(",");
 	%>
 	
 	
@@ -177,10 +212,17 @@
 
         <!-- 거래 정보 상자 -->
         <div class="trade-info">
-            <img src="../img/4.jpg" class="goods">
-            <p class="price">식물거래 정보</p>
-            <p class="price">30,000원</p>
-            
+        <a href="slide3.jsp?sale_idx=<%= res.getSale_idx()%>" class="trade-a">
+        <div class="abc">
+            <img src="../upload/<%= parts[0] %>" class="goods">
+        </div>
+            <div class="def">
+            <p class="price"><%=saleres.getSale_title() %></p>
+            </div>
+            <div class="ghi">
+            <p class="price"><%=saleres.getSale_price() %>원</p>
+            </div>
+            </a>
         </div>
 
         <!-- 채팅 메시지 박스 -->
@@ -205,7 +247,7 @@
         console.log("chatIdx:", chatIdx);
 
     	
-          const webSocket = new WebSocket("ws://localhost:8081/Pot/jsp/chat/" + chatIdx );
+          const webSocket = new WebSocket("ws://172.30.1.38:8081/Pot/jsp/chat/" + chatIdx );
 
           webSocket.onopen = onOpen;
           webSocket.onclose = onClose;

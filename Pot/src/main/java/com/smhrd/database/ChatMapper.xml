@@ -18,5 +18,7 @@
 		from tb_chat_room
 	</select>
 
-
+	<select id="getsale" parameterType="int" resultType="com.smhrd.model.PotChat">
+		select * from tb_chat_room where chat_idx=#{chat_idx}
+	</select>
 </mapper>

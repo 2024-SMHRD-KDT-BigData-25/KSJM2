@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.PotSale"%>
+<%@page import="com.smhrd.model.SaleDAO"%>
+<%@page import="com.smhrd.model.PotUsers"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,18 +65,53 @@ body {
 }
 
 .content {
-	padding: 20px;
 	display: none; /* 초기에는 내용 숨김 */
 }
 
 .active {
 	display: block; /* active 클래스가 있을 때만 보이게 */
 }
+
+.abc{
+width:360px;
+height:93px;
+display: flex; 
+justify-content: center; 
+margin-top:10px;
+margin-left:10px;
+}
+
+.imgs{
+width:93px;
+}
+
+.title{
+width:267px;
+display: inline-grid;
+align-content: center;
+}
+
+p{
+margin-left:10px;
+}
+
+.abab{
+width:100%;
+height:100%;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
+
+	<%
+		PotUsers member = (PotUsers) session.getAttribute("member");
+		SaleDAO dao =  new SaleDAO();
+		List<PotSale> list =  dao.getList();
+
+	
+	%>
 	<main>
 		<div class="container">
 			<div class="header">
@@ -82,13 +121,27 @@ body {
 				<button id="selling">판매내역</button>
 				<button id="completed">구매내역</button>
 			</div>
-			<div class="content" id="sellingContent">
-				<p>판매내역 내용이 여기에 표시됩니다.</p>
+			<div class="content active" id="sellingContent">
+			<%for(PotSale m : list) {
+				if(m.getUser_id().equals(member.getUser_id())){
+					String[] parts = m.getSale_img().split(",");%>
+				<div class="abc">
+					<div class="imgs">
+						<a href="slide3.jsp?sale_idx=<%= m.getSale_idx()%>">
+							<img class="abab" src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>">
+						</a>
+					</div>
+					<div class="title"><P><strong><a href="slide3.jsp?sale_idx=<%= m.getSale_idx()%>"><%=m.getSale_title() %></a></strong></P></div>
+				</div>
+				<%}}
+			%>
 				<!-- 판매내역 목록을 여기에 추가 -->
 			</div>
 			<div class="content" id="completedContent">
-				<p>구매내역 내용이 여기에 표시됩니다.</p>
-				<!-- 구매내역 목록을 여기에 추가 -->
+				<div class="abc">
+					<div class="imgs">사진</div>
+					<div class="title"><P><strong>타이틀</strong></P></div>
+				</div>
 			</div>
 		</div>
 

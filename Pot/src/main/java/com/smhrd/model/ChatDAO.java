@@ -44,5 +44,16 @@ public class ChatDAO {
 		return res;
 		
 	}
+	
+	public PotChat getchat(int chat_idx) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		PotChat res = sqlSession.selectOne("ChatMapper.getsale", chat_idx);
+		
+		sqlSession.close();
+		
+		return res;
+	}
 
 }

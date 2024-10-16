@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.PotSale"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.SaleDAO"%>
 <%@page import="com.smhrd.model.PotUsers"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -168,6 +171,12 @@
 
 <%
     PotUsers member = (PotUsers) session.getAttribute("member");
+
+ 	SaleDAO dao = new SaleDAO();
+ 	
+ 	List<PotSale> list = dao.getList();
+ 	
+ 	int count = 0; 
 	
 %>
                  
@@ -253,16 +262,21 @@
 </div>
 
 <div class="container">
-    <a href="#" id="img3" class="box">호야 안젤리나 : 앵글리아나</a>
-    <a href="#" id="img4" class="box">피쉬본 선인장</a>
-    <a href="#" id="img5" class="box">프랭키 보이 측백나무</a>
-</div>
+	<%for(PotSale m : list){ 				
+		String[] parts = m.getSale_img().split(","); %>
+			<a href="slide3.jsp?sale_idx=<%= m.getSale_idx()%>" class="box">
+			<img src="../upload/<%= parts[0] %>" alt="<%= m.getSale_title() %>">
+			</a>
+			<% count++;
+			if(count==3){%>
+				</div>
+				<div class="container">
+			<%}else if(count==6){%>
+			</div >
+ 	<% 
+ 	break;} }%>
 
-<div class="container">
-   <a href="#" id="img6" class="box">박쥐란&nbsp;</a>
-   <a href="#" id="img7" class="box">준쿠스 스프링골플&nbsp;</a>
-    <a href="#" id="img8" class="box">아리우카리아&nbsp;&nbsp;</a>
-</div>
+
    
    
        <!-- 채팅 -->

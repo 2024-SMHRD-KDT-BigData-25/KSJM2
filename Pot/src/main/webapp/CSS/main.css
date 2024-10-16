@@ -109,71 +109,21 @@ a:visited{
 }
 
 .box {
-            background-color: #f4f4f4;
             border: 1px solid #ddd;
             margin: 10px;
-            padding: 20px;
             flex: 1 1 300px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 			width: 500px;
 			height: 500px;
 }
 
-#img3 {
-	background: url("../img/호야.png") no-repeat center;
-	background-size: cover;
-	-webkit-transform: scale(1);
-  	transform: scale(1);
-  	-webkit-transition: .3s ease-in-out;
-  	transition: .3s ease-in-out;
+.box > img{
+	width:100%;
+	height:100%;
+	
 }
 
-
-
-#img4 {
-	background: url("../img/피쉬본.png") no-repeat center;
-	background-size: cover;
-	-webkit-transform: scale(1);
-  	transform: scale(1);
-  	-webkit-transition: .3s ease-in-out;
-  	transition: .3s ease-in-out;
-}
-
-#img5 {
-	background: url("../img/프랭키.png") no-repeat center;
-	background-size: cover;
-	-webkit-transform: scale(1);
-  	transform: scale(1);
-  	-webkit-transition: .3s ease-in-out;
-  	transition: .3s ease-in-out;
-}
-#img6 {
-	background: url("../img/박쥐란.png") no-repeat center;
-	background-size: cover;
-	-webkit-transform: scale(1);
-  	transform: scale(1);
-  	-webkit-transition: .3s ease-in-out;
-  	transition: .3s ease-in-out;
-}
-
-#img7 {
-	background: url("../img/준쿠스.png") no-repeat center;
-	background-size: cover;
-	-webkit-transform: scale(1);
-  	transform: scale(1);
-  	-webkit-transition: .3s ease-in-out;
-  	transition: .3s ease-in-out;
-}
-#img8 {
-	background: url("../img/아리우카리아.png") no-repeat center;
-	background-size: cover;
-	-webkit-transform: scale(1);
-  	transform: scale(1);
-  	-webkit-transition: .3s ease-in-out;
-  	transition: .3s ease-in-out;
-}
-
-#img3:hover, #img4:hover, #img5:hover, #img6:hover, #img7:hover, #img8:hover {
+.box > img:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }

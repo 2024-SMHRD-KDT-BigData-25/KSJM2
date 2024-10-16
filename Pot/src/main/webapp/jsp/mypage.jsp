@@ -86,7 +86,7 @@
 		
 	        <div class="purchase-history">
 	            <h3>구매 내역</h3>
-	            <p><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp; 주문 내역 조회</p>
+	            <a href="mypageHistory.jsp"><p><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp; 주문 내역 조회</p></a>
 	        </div>
 			
 	        <div class="sale-history">
