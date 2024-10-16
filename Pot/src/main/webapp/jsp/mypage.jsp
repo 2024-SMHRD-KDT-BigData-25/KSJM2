@@ -72,12 +72,6 @@
 	                <div class="info-item">
 	                    <p>판매한 식물</p>
 	                    <span>0</span>
-	                    
-	                    <%for(PotChat m : list){ 
-	                    if(m.getUser_id().equals(member.getUser_id()) || m.getSale_id().equals(member.getUser_id())){
-	                    %>
-	                    <a href="chat.jsp?chat_idx=<%=m.getChat_idx()%>">채팅</a>
-	                    <%}} %>
 	                </div>
 	            </div>
 	        </div>
@@ -85,13 +79,17 @@
 		
 		
 	        <div class="purchase-history">
-	            <h3>구매 내역</h3>
-	            <a href="mypageHistory.jsp"><p><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp; 주문 내역 조회</p></a>
+	            <h3>거래 내역</h3>
+	            <a href="mypageHistory.jsp"><p><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp; 거래 내역 조회</p></a>
 	        </div>
 			
 	        <div class="sale-history">
-	            <h3>판매 내역</h3>
-	            <p><i class="fa-solid fa-list-check"></i>&nbsp;&nbsp; 상품 등록</p>
+	        	<h3>채팅</h3>
+	            <%for(PotChat m : list){ 
+	                    if(m.getUser_id().equals(member.getUser_id()) || m.getSale_id().equals(member.getUser_id())){
+	                    %>
+	                    <a href="chat.jsp?chat_idx=<%=m.getChat_idx()%>">1대1 채팅목록</a>
+	                    <%}} %>
 	        </div>
 	    </div>
 	</main>
