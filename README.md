@@ -11,7 +11,7 @@
 ## 🛠️ 기술스택
 |구분|내용|
 |---|---|
-|사용언어|![image](https://github.com/user-attachments/assets/efbc2fc2-2d58-4cd8-bdfc-1714e2cfeede)![image](https://github.com/user-attachments/assets/cede6fb4-df19-4c19-b833-b92df3256073)
+|사용언어|![image](https://github.com/user-attachments/assets/efbc2fc2-2d58-4cd8-bdfc-1714e2cfeede) ![image](https://github.com/user-attachments/assets/cede6fb4-df19-4c19-b833-b92df3256073)
 
 |
 |라이브러리|셀|
