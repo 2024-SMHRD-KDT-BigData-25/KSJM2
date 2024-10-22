@@ -18,12 +18,15 @@
 |데이터베이스|![image](https://github.com/user-attachments/assets/1c082853-a0e9-41e8-a69a-078cb1d380e1)|
 |협업도|![image](https://github.com/user-attachments/assets/f56238fa-39b6-4f2c-965c-3331b461d03d) ![image](https://github.com/user-attachments/assets/d8f1851e-2523-4c00-8404-41dfe9d49a1d)|
 ## 시스템 아키텍처(구조)
+![7  시스템 아키텍처](https://github.com/user-attachments/assets/480b2cf4-ae4d-4c03-a0a9-3488a0cd4c0f)
 
 ## 유스퀘이스
+![image](https://github.com/user-attachments/assets/135cdb67-7a7b-4797-9bd6-6caed22d7bc3)
 
 ## 서비스 흐름도
 
 ## ER-다이어그램
+![image](https://github.com/user-attachments/assets/b85d209b-b7bd-4922-8eb4-297d089e7a23)
 
 ## 화면구성
 
